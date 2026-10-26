@@ -1,0 +1,13 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell form-section">
+  <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <div class="eyebrow">{% translate "KEEPING OUR COMMUNITY SAFE" %}</div>
+  <h1>{% translate "Your report is recorded." %}</h1>
+  <p class="intro">{{ report.opportunity.title }}</p>
+  <span class="status-pill">{{ report.get_status_display }}</span>
+  <h2>{% translate "Concern" %}</h2><p>{{ report.get_reason_display }}</p>
+  <h2>{% translate "Your message" %}</h2>{{ report.details|linebreaks }}
+  <p class="small-note">{% translate "The employer cannot access this report. Moderators review reports before taking action. No response time is guaranteed during the pilot." %}</p>
+</section>
+{% endblock %}

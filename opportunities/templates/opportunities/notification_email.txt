@@ -1,0 +1,12 @@
+{% load i18n %}{% autoescape off %}{% translate "Hello," %}
+
+{% if notification.kind == 'application' %}{% blocktranslate with title=notification.application.opportunity.title %}A new application has been received for {{ title }}.{% endblocktranslate %}{% else %}{% blocktranslate with title=notification.application.opportunity.title status=notification.status_label %}Your application for {{ title }} was updated to: {{ status }}.{% endblocktranslate %}{% endif %}
+
+{% translate "Sign in to view the latest application details:" %}
+{{ application_url }}
+
+{% translate "Manage application emails in your account settings. In-app notifications remain available when email is turned off." %}
+{{ site_url }}{% url 'account_settings' %}
+
+Together for Better
+{% endautoescape %}

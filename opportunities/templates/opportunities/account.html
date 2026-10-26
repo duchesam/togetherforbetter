@@ -1,0 +1,34 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell form-section">
+  <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <div class="eyebrow">{% translate "YOUR ACCOUNT, YOUR CONTROL" %}</div>
+  <h1>{% translate "Account settings" %}</h1>
+  <div class="account-email">
+    <h2>{% translate "Email address" %}</h2>
+    <p>{{ user.email }}</p>
+    {% if profile.is_email_verified %}
+      <span class="status-pill">{% translate "Email verified" %}</span>
+    {% else %}
+      <p class="small-note">{% translate "Verify your email to receive application updates and protect your account." %}</p>
+      {% if profile.needs_email_verification %}<p class="small-note">{% translate "Email verification is required before you apply or post opportunities." %}</p>{% endif %}
+      <form method="post" action="{% url 'verification_request' %}">
+        {% csrf_token %}<button class="button outline" type="submit">{% translate "Send verification email" %}</button>
+      </form>
+    {% endif %}
+  </div>
+  <form method="post" class="standard-form">
+    {% csrf_token %}{{ form.as_p }}
+    <button class="button" type="submit">{% translate "Save preferences" %} →</button>
+  </form>
+  <div class="account-danger">
+    <h2>{% translate "Account closure" %}</h2>
+    {% if profile.role == 'seeker' and not user.is_staff and not user.is_superuser %}
+      <p>{% translate "You can permanently delete your job seeker account and associated applicant data." %}</p>
+      <a class="danger-link" href="{% url 'account_delete' %}">{% translate "Delete my account" %} →</a>
+    {% else %}
+      <p>{% translate "Organization and staff accounts require administrator-managed closure." %}</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

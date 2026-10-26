@@ -1,0 +1,16 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell dashboard">
+  <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <div class="section-heading"><div><div class="eyebrow">{% translate "STAY CONNECTED" %}</div><h1>{% translate "Notifications" %}</h1><p>{% translate "Your application updates, all in one place." %}</p></div><a class="button outline" href="{% url 'account_settings' %}">{% translate "Account settings" %}</a></div>
+  <div class="dashboard-list">
+    {% for notice in page %}
+      <article class="dashboard-row notification-row {% if not notice.read_at %}notification-unread{% endif %}">
+        <div><p class="notification-kind">{{ notice.get_kind_display }}{% if not notice.read_at %} · {% translate "Unread" %}{% endif %}</p><h3>{{ notice.application.opportunity.title }}</h3>{% if notice.status_code %}<p>{{ notice.status_label }}</p>{% endif %}<p>{{ notice.created_at|date:"DATE_FORMAT" }}</p></div>
+        <form method="post" action="{% url 'notification_open' notice.pk %}">{% csrf_token %}<button class="button outline" type="submit">{% translate "View application" %} →</button></form>
+      </article>
+    {% empty %}<p class="empty-inline">{% translate "No notifications yet. Updates will appear here when an application is received or its status changes." %}</p>{% endfor %}
+  </div>
+  {% if page.has_other_pages %}<nav class="pagination" aria-label="{% translate 'Results pages' %}">{% if page.has_previous %}<a href="?page={{ page.previous_page_number }}">{% translate "← Previous" %}</a>{% endif %}<span>{% blocktranslate with number=page.number total=page.paginator.num_pages %}Page {{ number }} of {{ total }}{% endblocktranslate %}</span>{% if page.has_next %}<a href="?page={{ page.next_page_number }}">{% translate "Next →" %}</a>{% endif %}</nav>{% endif %}
+</section>
+{% endblock %}

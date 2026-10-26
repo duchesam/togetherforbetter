@@ -1,0 +1,1920 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Together for Better\n"
+"Language: am\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#, python-format
+msgid "%(count)s opportunity to explore"
+msgid_plural "%(count)s opportunities to explore"
+msgstr[0] "%(count)s ዕድል ያስሱ"
+msgstr[1] "%(count)s ዕድሎችን ያስሱ"
+
+#, python-format
+msgid "%(count)s organization awaiting verification"
+msgid_plural "%(count)s organizations awaiting verification"
+msgstr[0] "%(count)s ድርጅት ማረጋገጫ እየጠበቀ ነው"
+msgstr[1] "%(count)s ድርጅቶች ማረጋገጫ እየጠበቁ ናቸው"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:5
+msgid "A FRESH START"
+msgstr "አዲስ ጅማሬ"
+
+#: opportunities/templates/opportunities/home.html:5
+msgid "A PLACE TO BEGIN"
+msgstr "መነሻዎ እዚህ ነው"
+
+#: opportunities/templates/opportunities/home.html:3
+msgid "A better future"
+msgstr "የተሻለ ወደፊት"
+
+#: opportunities/templates/opportunities/home.html:4
+msgid "A community that lifts you"
+msgstr "የሚደግፍዎት ማኅበረሰብ"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "A fair place to start"
+msgstr "ፍትሐዊ የመጀመሪያ ዕድል"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "A fresh start is on the way."
+msgstr "አዲስ ጅማሬ እየጠበቀዎት ነው።"
+
+#: opportunities/templates/opportunities/base.html:7
+msgid "A little connection. A world of possibility."
+msgstr "ትንሽ ግንኙነት፣ ብዙ ዕድሎች።"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid ""
+"A real opportunity never asks you to pay to apply. Stay safe, grow with "
+"confidence."
+msgstr "እውነተኛ የሥራ ዕድል ለማመልከት ክፍያ አይጠይቅም። ጥንቃቄ ያድርጉ፣ በመተማመን ያድጉ።"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "APPLICATION DETAILS"
+msgstr "የማመልከቻ ዝርዝር"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "AREA OF INTEREST"
+msgstr "የፍላጎት ዘርፍ"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "About the applicant"
+msgstr "ስለ አመልካቹ"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "About the opportunity"
+msgstr "ስለ ዕድሉ"
+
+#: opportunities/forms.py:11
+msgid "Account type"
+msgstr "የመለያ ዓይነት"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid ""
+"Add your skills, education, and an optional PDF CV. Your current profile and"
+" CV are shared only with organizations you apply to."
+msgstr ""
+"ክህሎትዎን፣ ትምህርትዎንና አማራጭ PDF ሲቪ ያክሉ። አሁን ያሉት መገለጫዎና ሲቪዎ ለሚያመለክቱላቸው ድርጅቶች ብቻ "
+"ይጋራሉ።"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "All areas"
+msgstr "ሁሉም ዘርፎች"
+
+#: opportunities/templates/opportunities/home.html:7
+#: opportunities/templates/opportunities/detail.html:1
+msgid "All opportunities"
+msgstr "ሁሉም ዕድሎች"
+
+#: opportunities/templates/opportunities/form.html:1
+msgid "Already part of the community?"
+msgstr "ከዚህ በፊት ተመዝግበዋል?"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Always free to apply"
+msgstr "ማመልከት ሁልጊዜ ነፃ ነው"
+
+#: opportunities/models.py:84
+msgid "Another concern"
+msgstr "ሌላ ችግር"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Application deadline"
+msgstr "የማመልከቻ መጨረሻ ቀን"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "Application message"
+msgstr "የማመልከቻ መልዕክት"
+
+#: opportunities/views.py:142
+msgid "Application sent. Track its progress in your dashboard."
+msgstr "ማመልከቻዎ ተልኳል። ሂደቱን በግል ገጽዎ ይከታተሉ።"
+
+#: opportunities/views.py:157
+msgid "Application status updated."
+msgstr "የማመልከቻው ሁኔታ ተዘምኗል።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Applications received"
+msgstr "የደረሱ ማመልከቻዎች"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Applications will appear here once your opportunities are live."
+msgstr "ዕድሎችዎ ከታተሙ በኋላ ማመልከቻዎች እዚህ ይታያሉ።"
+
+#, python-format
+msgid "Apply by %(deadline)s"
+msgstr "እስከ %(deadline)s ያመልክቱ"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "Apply filters"
+msgstr "ማጣሪያዎችን ተግብር"
+
+#: opportunities/views.py:144
+#, python-format
+msgid "Apply for %(title)s"
+msgstr "ለ %(title)s ያመልክቱ"
+
+#: opportunities/templates/opportunities/home.html:9
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Apply for free"
+msgstr "በነፃ ያመልክቱ"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid "Apply for free, follow your progress, and start building your future."
+msgstr "በነፃ ያመልክቱ፣ ሂደቱን ይከታተሉ፣ ወደፊትዎን መገንባት ይጀምሩ።"
+
+#: opportunities/models.py:81 opportunities/test_pilot.py:146
+msgid "Asked to pay a fee"
+msgstr "ክፍያ ተጠይቋል"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Awaiting review"
+msgstr "ግምገማ እየጠበቀ ነው"
+
+#: opportunities/templates/opportunities/password_reset_done.html:9
+msgid "Back to log in →"
+msgstr "ወደ መግቢያ ተመለስ →"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid "Big steps start small."
+msgstr "ትልልቅ እርምጃዎች በትንሽ ጅማሬ ይነሳሉ።"
+
+msgid "Bio"
+msgstr "ስለ እኔ"
+
+#: opportunities/templates/opportunities/rate_limited.html:7
+msgid "Browse opportunities →"
+msgstr "ዕድሎችን ያስሱ →"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "Build your profile →"
+msgstr "መገለጫዎን ይሙሉ →"
+
+#: opportunities/templates/opportunities/base.html:7
+msgid "Built for Ethiopia, with possibility for everyone."
+msgstr "ለኢትዮጵያ የተገነባ፣ ለሁሉም ዕድል የሚፈጥር።"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "COMMUNITY IMPACT · STAFF ONLY"
+msgstr "የማኅበረሰብ ውጤት · ለሠራተኞች ብቻ"
+
+#: opportunities/test_accounts.py:22 opportunities/test_accounts.py:35
+#: opportunities/test_accounts.py:42 opportunities/test_accounts.py:43
+#: opportunities/test_accounts.py:82 opportunities/test_accounts.py:129
+#: opportunities/test_accounts.py:164 opportunities/forms.py:31
+#: opportunities/forms.py:53 opportunities/admin.py:33
+#: opportunities/admin.py:36 opportunities/admin.py:37
+#: opportunities/uploads.py:9 opportunities/uploads.py:18
+#: opportunities/uploads.py:19 opportunities/uploads.py:21
+#: opportunities/uploads.py:25 opportunities/uploads.py:33
+#: opportunities/views.py:78 opportunities/views.py:93
+#: opportunities/views.py:97 opportunities/views.py:144
+#: opportunities/templates/opportunities/application.html:1
+#: opportunities/templates/opportunities/home.html:9
+#: opportunities/templates/opportunities/dashboard.html:1
+#: opportunities/templates/opportunities/form.html:1
+#: opportunities/templates/opportunities/about.html:1
+msgid "CV"
+msgstr "ሲቪ"
+
+msgid "Category"
+msgstr "ዘርፍ"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "Change language"
+msgstr "ቋንቋ ቀይር"
+
+#: opportunities/views.py:116
+msgid ""
+"Changes require a new verification review before your listings are visible."
+msgstr "ለውጦች ከተደረጉ በኋላ ማስታወቂያዎችዎ ከመታየታቸው በፊት እንደገና ማረጋገጥ ያስፈልጋል።"
+
+#: opportunities/templates/opportunities/password_reset_done.html:2
+msgid "Check your email · Together for Better"
+msgstr "ኢሜይልዎን ይመልከቱ · Together for Better"
+
+#: opportunities/templates/opportunities/password_reset_done.html:6
+msgid "Check your email."
+msgstr "ኢሜይልዎን ይመልከቱ።"
+
+#: opportunities/templates/opportunities/password_reset_email.txt:5
+msgid "Choose a new password using this link:"
+msgstr "ይህን አገናኝ ተጠቅመው አዲስ የይለፍ ቃል ይምረጡ፦"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:2
+msgid "Choose a new password · Together for Better"
+msgstr "አዲስ የይለፍ ቃል ይምረጡ · Together for Better"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:7
+msgid "Choose a new password."
+msgstr "አዲስ የይለፍ ቃል ይምረጡ።"
+
+#: opportunities/forms.py:53
+msgid "Choose either a replacement CV or removal, not both."
+msgstr "ሲቪን ለመቀየር ወይም ለማስወገድ አንዱን ብቻ ይምረጡ።"
+
+#: opportunities/forms.py:85
+msgid "Choose today or a future date."
+msgstr "የዛሬን ወይም ወደፊት ያለ ቀን ይምረጡ።"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid ""
+"Choose “Placement confirmed” only after confirming the applicant has "
+"accepted the role. This is an employer-reported placement."
+msgstr ""
+"አመልካቹ ሥራውን መቀበሉን ካረጋገጡ በኋላ ብቻ “ቅጥሩ ተረጋግጧል” የሚለውን ይምረጡ። ይህ በአሠሪው የተገለጸ ቅጥር "
+"ነው።"
+
+#: opportunities/templates/opportunities/home.html:6
+msgid "City or region"
+msgstr "ከተማ ወይም ክልል"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "Clear all filters"
+msgstr "ሁሉንም ማጣሪያዎች አጥፋ"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "Clear filters"
+msgstr "ማጣሪያዎችን አጥፋ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Closed or awaiting verification"
+msgstr "ተዘግቷል ወይም ማረጋገጫ እየጠበቀ ነው"
+
+#: opportunities/models.py:90
+msgid "Closed without action"
+msgstr "ያለ እርምጃ ተዘግቷል"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Compensation"
+msgstr "ክፍያ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Complete your profile →"
+msgstr "መገለጫዎን ያጠናቅቁ →"
+
+#: opportunities/templates/opportunities/report.html:9
+msgid "Concern"
+msgstr "ችግር"
+
+#: opportunities/templates/opportunities/home.html:10
+msgid "Connect with motivated people ready to learn, contribute, and grow."
+msgstr "ለመማር፣ ለማበርከትና ለማደግ ዝግጁ ከሆኑ ሰዎች ጋር ይገናኙ።"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Connections that count."
+msgstr "ውጤት የሚያመጡ ግንኙነቶች።"
+
+#: opportunities/views.py:128
+msgid ""
+"Create a clear, honest opportunity. All listings are reviewed before "
+"publication."
+msgstr "ግልጽና እውነተኛ ዕድል ያቅርቡ። ሁሉም ማስታወቂያዎች ከመታተማቸው በፊት ይገመገማሉ።"
+
+#: opportunities/templates/opportunities/login.html:1
+msgid "Create a free account"
+msgstr "ነፃ መለያ ይፍጠሩ"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid ""
+"Create a profile that shows your skills, interests, and the person behind "
+"the CV."
+msgstr "ክህሎትዎን፣ ፍላጎትዎንና ልዩ ማንነትዎን የሚያሳይ መገለጫ ይፍጠሩ።"
+
+#: opportunities/views.py:57
+msgid "Create account"
+msgstr "መለያ ፍጠር"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "Create your profile"
+msgstr "መገለጫዎን ይፍጠሩ"
+
+msgid "Cv"
+msgstr "ሲቪ"
+
+#: opportunities/templates/opportunities/application.html:1
+#: opportunities/templates/opportunities/base.html:4
+#: opportunities/templates/opportunities/report.html:4
+msgid "Dashboard"
+msgstr "የእኔ ገጽ"
+
+#: opportunities/forms.py:72 opportunities/forms.py:73
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Deadline"
+msgstr "የመጨረሻ ቀን"
+
+#: opportunities/forms.py:72
+msgid "Deadline (Gregorian calendar)"
+msgstr "የመጨረሻ ቀን (ጎርጎርዮሳዊ አቆጣጠር)"
+
+msgid "Description"
+msgstr "መግለጫ"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid ""
+"Discover internships and entry-level jobs with organizations that believe in"
+" what you can become."
+msgstr "በችሎታዎ እድገት ከሚያምኑ ድርጅቶች ጋር የተግባር ስልጠናና የመጀመሪያ ደረጃ የሥራ ዕድሎችን ያግኙ።"
+
+#: opportunities/forms.py:106
+msgid ""
+"Do not include passwords, bank details, or identity documents. Your report "
+"is visible only to you and authorized moderators."
+msgstr ""
+"የይለፍ ቃል፣ የባንክ መረጃ ወይም መታወቂያ አያካትቱ። ሪፖርትዎ ለእርስዎና ፈቃድ ላላቸው ገምጋሚዎች ብቻ ይታያል።"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "Download CV (PDF) ↓"
+msgstr "ሲቪ (PDF) አውርድ ↓"
+
+#: opportunities/templates/opportunities/form.html:1
+msgid "Download current CV →"
+msgstr "አሁን ያለውን ሲቪ አውርድ →"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Edit my profile"
+msgstr "መገለጫዬን አስተካክል"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Edit organization →"
+msgstr "የድርጅቱን መረጃ አስተካክል →"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "Education"
+msgstr "ትምህርት"
+
+#: opportunities/test_accounts.py:187 opportunities/test_accounts.py:252
+#: opportunities/forms.py:10 opportunities/mail.py:5 opportunities/mail.py:8
+#: opportunities/test_pilot.py:56
+msgid "Email"
+msgstr "ኢሜይል"
+
+msgid "Email address"
+msgstr "የኢሜይል አድራሻ"
+
+#: opportunities/test_accounts.py:21 opportunities/test_accounts.py:41
+#: opportunities/test_accounts.py:42 opportunities/test_accounts.py:104
+#: opportunities/forms.py:6 opportunities/forms.py:65
+#: opportunities/forms.py:67 opportunities/admin.py:7
+#: opportunities/admin.py:10 opportunities/admin.py:11
+#: opportunities/tests.py:6 opportunities/tests.py:16
+#: opportunities/tests.py:17 opportunities/tests.py:60
+#: opportunities/tests.py:100 opportunities/models.py:10
+#: opportunities/models.py:25 opportunities/models.py:40
+#: opportunities/context_processors.py:2 opportunities/context_processors.py:5
+#: opportunities/views.py:14 opportunities/views.py:15
+#: opportunities/views.py:37 opportunities/views.py:53
+#: opportunities/views.py:64 opportunities/views.py:78
+#: opportunities/views.py:108 opportunities/views.py:109
+#: opportunities/views.py:120 opportunities/views.py:198
+#: opportunities/views.py:199 opportunities/test_pilot.py:18
+#: opportunities/test_pilot.py:132
+#: opportunities/management/commands/seed_demo.py:6
+#: opportunities/management/commands/seed_demo.py:29
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Employer"
+msgstr "አሠሪ"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Employer-reported placements"
+msgstr "አሠሪዎች ያረጋገጧቸው ቅጥሮች"
+
+#: opportunities/management/commands/seed_demo.py:16
+#: opportunities/templates/opportunities/base.html:4
+msgid "English"
+msgstr "English"
+
+msgid "Enter a valid date."
+msgstr "ትክክለኛ ቀን ያስገቡ።"
+
+msgid "Enter a valid email address."
+msgstr "ትክክለኛ የኢሜይል አድራሻ ያስገቡ።"
+
+#: opportunities/templates/opportunities/password_reset_form.html:8
+msgid ""
+"Enter the email you used to create your account. We’ll send you a link to "
+"choose a new password."
+msgstr "መለያዎን ለመፍጠር የተጠቀሙበትን ኢሜይል ያስገቡ። አዲስ የይለፍ ቃል ለመምረጥ አገናኝ እንልክልዎታለን።"
+
+#: opportunities/forms.py:19
+msgid "Enter your organization’s name."
+msgstr "የድርጅትዎን ስም ያስገቡ።"
+
+#: opportunities/models.py:38
+msgid "Entry-level job"
+msgstr "የመጀመሪያ ደረጃ ሥራ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Every application is a step forward."
+msgstr "እያንዳንዱ ማመልከቻ ወደ ፊት የሚወሰድ እርምጃ ነው።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Explore opportunities and find a role that fits your interests."
+msgstr "ዕድሎችን ያስሱና ከፍላጎትዎ ጋር የሚስማማ ሥራ ያግኙ።"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid ""
+"Explore opportunities from verified employers who welcome fresh potential."
+msgstr "አዲስ ችሎታን ከሚቀበሉ የተረጋገጡ አሠሪዎች ዕድሎችን ያስሱ።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Explore opportunities →"
+msgstr "ዕድሎችን ያስሱ →"
+
+#: opportunities/templates/opportunities/home.html:10
+msgid "FOR ORGANIZATIONS THAT CARE"
+msgstr "ለሰዎች እድገት ለሚተጉ ድርጅቶች"
+
+#: opportunities/test_pilot.py:30
+#: opportunities/templates/opportunities/base.html:4
+msgid "Find opportunities"
+msgstr "ዕድሎችን ያግኙ"
+
+#: opportunities/templates/opportunities/home.html:5
+msgid "Find what’s next for you"
+msgstr "ቀጣዩን ዕድልዎን ያግኙ"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid "Find your fit"
+msgstr "የሚስማማዎትን ያግኙ"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Find your opportunity"
+msgstr "የሚስማማዎትን ዕድል ያግኙ"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid ""
+"Follow applications from submission to an employer-confirmed placement. Our "
+"goal is real connections that lead to meaningful work."
+msgstr ""
+"ማመልከቻዎን ከመላክ ጀምሮ አሠሪው ቅጥሩን እስኪያረጋግጥ ድረስ ይከታተሉ። ግባችን ወደ ጠቃሚ ሥራ የሚያመሩ እውነተኛ "
+"ግንኙነቶችን መፍጠር ነው።"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "For employers"
+msgstr "ለአሠሪዎች"
+
+#: opportunities/templates/opportunities/password_reset_done.html:8
+msgid ""
+"For your privacy, we don’t confirm whether an email is registered. Each "
+"reset link is valid for one hour."
+msgstr "የግል መረጃዎን ለመጠበቅ ኢሜይል መመዝገቡን አናረጋግጥም። እያንዳንዱ አገናኝ ለአንድ ሰዓት ይሠራል።"
+
+#: opportunities/templates/opportunities/password_reset_form.html:7
+#: opportunities/templates/opportunities/login.html:1
+msgid "Forgot your password?"
+msgstr "የይለፍ ቃልዎን ረስተዋል?"
+
+#: opportunities/templates/opportunities/base.html:2
+#: opportunities/templates/opportunities/base.html:3
+msgid "Free for every job seeker"
+msgstr "ለሁሉም ሥራ ፈላጊዎች ነፃ"
+
+#: opportunities/forms.py:9
+msgid "Full name"
+msgstr "ሙሉ ስም"
+
+#: opportunities/templates/opportunities/login.html:1
+msgid "GOOD TO SEE YOU AGAIN"
+msgstr "እንኳን በደህና ተመለሱ"
+
+#: opportunities/templates/opportunities/home.html:3
+msgid "GROWING TOGETHER, GOING FURTHER"
+msgstr "አብረን እያደግን፣ ወደ ፊት እንጓዛለን"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "Get started"
+msgstr "ይጀምሩ"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Get to know us"
+msgstr "ስለ እኛ ይወቁ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Give someone a place to begin."
+msgstr "ለአንድ ሰው መጀመሪያ ይሁኑ።"
+
+#: opportunities/templates/opportunities/home.html:4
+msgid "Good opportunities."
+msgstr "ጥሩ ዕድሎች።"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Gregorian calendar (GC) · Ethiopia time"
+msgstr "ጎርጎርዮሳዊ አቆጣጠር · የኢትዮጵያ ሰዓት"
+
+#: opportunities/models.py:83
+msgid "Harassment or discrimination"
+msgstr "ትንኮሳ ወይም መድልዎ"
+
+#: opportunities/templates/opportunities/password_reset_email.txt:1
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Hello,"
+msgstr "ሰላም፣"
+
+#: opportunities/views.py:183
+msgid ""
+"Help keep the community safe. The employer will not see your identity or "
+"report. Reports are reviewed before any action is taken."
+msgstr ""
+"የማኅበረሰቡን ደኅንነት ለመጠበቅ ያግዙ። አሠሪው ማንነትዎንም ሆነ ሪፖርትዎን አያይም። እርምጃ ከመወሰዱ በፊት ሪፖርቶች "
+"ይገመገማሉ።"
+
+#: opportunities/admin.py:57
+msgid "Hide reported listings and begin review"
+msgstr "ሪፖርት የቀረበባቸውን ማስታወቂያዎች ደብቅና ግምገማ ጀምር"
+
+#: opportunities/templates/opportunities/password_reset_done.html:7
+msgid ""
+"If an active account with a password uses that address, you’ll receive a "
+"link to reset your password. Check your spam folder, too."
+msgstr ""
+"በዚህ አድራሻ ንቁ መለያ ካለ፣ የይለፍ ቃልዎን የሚቀይሩበት አገናኝ ይደርስዎታል። የአይፈለጌ መልዕክት አቃፊውንም "
+"ይመልከቱ።"
+
+#: opportunities/templates/opportunities/home.html:3
+msgid "Illustration of people growing together"
+msgstr "አብረው የሚያድጉ ሰዎች ሥዕል"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "Impact"
+msgstr "ውጤቶች"
+
+#: opportunities/models.py:97
+msgid "Internal notes. Never shown to the reporting user or employer."
+msgstr "የውስጥ ማስታወሻዎች። ሪፖርት ላቀረበው ተጠቃሚም ሆነ ለአሠሪው አይታዩም።"
+
+#: opportunities/models.py:37
+msgid "Internship"
+msgstr "የተግባር ስልጠና"
+
+#: opportunities/views.py:116
+msgid "Introduce your organization"
+msgstr "ድርጅትዎን ያስተዋውቁ"
+
+#: opportunities/models.py:9 opportunities/templates/opportunities/base.html:7
+#: opportunities/templates/opportunities/about.html:1
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Job seeker"
+msgstr "ሥራ ፈላጊ"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Job seeker profiles"
+msgstr "የሥራ ፈላጊ መገለጫዎች"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid ""
+"Job seekers never pay to browse or apply. We welcome fresh graduates and "
+"people taking their first step into work."
+msgstr ""
+"ሥራ ፈላጊዎች ለማሰስም ሆነ ለማመልከት አይከፍሉም። አዲስ ተመራቂዎችንና የመጀመሪያ የሥራ እርምጃቸውን የሚወስዱ ሰዎችን "
+"እንቀበላለን።"
+
+#: opportunities/templates/opportunities/base.html:7
+msgid "Job seekers never pay."
+msgstr "ሥራ ፈላጊዎች ፈጽሞ አይከፍሉም።"
+
+#: opportunities/templates/opportunities/home.html:6
+msgid "Job title, skill, or organization"
+msgstr "የሥራ መደብ፣ ክህሎት ወይም ድርጅት"
+
+#: opportunities/templates/opportunities/home.html:10
+msgid "Join as an employer"
+msgstr "እንደ አሠሪ ይመዝገቡ"
+
+#: opportunities/views.py:57
+msgid "Join our community. Always free for job seekers."
+msgstr "ማኅበረሰባችንን ይቀላቀሉ። ለሥራ ፈላጊዎች ሁልጊዜ ነፃ ነው።"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Join the community"
+msgstr "ማኅበረሰቡን ይቀላቀሉ"
+
+#: opportunities/templates/opportunities/report.html:5
+msgid "KEEPING OUR COMMUNITY SAFE"
+msgstr "የማኅበረሰባችንን ደኅንነት እንጠብቅ"
+
+#: opportunities/models.py:36 opportunities/models.py:42
+#: opportunities/views.py:37
+msgid "Kind"
+msgstr "ዓይነት"
+
+#: opportunities/templates/opportunities/password_reset_form.html:6
+msgid "LET’S GET YOU BACK ON TRACK"
+msgstr "ወደ መለያዎ እንመልስዎ"
+
+#: opportunities/test_pilot.py:21
+#: opportunities/templates/opportunities/base.html:4
+msgid "Language"
+msgstr "ቋንቋ"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:14
+msgid "Let’s try a fresh link."
+msgstr "አዲስ አገናኝ ይጠቀሙ።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Live"
+msgstr "ታትሟል"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Live opportunities"
+msgstr "የታተሙ ዕድሎች"
+
+msgid "Location"
+msgstr "አካባቢ"
+
+#: opportunities/templates/opportunities/form.html:1
+#: opportunities/templates/opportunities/base.html:4
+#: opportunities/templates/opportunities/login.html:1
+#: opportunities/templates/opportunities/detail.html:1
+#: opportunities/templates/opportunities/password_reset_complete.html:7
+#: opportunities/templates/opportunities/password_reset_complete.html:8
+msgid "Log in"
+msgstr "ይግቡ"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Log in to apply"
+msgstr "ለማመልከት ይግቡ"
+
+#: opportunities/templates/opportunities/password_reset_complete.html:7
+msgid "Log in with your new password and pick up where you left off."
+msgstr "በአዲሱ የይለፍ ቃልዎ ይግቡና የጀመሩትን ይቀጥሉ።"
+
+#: opportunities/templates/opportunities/login.html:1
+#: opportunities/templates/opportunities/password_reset_complete.html:8
+msgid "Log in →"
+msgstr "ይግቡ →"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "Log out"
+msgstr "ውጣ"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "Main navigation"
+msgstr "ዋና ማውጫ"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "Make it your own"
+msgstr "ፍለጋዎን ያስተካክሉ"
+
+#: opportunities/views.py:78
+msgid "Make your experience count"
+msgstr "ልምድዎን ያሳዩ"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Make your potential count."
+msgstr "ችሎታዎን በተግባር ያሳዩ።"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Manage community"
+msgstr "ማኅበረሰቡን አስተዳድር"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Meet the organization"
+msgstr "ስለ ድርጅቱ"
+
+#: opportunities/models.py:82
+msgid "Misleading or suspicious listing"
+msgstr "አሳሳች ወይም አጠራጣሪ ማስታወቂያ"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "My dashboard"
+msgstr "የእኔ ገጽ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "My reports"
+msgstr "ያቀረብኳቸው ሪፖርቶች"
+
+#: opportunities/tests.py:132
+msgid "Name"
+msgstr "ስም"
+
+#: opportunities/templates/opportunities/login.html:1
+msgid "New here?"
+msgstr "አዲስ ነዎት?"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "Newest first ↓"
+msgstr "አዲሶቹ በመጀመሪያ ↓"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "Next →"
+msgstr "ቀጣይ →"
+
+#: opportunities/views.py:93
+msgid "No CV is available."
+msgstr "ሲቪ አልተገኘም።"
+
+#: opportunities/admin.py:37
+#: opportunities/templates/opportunities/application.html:1
+msgid "No CV uploaded"
+msgstr "ሲቪ አልተሰቀለም"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid ""
+"No CV uploaded. The applicant’s profile and message are available above and "
+"below."
+msgstr "ሲቪ አልተሰቀለም። የአመልካቹ መገለጫና መልዕክት በዚህ ገጽ ይገኛሉ።"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid ""
+"No application fees. Your information is shared only with this employer when"
+" you apply."
+msgstr "የማመልከቻ ክፍያ የለም። ሲያመለክቱ መረጃዎ ከዚህ አሠሪ ጋር ብቻ ይጋራል።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid ""
+"No concerns reported. You can report a suspicious listing from its "
+"opportunity page."
+msgstr "ሪፖርት አላቀረቡም። አጠራጣሪ ማስታወቂያ ካዩ ከዕድሉ ገጽ ማሳወቅ ይችላሉ።"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "No long work history? No problem. Everyone starts somewhere."
+msgstr "ብዙ የሥራ ልምድ የለዎትም? ችግር የለም። ሁሉም ሰው ከአንድ ቦታ ይጀምራል።"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "No opportunities match these filters. Try a broader search."
+msgstr "ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ዕድል አልተገኘም። ፍለጋዎን ያስፉ።"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid ""
+"No placements reported yet. This is where your community’s progress will "
+"appear."
+msgstr "እስካሁን የተመዘገበ ቅጥር የለም። የማኅበረሰብዎ እድገት እዚህ ይታያል።"
+
+#: opportunities/models.py:65
+msgid "Not selected"
+msgstr "አልተመረጠም"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "OPPORTUNITY TYPE"
+msgstr "የዕድሉ ዓይነት"
+
+#: opportunities/views.py:135
+msgid "Only job seekers can apply."
+msgstr "ማመልከት የሚችሉት ሥራ ፈላጊዎች ብቻ ናቸው።"
+
+#: opportunities/views.py:128
+msgid "Open a door for someone"
+msgstr "ለአንድ ሰው ዕድል ይፍጠሩ"
+
+#: opportunities/templates/opportunities/home.html:5
+msgid "Opportunities in Ethiopia"
+msgstr "በኢትዮጵያ ያሉ ዕድሎች"
+
+#: opportunities/templates/opportunities/home.html:4
+msgid "Opportunities with purpose"
+msgstr "ዓላማ ያላቸው ዕድሎች"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Opportunity should be, too."
+msgstr "ዕድልም እንዲሁ ሊሆን ይገባል።"
+
+#: opportunities/views.py:126
+msgid ""
+"Opportunity submitted. It will appear after organization verification and "
+"listing review."
+msgstr "ዕድሉ ተልኳል። ድርጅቱ ከተረጋገጠና ማስታወቂያው ከተገመገመ በኋላ ይታያል።"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Opportunity type"
+msgstr "የዕድሉ ዓይነት"
+
+#: opportunities/models.py:20
+msgid ""
+"Optional PDF, up to 5 MB. Shared with employers only when you apply. Do not "
+"include identity documents or sensitive personal details."
+msgstr ""
+"አማራጭ PDF፣ እስከ 5 MB። ሲያመለክቱ ብቻ ከአሠሪዎች ጋር ይጋራል። መታወቂያዎችን ወይም ስሱ የግል መረጃዎችን "
+"አያካትቱ።"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Or create a free account"
+msgstr "ወይም ነፃ መለያ ይፍጠሩ"
+
+#: opportunities/forms.py:12
+msgid "Organization name"
+msgstr "የድርጅት ስም"
+
+#: opportunities/views.py:114
+msgid "Organization updated and submitted for verification."
+msgstr "የድርጅቱ መረጃ ተዘምኖ ለማረጋገጥ ተልኳል።"
+
+#: opportunities/templates/opportunities/home.html:4
+msgid "Organizations we verify"
+msgstr "ማንነታቸውን የምናረጋግጥ ድርጅቶች"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid ""
+"Our administrators review organizations and listings before publication. "
+"Verification is a screening step, not a guarantee. Never pay an employer to "
+"apply."
+msgstr ""
+"አስተዳዳሪዎቻችን ድርጅቶችንና ማስታወቂያዎችን ከሕትመት በፊት ይገመግማሉ። ማረጋገጥ የማጣሪያ ሂደት ነው እንጂ ዋስትና "
+"አይደለም። ለማመልከት ለአሠሪ ገንዘብ አይክፈሉ።"
+
+#: opportunities/templates/opportunities/base.html:4
+#: opportunities/templates/opportunities/base.html:7
+msgid "Our mission"
+msgstr "ዓላማችን"
+
+#: opportunities/templates/opportunities/rate_limited.html:4
+msgid "PLEASE PAUSE FOR A MOMENT"
+msgstr "እባክዎ ትንሽ ይጠብቁ"
+
+#, python-format
+msgid "Page %(number)s of %(total)s"
+msgstr "ገጽ %(number)s ከ %(total)s"
+
+#: opportunities/test_accounts.py:188 opportunities/urls.py:18
+#: opportunities/urls.py:23 opportunities/urls.py:26 opportunities/urls.py:29
+#: opportunities/templates/opportunities/password_reset_complete.html:2
+msgid "Password"
+msgstr "የይለፍ ቃል"
+
+msgid "Password confirmation"
+msgstr "የይለፍ ቃሉን ያረጋግጡ"
+
+#: opportunities/templates/opportunities/password_reset_complete.html:2
+msgid "Password updated · Together for Better"
+msgstr "የይለፍ ቃል ተቀይሯል · Together for Better"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "People with a placement"
+msgstr "ቅጥር ያገኙ ሰዎች"
+
+#: opportunities/templates/opportunities/base.html:6
+msgid ""
+"Pilot preview · Sample organizations and vacancies are fictional. This is a "
+"working demonstration."
+msgstr "የሙከራ ማሳያ፦ የናሙና ድርጅቶችና የሥራ ማስታወቂያዎች ምሳሌዎች ናቸው፤ እውነተኛ ቅጥር አይደሉም።"
+
+#: opportunities/tests.py:82 opportunities/models.py:64
+#: opportunities/templates/opportunities/application.html:1
+msgid "Placement confirmed"
+msgstr "ቅጥሩ ተረጋግጧል"
+
+#: opportunities/templates/opportunities/rate_limited.html:6
+msgid "Please wait a few minutes before trying again."
+msgstr "እንደገና ከመሞከርዎ በፊት ለጥቂት ደቂቃዎች ይጠብቁ።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Post an opportunity +"
+msgstr "ዕድል ያስተዋውቁ +"
+
+#: opportunities/admin.py:33
+msgid "Private CV"
+msgstr "የግል ሲቪ"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid ""
+"Profiles are not publicly searchable. When you apply, the hiring "
+"organization and authorized administrators can access your current profile, "
+"optional CV, email, and application. Contact the platform operator to "
+"request account deletion. You can add, replace, or remove your PDF CV from "
+"your profile. Application status is available in your dashboard; email "
+"notifications for application updates are not yet enabled."
+msgstr ""
+"መገለጫዎች በይፋ አይፈለጉም። ሲያመለክቱ ቀጣሪው ድርጅትና ፈቃድ ያላቸው አስተዳዳሪዎች አሁን ያሉትን መገለጫዎን፣ "
+"ሲቪዎን፣ ኢሜይልዎንና ማመልከቻዎን ማየት ይችላሉ። መለያዎ እንዲሰረዝ የመድረኩን አስተዳዳሪ ያነጋግሩ። በመገለጫዎ ላይ "
+"PDF ሲቪ ማከል፣ መቀየር ወይም ማስወገድ ይችላሉ። የማመልከቻ ሁኔታዎን በግል ገጽዎ ያዩ፤ የሁኔታ ለውጥ የኢሜይል "
+"ማሳወቂያ ገና አልተከፈተም።"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Progress that matters"
+msgstr "ዋጋ ያለው እድገት"
+
+#: opportunities/models.py:49
+msgid "Publish only after reviewing this listing."
+msgstr "ይህን ማስታወቂያ ከገመገሙ በኋላ ብቻ ያትሙ።"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "ROOTED IN ETHIOPIA. OPEN TO POSSIBILITY."
+msgstr "መሠረታችን ኢትዮጵያ። በራችን ለዕድል ክፍት ነው።"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid ""
+"Real community activity. Demo organizations and their applications are "
+"excluded."
+msgstr "የእውነተኛ ተጠቃሚዎች እንቅስቃሴ። የሙከራ ድርጅቶችና ማመልከቻዎቻቸው አይቆጠሩም።"
+
+#: opportunities/templates/opportunities/home.html:4
+msgid "Real peace of mind."
+msgstr "እውነተኛ መተማመን።"
+
+#: opportunities/models.py:87
+msgid "Received"
+msgstr "ደርሷል"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Recent employer-reported placements"
+msgstr "በቅርቡ አሠሪዎች ያረጋገጧቸው ቅጥሮች"
+
+#: opportunities/forms.py:31
+msgid "Remove my current CV"
+msgstr "አሁን ያለውን ሲቪዬን አስወግድ"
+
+#: opportunities/views.py:182
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Report a concern"
+msgstr "ችግር አሳውቅ"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:16
+msgid "Request a new link →"
+msgstr "አዲስ አገናኝ ይጠይቁ →"
+
+#: opportunities/forms.py:12
+msgid ""
+"Required for employers. Our team reviews organizations before listings go "
+"live."
+msgstr "ለአሠሪዎች ያስፈልጋል። ቡድናችን ማስታወቂያዎች ከመታየታቸው በፊት ድርጅቶችን ይገመግማል።"
+
+msgid "Requirements"
+msgstr "መስፈርቶች"
+
+#: opportunities/templates/opportunities/password_reset_form.html:13
+msgid "Reset links expire after one hour and can be used once."
+msgstr "የመቀየሪያ አገናኞች ከአንድ ሰዓት በኋላ ያበቃሉ፤ አንድ ጊዜ ብቻ ይሠራሉ።"
+
+#: opportunities/templates/opportunities/password_reset_subject.txt:1
+msgid "Reset your Together for Better password"
+msgstr "የTogether for Better የይለፍ ቃልዎን ይቀይሩ"
+
+#: opportunities/templates/opportunities/password_reset_form.html:2
+msgid "Reset your password · Together for Better"
+msgstr "የይለፍ ቃልዎን ይቀይሩ · Together for Better"
+
+#: opportunities/models.py:89 opportunities/test_pilot.py:206
+msgid "Resolved"
+msgstr "ተፈትቷል"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "Results pages"
+msgstr "የፍለጋ ውጤት ገጾች"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Review organizations →"
+msgstr "ድርጅቶችን ይገምግሙ →"
+
+#: opportunities/templates/opportunities/base.html:3
+msgid "Rooted in Ethiopia. Built around your potential."
+msgstr "መሠረታችን ኢትዮጵያ፣ ትኩረታችን ችሎታዎ ነው።"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "SMALL BEGINNINGS. BIG POSSIBILITIES."
+msgstr "ትንሽ ጅማሬ። ትልቅ ዕድል።"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:11
+msgid "Save new password →"
+msgstr "አዲሱን የይለፍ ቃል አስቀምጥ →"
+
+#: opportunities/views.py:116
+msgid "Save organization"
+msgstr "የድርጅቱን መረጃ አስቀምጥ"
+
+#: opportunities/views.py:78
+msgid "Save profile"
+msgstr "መገለጫውን አስቀምጥ"
+
+#: opportunities/templates/opportunities/home.html:6
+msgid "Search opportunities"
+msgstr "ዕድሎችን ፈልግ"
+
+#: opportunities/admin.py:74
+msgid "Selected listings are hidden and reports are under review."
+msgstr "የተመረጡት ማስታወቂያዎች ተደብቀዋል፤ ሪፖርቶቹ በግምገማ ላይ ናቸው።"
+
+#: opportunities/views.py:144
+msgid "Send application"
+msgstr "ማመልከቻ ላክ"
+
+#: opportunities/views.py:182
+msgid "Send report"
+msgstr "ሪፖርት ላክ"
+
+#: opportunities/templates/opportunities/password_reset_form.html:11
+msgid "Send reset link →"
+msgstr "የመቀየሪያ አገናኝ ላክ →"
+
+#: opportunities/forms.py:93
+msgid ""
+"Share your interests, relevant skills, and what you hope to contribute."
+msgstr "ፍላጎትዎን፣ ተዛማጅ ክህሎትዎንና ለማበርከት የሚፈልጉትን ያካፍሉ።"
+
+#: opportunities/models.py:63
+msgid "Shortlisted"
+msgstr "ለቀጣይ ዙር ተመርጧል"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Sign in as a job seeker to apply."
+msgstr "ለማመልከት እንደ ሥራ ፈላጊ ይግቡ።"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "Skills"
+msgstr "ክህሎቶች"
+
+#: opportunities/templates/opportunities/base.html:3
+msgid "Skip to content"
+msgstr "ወደ ዋናው ይዘት ዝለል"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Small beginnings. Shared progress."
+msgstr "ትንሽ ጅማሬ። የጋራ እድገት።"
+
+#, python-format
+msgid ""
+"Someone requested a password reset for your Together for Better account "
+"(%(username)s)."
+msgstr "ለTogether for Better መለያዎ (%(username)s) የይለፍ ቃል መቀየሪያ ተጠይቋል።"
+
+#: opportunities/templates/opportunities/home.html:10
+msgid "Someone’s first chance."
+msgstr "ለአንድ ሰው የመጀመሪያ ዕድል።"
+
+#: opportunities/templates/opportunities/home.html:3
+msgid "Starts with a connection."
+msgstr "በግንኙነት ይጀምራል።"
+
+#: opportunities/models.py:47
+msgid "State pay, stipend, or unpaid clearly."
+msgstr "ደመወዝ፣ አበል ወይም ያለ ክፍያ መሆኑን በግልጽ ይግለጹ።"
+
+#: opportunities/forms.py:95 opportunities/admin.py:69
+#: opportunities/models.py:60 opportunities/models.py:69
+#: opportunities/models.py:86 opportunities/models.py:96
+#: opportunities/views.py:14 opportunities/views.py:154
+msgid "Status"
+msgstr "ሁኔታ"
+
+#: opportunities/views.py:128
+msgid "Submit for review"
+msgstr "ለግምገማ ላክ"
+
+#: opportunities/models.py:61
+msgid "Submitted"
+msgstr "ተልኳል"
+
+#: opportunities/templates/opportunities/form.html:1
+msgid "TOGETHER, WE GO FURTHER"
+msgstr "አብረን ወደ ፊት እንጓዛለን"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid "Take the next step"
+msgstr "ቀጣዩን እርምጃ ይውሰዱ"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Talent is everywhere."
+msgstr "ችሎታ በሁሉም ቦታ አለ።"
+
+#: opportunities/forms.py:92
+msgid "Tell the employer why you’re a good fit"
+msgstr "ለሥራው ለምን እንደሚስማሙ ለአሠሪው ይግለጹ"
+
+#: opportunities/forms.py:105
+msgid "Tell us what happened"
+msgstr "የተፈጠረውን ይግለጹ"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid "Tell your story"
+msgstr "ስለ ራስዎ ያስተዋውቁ"
+
+#: opportunities/views.py:97
+msgid "The CV is unavailable. Please ask the applicant to upload it again."
+msgstr "ሲቪው አይገኝም። አመልካቹ እንደገና እንዲስቅለው ይጠይቁ።"
+
+#: opportunities/templates/opportunities/report.html:11
+msgid ""
+"The employer cannot access this report. Moderators review reports before "
+"taking action. No response time is guaranteed during the pilot."
+msgstr ""
+"አሠሪው ይህን ሪፖርት ማየት አይችልም። ገምጋሚዎች እርምጃ ከመውሰዳቸው በፊት ሪፖርቶችን ይመለከታሉ። በሙከራው ወቅት "
+"የምላሽ ጊዜ ዋስትና የለም።"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid ""
+"These records reflect employers marking an application as placed. They are "
+"not independently verified outcomes."
+msgstr "እነዚህ መዝገቦች ቅጥሩን አሠሪዎች እንዳረጋገጡ ያሳያሉ። በተናጠል የተረጋገጡ ውጤቶች አይደሉም።"
+
+msgid "This field is required."
+msgstr "ይህን መስክ መሙላት ያስፈልጋል።"
+
+#: opportunities/uploads.py:25
+msgid "This file is not a valid PDF. Export your CV as a PDF and try again."
+msgstr "ይህ ፋይል ትክክለኛ PDF አይደለም። ሲቪዎን በPDF ያስቀምጡና እንደገና ይሞክሩ።"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid ""
+"This is the applicant’s current CV. Later uploads replace the version "
+"available here."
+msgstr "ይህ የአመልካቹ ወቅታዊ ሲቪ ነው። አዲስ ሲቪ ሲሰቀል ይህንን ይተካል።"
+
+#: opportunities/templates/opportunities/password_reset_email.txt:8
+msgid ""
+"This link expires in one hour and can be used once. If you did not request "
+"this reset, ignore this message. Your password has not changed."
+msgstr ""
+"ይህ አገናኝ ከአንድ ሰዓት በኋላ ያበቃል፤ አንድ ጊዜ ብቻ ይሠራል። ይህን ጥያቄ ካላቀረቡ መልዕክቱን ችላ ይበሉት። "
+"የይለፍ ቃልዎ አልተቀየረም።"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:15
+msgid ""
+"This link is invalid, has expired, or has already been used. Request a new "
+"link to recover your account."
+msgstr "ይህ አገናኝ ትክክል አይደለም፣ ጊዜው አልፏል ወይም ተጠቅመውበታል። መለያዎን ለመመለስ አዲስ አገናኝ ይጠይቁ።"
+
+msgid "Title"
+msgstr "የሥራ መደብ"
+
+#: opportunities/admin.py:8 opportunities/admin.py:9
+#: opportunities/templates/opportunities/password_reset_form.html:2
+#: opportunities/templates/opportunities/password_reset_email.txt:3
+#: opportunities/templates/opportunities/password_reset_email.txt:10
+#: opportunities/templates/opportunities/password_reset_confirm.html:2
+#: opportunities/templates/opportunities/base.html:2
+#: opportunities/templates/opportunities/base.html:4
+#: opportunities/templates/opportunities/base.html:7
+#: opportunities/templates/opportunities/password_reset_done.html:2
+#: opportunities/templates/opportunities/about.html:1
+#: opportunities/templates/opportunities/password_reset_subject.txt:1
+#: opportunities/templates/opportunities/detail.html:1
+#: opportunities/templates/opportunities/password_reset_complete.html:2
+msgid "Together for Better"
+msgstr "Together for Better"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid ""
+"Together for Better connects people at the beginning of their careers with "
+"organizations ready to invest in their potential."
+msgstr ""
+"Together for Better የሥራ ጉዟቸውን የሚጀምሩ ሰዎችን ችሎታቸውን ለማሳደግ ዝግጁ ከሆኑ ድርጅቶች ጋር "
+"ያገናኛል።"
+
+#: opportunities/templates/opportunities/base.html:4
+msgid "Together for Better home"
+msgstr "Together for Better መነሻ ገጽ"
+
+#: opportunities/admin.py:8
+msgid "Together for Better · Community administration"
+msgstr "Together for Better · የማኅበረሰብ አስተዳደር"
+
+#: opportunities/templates/opportunities/base.html:2
+msgid "Together for Better · Your potential, connected"
+msgstr "Together for Better · ችሎታዎን ከዕድል ጋር እናገናኛለን"
+
+#: opportunities/templates/opportunities/rate_limited.html:5
+msgid "Too many attempts."
+msgstr "በጣም ብዙ ሙከራዎች ተደርገዋል።"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "Track your application →"
+msgstr "ማመልከቻዎን ይከታተሉ →"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Trust comes first"
+msgstr "መተማመን ቅድሚያ አለው"
+
+#: opportunities/templates/opportunities/password_reset_done.html:10
+msgid "Try a different email address"
+msgstr "ሌላ የኢሜይል አድራሻ ይሞክሩ"
+
+#: opportunities/models.py:62 opportunities/models.py:88
+msgid "Under review"
+msgstr "በግምገማ ላይ"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "Update status →"
+msgstr "ሁኔታውን አዘምን →"
+
+#: opportunities/uploads.py:29
+msgid "Upload a PDF without password protection."
+msgstr "በይለፍ ቃል ያልተቆለፈ PDF ይስቀሉ።"
+
+#: opportunities/uploads.py:21
+msgid "Upload your CV as a PDF file."
+msgstr "ሲቪዎን በPDF ፋይል ይስቀሉ።"
+
+#: opportunities/templates/opportunities/password_reset_confirm.html:8
+msgid "Use a strong password that you haven’t used elsewhere."
+msgstr "በሌላ ቦታ ያልተጠቀሙበትን ጠንካራ የይለፍ ቃል ይጠቀሙ።"
+
+#: opportunities/forms.py:73
+msgid ""
+"Use the Gregorian calendar (GC). Deadlines close at the end of the day in "
+"Ethiopia."
+msgstr "ጎርጎርዮሳዊ የቀን አቆጣጠር ይጠቀሙ። የማመልከቻ ጊዜው በኢትዮጵያ ሰዓት በቀኑ መጨረሻ ያበቃል።"
+
+msgid "Username"
+msgstr "የተጠቃሚ ስም"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid ""
+"Verification pending. Complete your organization profile so our team can "
+"review it. Listings stay private until verification and publication."
+msgstr ""
+"ማረጋገጫ በመጠባበቅ ላይ ነው። ቡድናችን እንዲገመግመው የድርጅትዎን መገለጫ ያጠናቅቁ። ማስታወቂያዎች እስኪረጋገጡና "
+"እስኪጸድቁ ድረስ አይታዩም።"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Verified employers"
+msgstr "የተረጋገጡ አሠሪዎች"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid "Verified organizations"
+msgstr "የተረጋገጡ ድርጅቶች"
+
+#: opportunities/templates/opportunities/impact.html:1
+msgid ""
+"Verify organizational identity independently and review each opportunity "
+"before publication."
+msgstr "የድርጅቱን ማንነት በተናጠል ያረጋግጡ፤ እያንዳንዱን ዕድል ከሕትመት በፊት ይገምግሙ።"
+
+#: opportunities/models.py:31
+msgid "Verify the organization independently before approving."
+msgstr "ከማጽደቅዎ በፊት የድርጅቱን ማንነት በተናጠል ያረጋግጡ።"
+
+#, python-format
+msgid "View %(title)s"
+msgstr "%(title)s ይመልከቱ"
+
+#: opportunities/models.py:39
+#: opportunities/management/commands/seed_demo.py:20
+msgid "Volunteer"
+msgstr "በጎ ፈቃድ"
+
+#: opportunities/uploads.py:33
+msgid "We could not read this PDF. Export your CV as a new PDF and try again."
+msgstr "ይህን PDF ማንበብ አልቻልንም። ሲቪዎን እንደ አዲስ PDF ያስቀምጡና እንደገና ይሞክሩ።"
+
+msgid "Website"
+msgstr "ድረ ገጽ"
+
+#: opportunities/templates/opportunities/login.html:1
+msgid "Welcome back."
+msgstr "እንኳን ደህና መጡ።"
+
+#: opportunities/views.py:55
+msgid "Welcome! Your account is ready."
+msgstr "እንኳን ደህና መጡ! መለያዎ ዝግጁ ነው።"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid ""
+"We’re starting with internships, entry-level jobs, and volunteer "
+"opportunities. Build your profile or help someone get their first chance."
+msgstr ""
+"በተግባር ስልጠና፣ በመጀመሪያ ደረጃ ሥራዎችና በበጎ ፈቃድ ዕድሎች እንጀምራለን። መገለጫዎን ይፍጠሩ ወይም አንድ ሰው "
+"የመጀመሪያ ዕድሉን እንዲያገኝ ያግዙ።"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid ""
+"We’re welcoming our first employers. Create a profile and be ready for the "
+"next opportunity."
+msgstr "የመጀመሪያ አሠሪዎቻችንን እየተቀበልን ነው። መገለጫዎን ይፍጠሩና ለቀጣዩ ዕድል ይዘጋጁ።"
+
+#: opportunities/templates/opportunities/home.html:6
+msgid "What are you looking for?"
+msgstr "ምን ይፈልጋሉ?"
+
+#: opportunities/forms.py:105
+msgid "What is the concern?"
+msgstr "ችግሩ ምንድን ነው?"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "What you’ll bring"
+msgstr "የሚጠበቁ ብቃቶች"
+
+#: opportunities/templates/opportunities/home.html:6
+msgid "Where?"
+msgstr "የት?"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "YOUR COMMUNITY, YOUR NEXT CHAPTER"
+msgstr "ማኅበረሰብዎ፣ ቀጣዩ ጉዞዎ"
+
+#: opportunities/templates/opportunities/home.html:9
+msgid "YOUR JOURNEY, MADE SIMPLER"
+msgstr "ጉዞዎን ቀላል እናድርግ"
+
+#: opportunities/templates/opportunities/password_reset_done.html:5
+#: opportunities/templates/opportunities/detail.html:1
+msgid "YOUR NEXT STEP"
+msgstr "ቀጣዩ እርምጃዎ"
+
+#: opportunities/templates/opportunities/password_reset_complete.html:5
+msgid "YOU’RE READY TO GO"
+msgstr "ዝግጁ ነዎት"
+
+#: opportunities/templates/opportunities/home.html:7
+msgid "You belong here."
+msgstr "እዚህ ቦታ አለዎት።"
+
+#: opportunities/views.py:137
+msgid "You have already applied for this opportunity."
+msgstr "ለዚህ ዕድል ከዚህ በፊት አመልክተዋል።"
+
+#: opportunities/uploads.py:19
+msgid "Your CV must be 5 MB or smaller."
+msgstr "ሲቪዎ 5 MB ወይም ከዚያ ያነሰ መሆን አለበት።"
+
+#: opportunities/uploads.py:31
+msgid "Your PDF must contain at least one page."
+msgstr "PDFዎ ቢያንስ አንድ ገጽ ሊኖረው ይገባል።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Your applications"
+msgstr "የእርስዎ ማመልከቻዎች"
+
+#: opportunities/views.py:144
+#, python-format
+msgid ""
+"Your current profile, CV (if uploaded), email, and this message will be "
+"shared with %(employer)s. Later profile and CV updates will also be visible "
+"to this employer. Update your profile before applying."
+msgstr ""
+"አሁን ያሉት መገለጫዎ፣ ሲቪዎ፣ ኢሜይልዎና ይህ መልዕክት ከ %(employer)s ጋር ይጋራሉ። በኋላ የሚደረጉ የመገለጫና"
+" ሲቪ ለውጦችም ለዚህ አሠሪ ይታያሉ። ከማመልከትዎ በፊት መገለጫዎን ያዘምኑ።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid ""
+"Your first opportunity can be someone’s first big break. Post one to get "
+"started."
+msgstr "የመጀመሪያ ማስታወቂያዎ ለአንድ ሰው ትልቅ ዕድል ሊሆን ይችላል። ለመጀመር ዕድል ያስተዋውቁ።"
+
+#: opportunities/templates/opportunities/home.html:5
+msgid "Your first role could be the start of something bigger."
+msgstr "የመጀመሪያ ሥራዎ የትልቅ ጉዞ መጀመሪያ ሊሆን ይችላል።"
+
+#: opportunities/templates/opportunities/about.html:1
+msgid "Your information belongs to you."
+msgstr "መረጃዎ የእርስዎ ነው።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Your journey starts with one application."
+msgstr "ጉዞዎ በአንድ ማመልከቻ ይጀምራል።"
+
+#: opportunities/templates/opportunities/report.html:10
+msgid "Your message"
+msgstr "የእርስዎ መልዕክት"
+
+#: opportunities/views.py:57
+msgid "Your next chapter starts here"
+msgstr "ቀጣዩ ጉዞዎ እዚህ ይጀምራል"
+
+#: opportunities/templates/opportunities/home.html:10
+msgid "Your next great teammate."
+msgstr "ለእርስዎ ጥሩ የቡድን አባል።"
+
+#: opportunities/templates/opportunities/login.html:1
+msgid "Your next step is waiting."
+msgstr "ቀጣዩ እርምጃዎ ይጠብቅዎታል።"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Your next step."
+msgstr "ቀጣዩ እርምጃዎ።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Your next teammate could be on their way."
+msgstr "ቀጣዩ የቡድን አባልዎ በመንገድ ላይ ሊሆን ይችላል።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Your opportunities"
+msgstr "የእርስዎ ዕድሎች"
+
+#: opportunities/templates/opportunities/password_reset_complete.html:6
+msgid "Your password is updated."
+msgstr "የይለፍ ቃልዎ ተቀይሯል።"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Your people."
+msgstr "ማኅበረሰብዎ።"
+
+#: opportunities/templates/opportunities/home.html:2
+msgid "Your potential."
+msgstr "ችሎታዎ።"
+
+#: opportunities/views.py:78
+msgid ""
+"Your profile and optional CV are private. Employers can see your current "
+"profile and CV when you apply to their opportunities."
+msgstr ""
+"መገለጫዎና ሲቪዎ የግል ናቸው። ለአሠሪዎች ዕድሎች ሲያመለክቱ አሁን ያሉትን መገለጫዎንና ሲቪዎን ማየት ይችላሉ።"
+
+#: opportunities/views.py:76
+msgid "Your profile has been updated."
+msgstr "መገለጫዎ ተዘምኗል።"
+
+#: opportunities/views.py:179
+msgid "Your report has been received. Our moderators will review it."
+msgstr "ሪፖርትዎ ደርሷል። ገምጋሚዎቻችን ይመለከቱታል።"
+
+#: opportunities/templates/opportunities/report.html:6
+msgid "Your report is recorded."
+msgstr "ሪፖርትዎ ተመዝግቧል።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "Your story matters."
+msgstr "ልምድዎ ዋጋ አለው።"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "· Applied"
+msgstr "· የማመልከቻ ቀን"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "· DEMO LISTING"
+msgstr "· የሙከራ ምሳሌ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "· Deadline"
+msgstr "· የመጨረሻ ቀን"
+
+#: opportunities/templates/opportunities/password_reset_form.html:2
+#: opportunities/templates/opportunities/password_reset_confirm.html:2
+#: opportunities/templates/opportunities/password_reset_done.html:2
+#: opportunities/templates/opportunities/detail.html:1
+#: opportunities/templates/opportunities/password_reset_complete.html:2
+msgid "· Together for Better"
+msgstr "· Together for Better"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "← All opportunities"
+msgstr "← ሁሉም ዕድሎች"
+
+#: opportunities/templates/opportunities/password_reset_form.html:5
+#: opportunities/templates/opportunities/form.html:1
+msgid "← Back"
+msgstr "← ተመለስ"
+
+#: opportunities/templates/opportunities/password_reset_form.html:5
+msgid "← Back to log in"
+msgstr "← ወደ መግቢያ ተመለስ"
+
+#: opportunities/templates/opportunities/application.html:1
+#: opportunities/templates/opportunities/report.html:4
+msgid "← Dashboard"
+msgstr "← የእኔ ገጽ"
+
+#: opportunities/templates/opportunities/home.html:8
+msgid "← Previous"
+msgstr "← ያለፈው"
+
+#: opportunities/templates/opportunities/form.html:1
+msgid "✓ A private CV is attached to your profile."
+msgstr "✓ የግል ሲቪዎ ከመገለጫዎ ጋር ተያይዟል።"
+
+#: opportunities/templates/opportunities/detail.html:1
+msgid "✓ Application submitted"
+msgstr "✓ ማመልከቻው ተልኳል"
+
+#: opportunities/templates/opportunities/home.html:8
+#: opportunities/templates/opportunities/detail.html:1
+msgid "✓ Verified employer"
+msgstr "✓ የተረጋገጠ አሠሪ"
+
+#: opportunities/templates/opportunities/dashboard.html:1
+msgid "✓ Your organization is verified."
+msgstr "✓ ድርጅትዎ ተረጋግጧል።"
+
+msgid "New password"
+msgstr "አዲስ የይለፍ ቃል"
+
+msgid "New password confirmation"
+msgstr "አዲሱን የይለፍ ቃል ያረጋግጡ"
+
+msgid "Your password can’t be too similar to your other personal information."
+msgstr "የይለፍ ቃልዎ ከሌላ የግል መረጃዎ ጋር በጣም መመሳሰል የለበትም።"
+
+msgid "Your password can’t be a commonly used password."
+msgstr "የይለፍ ቃልዎ በብዛት የሚጠቀሙበት መሆን የለበትም።"
+
+msgid "Your password can’t be entirely numeric."
+msgstr "የይለፍ ቃልዎ በቁጥሮች ብቻ መዋቀር የለበትም።"
+
+msgid "Enter the same password as before, for verification."
+msgstr "ለማረጋገጥ ከላይ ያስገቡትን የይለፍ ቃል ደግመው ያስገቡ።"
+
+msgid "The two password fields didn’t match."
+msgstr "ሁለቱ የይለፍ ቃሎች አልተመሳሰሉም።"
+
+msgid "This password is too common."
+msgstr "ይህ የይለፍ ቃል በጣም በብዛት ይጠቀሙበታል።"
+
+msgid "This password is entirely numeric."
+msgstr "ይህ የይለፍ ቃል በቁጥሮች ብቻ ተዋቅሯል።"
+
+#, python-format
+msgid "The password is too similar to the %(verbose_name)s."
+msgstr "የይለፍ ቃሉ ከ %(verbose_name)s ጋር በጣም ይመሳሰላል።"
+
+#, python-format
+msgid ""
+"Please enter a correct %(username)s and password. Note that both fields may "
+"be case-sensitive."
+msgstr ""
+"ትክክለኛ %(username)s እና የይለፍ ቃል ያስገቡ። በሁለቱም መስኮች የእንግሊዝኛ አቢይና ንዑስ ፊደላት ልዩነት "
+"ሊኖር ይችላል።"
+
+msgid "This account is inactive."
+msgstr "ይህ መለያ ንቁ አይደለም።"
+
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr "ያስፈልጋል። እስከ 150 ፊደላት። ፊደላት፣ ቁጥሮችና @/./+/-/_ ብቻ።"
+
+msgid ""
+"Enter a valid username. This value may contain only letters, numbers, and "
+"@/./+/-/_ characters."
+msgstr "ትክክለኛ የተጠቃሚ ስም ያስገቡ። ፊደላት፣ ቁጥሮችና @/./+/-/_ ብቻ ይፈቀዳሉ።"
+
+msgid "A user with that username already exists."
+msgstr "በዚህ ስም የተመዘገበ ተጠቃሚ አለ።"
+
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr "ትክክለኛ ምርጫ ይምረጡ። %(value)s ከሚገኙት ምርጫዎች አንዱ አይደለም።"
+
+msgid "Enter a valid URL."
+msgstr "ትክክለኛ የድረ ገጽ አድራሻ ያስገቡ።"
+
+#: opportunities/test_accounts.py:209 opportunities/test_accounts.py:210
+#: opportunities/forms.py:15 opportunities/admin.py:24
+#: opportunities/tests.py:49 opportunities/tests.py:51
+#: opportunities/tests.py:54 opportunities/tests.py:57
+#: opportunities/tests.py:60 opportunities/views.py:61
+#: opportunities/views.py:72 opportunities/test_pilot.py:83
+#: opportunities/test_pilot.py:85
+#: opportunities/management/commands/seed_demo.py:23
+#: opportunities/management/commands/seed_demo.py:24
+#: opportunities/management/commands/seed_demo.py:31
+#: opportunities/templates/opportunities/password_reset_email.txt:3
+msgid "username"
+msgstr "የተጠቃሚ ስም"
+
+msgid "first name"
+msgstr "የመጀመሪያ ስም"
+
+msgid "last name"
+msgstr "የአባት ስም"
+
+#: opportunities/templates/opportunities/password_reset_done.html:10
+msgid "email address"
+msgstr "የኢሜይል አድራሻ"
+
+#: opportunities/templates/opportunities/application.html:1
+msgid "Not provided"
+msgstr "አልተሰጠም"
+
+msgid ""
+"Listing titles and descriptions are provided by employers and may be in "
+"another language."
+msgstr "የሥራ ስሞችና መግለጫዎች በአሠሪዎች ይጻፋሉ፤ በሌላ ቋንቋ ሊሆኑ ይችላሉ።"
+
+#, python-format
+msgid "Your password must contain at least %(min_length)d character."
+msgid_plural "Your password must contain at least %(min_length)d characters."
+msgstr[0] "የይለፍ ቃልዎ ቢያንስ %(min_length)d ፊደል ሊኖረው ይገባል።"
+msgstr[1] "የይለፍ ቃልዎ ቢያንስ %(min_length)d ፊደላት ሊኖሩት ይገባል።"
+
+#, python-format
+msgid "This password is too short. It must contain at least %d character."
+msgid_plural ""
+"This password is too short. It must contain at least %d characters."
+msgstr[0] "ይህ የይለፍ ቃል በጣም አጭር ነው። ቢያንስ %d ፊደል ሊኖረው ይገባል።"
+msgstr[1] "ይህ የይለፍ ቃል በጣም አጭር ነው። ቢያንስ %d ፊደላት ሊኖሩት ይገባል።"
+
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+"ይህ መስክ ከ %(limit_value)d ፊደል በላይ መሆን የለበትም (አሁን %(show_value)d አለው)።"
+msgstr[1] ""
+"ይህ መስክ ከ %(limit_value)d ፊደላት በላይ መሆን የለበትም (አሁን %(show_value)d አሉት)።"
+
+msgid "January"
+msgstr "ጃንዋሪ"
+
+msgid "February"
+msgstr "ፌብሩዋሪ"
+
+msgid "March"
+msgstr "ማርች"
+
+msgid "April"
+msgstr "ኤፕሪል"
+
+msgid "May"
+msgstr "ሜይ"
+
+msgid "June"
+msgstr "ጁን"
+
+msgid "July"
+msgstr "ጁላይ"
+
+msgid "August"
+msgstr "ኦገስት"
+
+msgid "September"
+msgstr "ሴፕቴምበር"
+
+msgid "October"
+msgstr "ኦክቶበር"
+
+msgid "November"
+msgstr "ኖቬምበር"
+
+msgid "December"
+msgstr "ዲሴምበር"
+
+msgid ""
+"Find internships and entry-level opportunities with verified organizations "
+"in Ethiopia. Free for every job seeker."
+msgstr ""
+"በኢትዮጵያ ከተረጋገጡ ድርጅቶች የተግባር ስልጠናና የመጀመሪያ ደረጃ የሥራ ዕድሎችን ያግኙ። ለሁሉም ሥራ ፈላጊዎች ነፃ "
+"ነው።"
+
+#, python-format
+msgid "%(count)s report awaiting review"
+msgid_plural "%(count)s reports awaiting review"
+msgstr[0] "%(count)s ሪፖርት ግምገማ እየጠበቀ ነው"
+msgstr[1] "%(count)s ሪፖርቶች ግምገማ እየጠበቁ ናቸው"
+
+msgid "Review concerns privately and record any moderation action."
+msgstr "ሪፖርቶችን በሚስጥር ይገምግሙ፣ የተወሰደውንም እርምጃ ይመዝግቡ።"
+
+msgid "Open moderation queue →"
+msgstr "የግምገማ ዝርዝር ክፈት →"
+
+#, python-format
+msgid "Please wait %(minutes)s minute before trying again."
+msgid_plural "Please wait %(minutes)s minutes before trying again."
+msgstr[0] "እንደገና ከመሞከርዎ በፊት %(minutes)s ደቂቃ ይጠብቁ።"
+msgstr[1] "እንደገና ከመሞከርዎ በፊት %(minutes)s ደቂቃዎች ይጠብቁ።"
+
+msgid "Account settings"
+msgstr "የመለያ ቅንብሮች"
+
+msgid "YOUR ACCOUNT, YOUR CONTROL"
+msgstr "መለያዎን እርስዎ ይቆጣጠሩ"
+
+msgid "Preferred language"
+msgstr "የሚመርጡት ቋንቋ"
+
+msgid "Email me about applications and status changes"
+msgstr "ስለ ማመልከቻዎችና የሁኔታ ለውጦች በኢሜይል አሳውቀኝ"
+
+msgid ""
+"Application emails are sent only to a verified email address. In-app "
+"notifications remain available when email is turned off."
+msgstr "የማመልከቻ ኢሜይሎች ወደ ተረጋገጠ አድራሻ ብቻ ይላካሉ። ኢሜይል ቢዘጋም የመድረኩ ማሳወቂያዎች ይቀጥላሉ።"
+
+msgid "Save preferences"
+msgstr "ምርጫዎችን አስቀምጥ"
+
+msgid "Account preferences saved."
+msgstr "የመለያ ምርጫዎች ተቀምጠዋል።"
+
+msgid "Email verified"
+msgstr "ኢሜይሉ ተረጋግጧል"
+
+msgid ""
+"Verify your email to receive application updates and protect your account."
+msgstr "የማመልከቻ ዜናዎችን ለመቀበልና መለያዎን ለመጠበቅ ኢሜይልዎን ያረጋግጡ።"
+
+msgid "Email verification is required before you apply or post opportunities."
+msgstr "ከማመልከትዎ ወይም ዕድል ከማስተዋወቅዎ በፊት ኢሜይልዎን ማረጋገጥ ያስፈልጋል።"
+
+msgid "Send verification email"
+msgstr "የማረጋገጫ ኢሜይል ላክ"
+
+msgid ""
+"Your account needs a valid email address. Contact the platform "
+"administrator."
+msgstr "መለያዎ ትክክለኛ የኢሜይል አድራሻ ያስፈልገዋል። የመድረኩን አስተዳዳሪ ያነጋግሩ።"
+
+msgid "Verification instructions have been queued for your email address."
+msgstr "የማረጋገጫ መመሪያዎች ወደ ኢሜይልዎ እንዲላኩ ተዘጋጅተዋል።"
+
+msgid "Your email address is already verified."
+msgstr "የኢሜይል አድራሻዎ ከዚህ በፊት ተረጋግጧል።"
+
+msgid "Your email address is verified."
+msgstr "የኢሜይል አድራሻዎ ተረጋግጧል።"
+
+msgid "PROTECT YOUR ACCOUNT"
+msgstr "መለያዎን ይጠብቁ"
+
+msgid "Confirm your email address."
+msgstr "የኢሜይል አድራሻዎን ያረጋግጡ።"
+
+msgid ""
+"Confirm that this email belongs to you. Opening this page alone does not "
+"verify your account."
+msgstr "ይህ ኢሜይል የእርስዎ መሆኑን ያረጋግጡ። ይህን ገጽ መክፈት ብቻ መለያዎን አያረጋግጥም።"
+
+msgid "Verify my email"
+msgstr "ኢሜይሌን አረጋግጥ"
+
+msgid "This verification link cannot be used."
+msgstr "ይህን የማረጋገጫ አገናኝ መጠቀም አይቻልም።"
+
+msgid ""
+"It may have expired, been replaced, or belong to another account. Sign in to"
+" the correct account and request a new email."
+msgstr ""
+"ጊዜው አልፎ፣ በሌላ ተተክቶ ወይም የሌላ መለያ ሊሆን ይችላል። ወደ ትክክለኛው መለያ ይግቡና አዲስ ኢሜይል ይጠይቁ።"
+
+msgid "Verify your email address"
+msgstr "የኢሜይል አድራሻዎን ያረጋግጡ"
+
+msgid "Verify your email address before applying."
+msgstr "ከማመልከትዎ በፊት የኢሜይል አድራሻዎን ያረጋግጡ።"
+
+msgid "Verify your email address before posting an opportunity."
+msgstr "ዕድል ከማስተዋወቅዎ በፊት የኢሜይል አድራሻዎን ያረጋግጡ።"
+
+msgid "Verify your Together for Better email address"
+msgstr "የTogether for Better የኢሜይል አድራሻዎን ያረጋግጡ"
+
+msgid ""
+"Confirm your email address to finish setting up your Together for Better "
+"account."
+msgstr "የTogether for Better መለያዎን ለማጠናቀቅ የኢሜይል አድራሻዎን ያረጋግጡ።"
+
+msgid ""
+"Sign in to your account and confirm on the verification page. This link "
+"expires after 24 hours and can be used once."
+msgstr ""
+"ወደ መለያዎ ይግቡና በማረጋገጫ ገጹ ላይ ያረጋግጡ። ይህ አገናኝ ከ24 ሰዓታት በኋላ ያበቃል፣ አንድ ጊዜ ብቻ ይሠራል።"
+
+msgid "If you did not create this account, ignore this email."
+msgstr "ይህን መለያ እርስዎ ካልፈጠሩ ይህን ኢሜይል ችላ ይበሉት።"
+
+msgid "Notifications"
+msgstr "ማሳወቂያዎች"
+
+msgid "STAY CONNECTED"
+msgstr "ግንኙነትዎን ይቀጥሉ"
+
+msgid "Your application updates, all in one place."
+msgstr "የማመልከቻ ዜናዎችዎ በአንድ ቦታ።"
+
+msgid "Unread"
+msgstr "ያልተነበበ"
+
+msgid "View application"
+msgstr "ማመልከቻውን ይመልከቱ"
+
+msgid ""
+"No notifications yet. Updates will appear here when an application is "
+"received or its status changes."
+msgstr "ገና ማሳወቂያ የለም። ማመልከቻ ሲደርስ ወይም ሁኔታው ሲቀየር ዜናው እዚህ ይታያል።"
+
+msgid "New application received"
+msgstr "አዲስ ማመልከቻ ደርሷል"
+
+msgid "Application status changed"
+msgstr "የማመልከቻ ሁኔታ ተቀይሯል"
+
+msgid "An application update on Together for Better"
+msgstr "በTogether for Better ላይ የማመልከቻ ዜና"
+
+#, python-format
+msgid "A new application has been received for %(title)s."
+msgstr "ለ %(title)s አዲስ ማመልከቻ ደርሷል።"
+
+#, python-format
+msgid "Your application for %(title)s was updated to: %(status)s."
+msgstr "ለ %(title)s ያቀረቡት ማመልከቻ ሁኔታ ወደ %(status)s ተቀይሯል።"
+
+msgid "Sign in to view the latest application details:"
+msgstr "የቅርብ ጊዜውን የማመልከቻ ዝርዝር ለማየት ይግቡ፦"
+
+msgid ""
+"Manage application emails in your account settings. In-app notifications "
+"remain available when email is turned off."
+msgstr "የማመልከቻ ኢሜይሎችን ከመለያ ቅንብሮችዎ ይቆጣጠሩ። ኢሜይል ቢዘጋም የመድረኩ ማሳወቂያዎች ይቀጥላሉ።"
+
+msgid "Account closure"
+msgstr "መለያ መዝጋት"
+
+msgid "Delete my account"
+msgstr "መለያዬን ሰርዝ"
+
+msgid "Delete your account?"
+msgstr "መለያዎ ይሰረዝ?"
+
+msgid "PERMANENT ACCOUNT DELETION"
+msgstr "ቋሚ የመለያ ስረዛ"
+
+msgid "This action cannot be undone."
+msgstr "ይህን እርምጃ መመለስ አይቻልም።"
+
+msgid ""
+"You can permanently delete your job seeker account and associated applicant "
+"data."
+msgstr "የሥራ ፈላጊ መለያዎንና ተያያዥ የአመልካች መረጃዎን በቋሚነት መሰረዝ ይችላሉ።"
+
+msgid ""
+"Your profile, CV, applications, notifications, and queued account emails "
+"will be removed. You will be signed out."
+msgstr ""
+"መገለጫዎ፣ ሲቪዎ፣ ማመልከቻዎችዎ፣ ማሳወቂያዎችዎና በመጠባበቅ ላይ ያሉ የመለያ ኢሜይሎች ይሰረዛሉ። ከመለያዎም ይወጣሉ።"
+
+msgid ""
+"Safety reports may be retained without your account link. Audit records, "
+"backups, and copies already downloaded by employers are subject to separate "
+"retention policies and are not recalled by this action."
+msgstr ""
+"የደኅንነት ሪፖርቶች ከመለያዎ ጋር ሳይገናኙ ሊቀመጡ ይችላሉ። የክትትል መዝገቦች፣ መጠባበቂያ ቅጂዎችና አሠሪዎች ቀድመው "
+"ያወረዷቸው ቅጂዎች በተለየ የማቆያ ፖሊሲ ይተዳደራሉ፤ በዚህ እርምጃ አይመለሱም።"
+
+msgid "Current password"
+msgstr "አሁን ያለው የይለፍ ቃል"
+
+msgid "I understand that deleting my account is permanent."
+msgstr "መለያዬን መሰረዝ ቋሚ መሆኑን ተረድቻለሁ።"
+
+msgid "Your password was incorrect. Your account has not been deleted."
+msgstr "የይለፍ ቃልዎ ትክክል አልነበረም። መለያዎ አልተሰረዘም።"
+
+msgid "Permanently delete my account"
+msgstr "መለያዬን በቋሚነት ሰርዝ"
+
+msgid "Keep my account"
+msgstr "መለያዬን አቆይ"
+
+msgid "Your account and associated applicant data have been deleted."
+msgstr "መለያዎና ተያያዥ የአመልካች መረጃዎ ተሰርዘዋል።"
+
+msgid "Organization and staff accounts require administrator-managed closure."
+msgstr "የድርጅትና የሠራተኛ መለያዎች በአስተዳዳሪ መዘጋት አለባቸው።"
+
+msgid "Account email delivery"
+msgstr "የመለያ ኢሜይል አቅርቦት"
+
+#, python-format
+msgid "Queued: %(queued)s · Failed: %(failed)s"
+msgstr "የሚጠባበቁ፦ %(queued)s · ያልተሳኩ፦ %(failed)s"
+
+msgid "Inspect delivery queue →"
+msgstr "የአቅርቦት ዝርዝሩን ይመልከቱ →"
+
+msgid "Retry failed account emails"
+msgstr "ያልተላኩ የመለያ ኢሜይሎችን እንደገና ሞክር"
+
+msgid "Failed account emails were returned to the delivery queue."
+msgstr "ያልተላኩ የመለያ ኢሜይሎች ወደ አቅርቦት ዝርዝሩ ተመልሰዋል።"
+
+msgid "Your account has been deleted."
+msgstr "መለያዎ ተሰርዟል።"
+
+msgid "Private document removal"
+msgstr "የግል ሰነድ ማስወገድ"
+
+msgid ""
+"This account or reset link is no longer available. Request a new reset link."
+msgstr "ይህ መለያ ወይም የመቀየሪያ አገናኝ አይገኝም። አዲስ አገናኝ ይጠይቁ።"
+
+msgid ""
+"Profiles are not publicly searchable. When you apply, the hiring "
+"organization and authorized administrators can access your current profile, "
+"optional CV, email, and application. Job seekers can delete their account in"
+" account settings. Organization and staff accounts require administrator-"
+"managed closure. You can replace or remove your PDF CV. Application updates "
+"appear in notifications; application emails require a verified address and "
+"can be turned off in account settings."
+msgstr ""
+"መገለጫዎች በይፋ አይፈለጉም። ሲያመለክቱ ቀጣሪው ድርጅትና ፈቃድ ያላቸው አስተዳዳሪዎች አሁን ያሉትን መገለጫዎን፣ "
+"ሲቪዎን፣ ኢሜይልዎንና ማመልከቻዎን ማየት ይችላሉ። ሥራ ፈላጊዎች መለያቸውን ከመለያ ቅንብሮች መሰረዝ ይችላሉ። የድርጅትና"
+" የሠራተኛ መለያዎች በአስተዳዳሪ ይዘጋሉ። PDF ሲቪዎን መቀየር ወይም ማስወገድ ይችላሉ። የማመልከቻ ዜናዎች "
+"በማሳወቂያዎች ይታያሉ፤ የኢሜይል ዜናዎች የተረጋገጠ አድራሻ ያስፈልጋቸዋል፣ ከመለያ ቅንብሮችም ሊዘጉ ይችላሉ።"

@@ -1,0 +1,16 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell form-section">
+  <div class="eyebrow">{% translate "PROTECT YOUR ACCOUNT" %}</div>
+  {% if valid_link %}
+    <h1>{% translate "Confirm your email address." %}</h1>
+    <p class="intro">{{ user.email }}</p>
+    <p>{% translate "Confirm that this email belongs to you. Opening this page alone does not verify your account." %}</p>
+    <form method="post">{% csrf_token %}<button class="button" type="submit">{% translate "Verify my email" %} →</button></form>
+  {% else %}
+    <h1>{% translate "This verification link cannot be used." %}</h1>
+    <p class="intro">{% translate "It may have expired, been replaced, or belong to another account. Sign in to the correct account and request a new email." %}</p>
+    <a class="button" href="{% url 'account_settings' %}">{% translate "Account settings" %} →</a>
+  {% endif %}
+</section>
+{% endblock %}

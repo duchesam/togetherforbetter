@@ -1,0 +1,11 @@
+{% load i18n %}{% autoescape off %}{% translate "Hello," %}
+
+{% translate "Confirm your email address to finish setting up your Together for Better account." %}
+{{ verification_url }}
+
+{% translate "Sign in to your account and confirm on the verification page. This link expires after 24 hours and can be used once." %}
+
+{% translate "If you did not create this account, ignore this email." %}
+
+Together for Better
+{% endautoescape %}

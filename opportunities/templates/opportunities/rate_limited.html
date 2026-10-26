@@ -1,0 +1,9 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell form-section">
+  <div class="eyebrow">{% translate "PLEASE PAUSE FOR A MOMENT" %}</div>
+  <h1>{% translate "Too many attempts." %}</h1>
+  <p class="intro">{% blocktranslate count minutes=retry_minutes %}Please wait {{ minutes }} minute before trying again.{% plural %}Please wait {{ minutes }} minutes before trying again.{% endblocktranslate %}</p>
+  <a class="button" href="{% url 'home' %}">{% translate "Browse opportunities →" %}</a>
+</section>
+{% endblock %}

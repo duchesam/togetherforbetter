@@ -1,0 +1,1 @@
+{% load i18n %}{% translate "An application update on Together for Better" %}

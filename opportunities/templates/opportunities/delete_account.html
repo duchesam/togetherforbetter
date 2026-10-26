@@ -1,0 +1,16 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell form-section">
+  <a class="back-link" href="{% url 'account_settings' %}">{% translate "← Back" %}</a>
+  <div class="eyebrow">{% translate "PERMANENT ACCOUNT DELETION" %}</div>
+  <h1>{% translate "Delete your account?" %}</h1>
+  <p class="intro">{% translate "This action cannot be undone." %}</p>
+  <p>{% translate "Your profile, CV, applications, notifications, and queued account emails will be removed. You will be signed out." %}</p>
+  <p class="small-note">{% translate "Safety reports may be retained without your account link. Audit records, backups, and copies already downloaded by employers are subject to separate retention policies and are not recalled by this action." %}</p>
+  <form method="post" class="standard-form">
+    {% csrf_token %}{{ form.as_p }}
+    <button class="button danger-button" type="submit">{% translate "Permanently delete my account" %}</button>
+    <a class="cancel-link" href="{% url 'account_settings' %}">{% translate "Keep my account" %}</a>
+  </form>
+</section>
+{% endblock %}

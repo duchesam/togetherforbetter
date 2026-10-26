@@ -1,0 +1,1 @@
+{% load i18n %}{% translate "Verify your Together for Better email address" %}

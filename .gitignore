@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+.env
+staticfiles/
+media/
+.private_uploads/
+.private_mail/
+
+.pilot-runtime/
