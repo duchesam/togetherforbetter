@@ -15,11 +15,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.translation import get_language
 from .forms import SignupForm, ProfileForm, EmployerForm, OpportunityForm, ApplicationForm, StatusForm, ReportForm, InterviewResponseForm, PlacementResponseForm
-from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, PrivateFileCleanup, Interview, InterviewEvent, PlacementReport
+from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, PrivateFileCleanup, Interview, InterviewEvent, PlacementReport, SavedOpportunity
 from .notifications import application_received, change_application_status, queue_verification
 
 def public_jobs():
-    jobs = Opportunity.objects.filter(published=True, employer__verified=True, deadline__gte=timezone.localdate()).select_related("employer")
+    jobs = Opportunity.objects.filter(published=True, closed_at__isnull=True, employer__verified=True, deadline__gte=timezone.localdate()).select_related("employer")
     return jobs if settings.DEBUG else jobs.filter(employer__is_demo=False)
 
 def home(request):
@@ -40,10 +40,12 @@ def home(request):
     params.pop("page", None)
     return render(request, "opportunities/home.html", {"page": Paginator(jobs, 6).get_page(request.GET.get("page")), "query_params": params.urlencode(), "q": q, "location": location, "kind": kind, "category": category, "kinds": Opportunity.Kind.choices, "categories": public_jobs().order_by("category").values_list("category", flat=True).distinct(), "total": public_jobs().count(), "employer_count": Employer.objects.filter(verified=True).count()})
 
+@never_cache
 def detail(request, pk):
     job = get_object_or_404(public_jobs(), pk=pk)
     applied = request.user.is_authenticated and Application.objects.filter(opportunity=job, applicant=request.user).exists()
-    return render(request, "opportunities/detail.html", {"job": job, "applied": applied})
+    saved = SavedOpportunity.objects.filter(user=request.user, opportunity=job).first() if request.user.is_authenticated else None
+    return render(request, "opportunities/detail.html", {"job": job, "applied": applied, "saved": saved})
 
 def signup(request):
     if request.user.is_authenticated:
@@ -151,7 +153,8 @@ def apply(request, pk):
     form = ApplicationForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         with transaction.atomic():
-            application, created = Application.objects.get_or_create(opportunity=job, applicant=request.user, defaults={"cover_letter": form.cleaned_data["cover_letter"]})
+            current_job = get_object_or_404(public_jobs().select_for_update(), pk=pk)
+            application, created = Application.objects.get_or_create(opportunity=current_job, applicant=request.user, defaults={"cover_letter": form.cleaned_data["cover_letter"]})
             if created:
                 application_received(application)
         messages.success(request, _("Application sent. Track its progress in your dashboard."))

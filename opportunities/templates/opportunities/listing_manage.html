@@ -1,0 +1,14 @@
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}<section class="shell detail-section">
+  <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <div class="eyebrow">{% translate "YOUR LISTING" %}</div>
+  <div class="section-heading"><div><h1>{{ job.title }}</h1><p>{{ job.employer.name }} · {{ job.location }}</p></div><a class="button outline" href="{% url 'listing_edit' job.pk %}">{% translate "Edit opportunity" %} →</a></div>
+  <div class="dashboard-banner"><div><h3>{% if job.closed_at %}{% translate "Closed to new applications" %}{% elif job.is_expired %}{% translate "Expired" %}{% elif job.is_open %}{% translate "Live" %}{% else %}{% translate "Awaiting review or employer verification" %}{% endif %}</h3><p>{% translate "Existing applications and interviews are retained when a listing is edited or closed." %}</p></div>
+    {% if job.closed_at %}<form method="post" action="{% url 'listing_reopen' job.pk %}">{% csrf_token %}{{ action_form }}<button class="button" type="submit">{% translate "Request reopening" %}</button></form>{% else %}<form method="post" action="{% url 'listing_close' job.pk %}">{% csrf_token %}{{ action_form }}<button class="button outline" type="submit">{% translate "Close to new applications" %}</button></form>{% endif %}
+  </div>
+  {% if job.is_open %}<a class="quiet-link" href="{% url 'detail' job.pk %}">{% translate "View public listing" %} →</a>{% endif %}
+  <div class="listing-summary"><p>{{ job.get_kind_display }} · {{ job.compensation }}</p><p>{% translate "Application deadline" %}: {{ job.deadline|date:"DATE_FORMAT" }} <span class="small-note">{% translate "Gregorian calendar (GC) · Ethiopia time" %}</span></p></div>
+  <h2>{% translate "About the opportunity" %}</h2><div class="prose">{{ job.description|linebreaks }}</div>
+  <h2>{% translate "What you’ll bring" %}</h2><div class="prose">{{ job.requirements|linebreaks }}</div>
+  <details class="interview-history"><summary>{% translate "Recent listing changes" %}</summary>{% for change in changes %}<p>{{ change.get_action_display }} · {{ change.created_at|date:"DATE_FORMAT" }} {{ change.created_at|time:"H:i" }} EAT</p>{% empty %}<p>{% translate "No employer changes recorded yet." %}</p>{% endfor %}</details>
+</section>{% endblock %}

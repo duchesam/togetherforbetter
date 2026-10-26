@@ -94,6 +94,14 @@ class OpportunityForm(LocalizedModelForm):
             raise forms.ValidationError(_("Choose today or a future date."))
         return value
 
+
+class OpportunityEditForm(OpportunityForm):
+    expected_version = forms.IntegerField(min_value=1, widget=forms.HiddenInput)
+
+
+class ListingActionForm(forms.Form):
+    expected_version = forms.IntegerField(min_value=1, widget=forms.HiddenInput)
+
 class ApplicationForm(LocalizedModelForm):
     class Meta:
         model = Application

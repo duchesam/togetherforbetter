@@ -3,12 +3,20 @@ from django.urls import path
 from . import views
 from . import account_views
 from . import hiring_views
+from . import listing_views
 from .forms import LockedSetPasswordForm
 urlpatterns = [
     path("", views.home, name="home"),
     path("impact/", views.impact, name="impact"),
     path("about/", views.about, name="about"),
     path("opportunities/<int:pk>/", views.detail, name="detail"),
+    path("opportunities/<int:pk>/manage/", listing_views.listing_manage, name="listing_manage"),
+    path("opportunities/<int:pk>/edit/", listing_views.listing_edit, name="listing_edit"),
+    path("opportunities/<int:pk>/close/", listing_views.listing_action, {"action": "closed"}, name="listing_close"),
+    path("opportunities/<int:pk>/reopen/", listing_views.listing_action, {"action": "reopened"}, name="listing_reopen"),
+    path("opportunities/<int:pk>/save/", listing_views.save_opportunity, name="save_opportunity"),
+    path("saved/", listing_views.saved_opportunities, name="saved_opportunities"),
+    path("saved/<int:pk>/remove/", listing_views.remove_saved, name="remove_saved"),
     path("opportunities/<int:pk>/apply/", views.apply, name="apply"),
     path("opportunities/<int:pk>/report/", views.report_job, name="report_job"),
     path("reports/<int:pk>/", views.report_detail, name="report_detail"),

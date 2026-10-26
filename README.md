@@ -27,6 +27,14 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Private saved opportunities (fictional demonstration)**
+
+![Private saved opportunities](docs/screenshots/saved-opportunities.png)
+
+**Employer listing management (fictional demonstration)**
+
+![Employer listing management](docs/screenshots/listing-management.png)
+
 **Interview invitation and response (fictional demonstration)**
 
 ![Interview invitation and response](docs/screenshots/interview.png)
@@ -259,3 +267,15 @@ When an employer or authorized administrator reports a hire, a pending placement
 Changing the application away from hired supersedes the current report without erasing its responses. A later hire starts a new pending report; old confirmation never carries over. The impact dashboard separately counts employer-reported hires, applicant-confirmed acceptances, people confirming acceptance, awaiting responses, and unconfirmed/disputed outcomes. Demo activity is excluded. These are current records rather than permanent lifetime totals, and applicant confirmation is self-reported acceptance, not independent proof of employment or a verified first day at work.
 
 Hiring actions are serialized on their application, keep audit and outbox records transactional, and have shared request limits. Applicant account deletion cascades through applications, interviews, responses, notifications, and pending delivery records, following the existing private-document cleanup policy.
+
+## Listing management and private saved opportunities
+
+Employers open **Manage listing** from their dashboard to edit or close their own opportunities. Actual content changes withdraw publication and return the listing to administrator review. Saving an unchanged form does not withdraw an approved listing. Employer edits cannot change ownership, publication approval, or verification. Closed listings stay closed while edited; reopening requires a current deadline and a separate review before publication.
+
+Closing stops new applications immediately and preserves existing applications, interviews, and outcomes. Application submission rechecks public availability under the same listing lock before committing, so a closure during form validation cannot accept a new application. Listing edits, closures, and reopening record actor, action, changed field names, and timestamp. This audit records the changes made; it is not a historical snapshot of every listing description. Applications continue to reference the current listing.
+
+Hidden revision checks protect against stale owner edits, close/reopen requests, and administrator review. Moderation withdrawal also advances the revision. The administration interface cannot publish a closed listing. New-account email verification is required for edits and reopening, while an owner can always close recruitment even if email verification is pending.
+
+Job seekers can select **Save opportunity** on a public listing. **Saved opportunities** is available from their dashboard. Saving is private, idempotent, and does not submit an application or notify employers. Other users and employers cannot browse or remove another job seeker's saves. Saved lists are paginated and require owner-authorized POSTs for changes.
+
+When a saved listing becomes closed, expired, unverified, or unpublished, it remains in the list as unavailable. Only the previously public title, organization name, and location captured at save time are displayed. Unpublished title/location changes are not leaked to prior savers. Once a reviewed listing is available again, its current public details are displayed. Permanently deleted listings and deleted user accounts remove their related saved records.

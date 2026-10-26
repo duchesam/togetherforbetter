@@ -4,7 +4,8 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils import timezone
 from django.core.exceptions import PermissionDenied
-from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, Interview, InterviewEvent, PlacementReport, PlacementResponseEvent
+from django import forms
+from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, Interview, InterviewEvent, PlacementReport, PlacementResponseEvent, OpportunityChange
 from .notifications import application_received, application_status_changed
 admin.site.site_header = _("Together for Better · Community administration")
 admin.site.site_title = _("Together for Better")
@@ -13,11 +14,45 @@ class EmployerAdmin(admin.ModelAdmin):
     list_display = ["name", "user", "website", "verified"]
     list_filter = ["verified"]
     search_fields = ["name", "user__email"]
+class OpportunityAdminForm(forms.ModelForm):
+    expected_version = forms.IntegerField(min_value=1, widget=forms.HiddenInput)
+
+    class Meta:
+        model = Opportunity
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.initial["expected_version"] = self.instance.version
+
+    def clean(self):
+        data = super().clean()
+        if self.instance.pk:
+            current = Opportunity.objects.select_for_update().filter(pk=self.instance.pk).first()
+            if not current or current.version != data.get("expected_version"):
+                raise forms.ValidationError(_("This listing changed while you were working. Reload it before submitting again."))
+            if data.get("published") and current.closed_at is not None:
+                self.add_error("published", _("The employer must reopen this closed listing before it can be published."))
+        return data
+
+
 @admin.register(Opportunity)
 class OpportunityAdmin(admin.ModelAdmin):
-    list_display = ["title", "employer", "kind", "deadline", "published"]
+    form = OpportunityAdminForm
+    list_display = ["title", "employer", "kind", "deadline", "published", "closed_at"]
     list_filter = ["published", "kind", "employer__verified"]
     search_fields = ["title", "employer__name"]
+    readonly_fields = ["closed_at", "version", "created_at"]
+
+    def save_model(self, request, obj, form, change):
+        if change:
+            current = Opportunity.objects.select_for_update().get(pk=obj.pk)
+            fields = [name for name in form.changed_data if name != "expected_version"]
+            if fields:
+                obj.version = current.version + 1
+                obj.save(update_fields=fields + ["version"])
+        else:
+            super().save_model(request, obj, form, change)
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
     list_display = ["applicant", "opportunity", "status", "created_at"]
@@ -87,7 +122,8 @@ class ReportAdmin(admin.ModelAdmin):
                 job = report.opportunity
                 if job.published:
                     job.published = False
-                    job.save(update_fields=["published"])
+                    job.version += 1
+                    job.save(update_fields=["published", "version"])
                     self.log_change(request, job, "Listing hidden during report review.")
                 report.status = OpportunityReport.Status.INVESTIGATING
                 report.reviewed_by = request.user
@@ -171,3 +207,9 @@ class PlacementAdmin(ReadOnlyHiringAdmin):
     list_display = ["application", "response", "reported_at", "responded_at", "superseded_at"]
     list_filter = ["response", "superseded_at"]
     inlines = [PlacementResponseInline]
+
+
+@admin.register(OpportunityChange)
+class ListingChangeAdmin(ReadOnlyHiringAdmin):
+    list_display = ["opportunity", "action", "actor", "created_at"]
+    list_filter = ["action"]

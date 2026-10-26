@@ -62,12 +62,18 @@ class Opportunity(models.Model):
     compensation = models.CharField(max_length=150, help_text=_("State pay, stipend, or unpaid clearly."))
     deadline = models.DateField()
     published = models.BooleanField(default=False, help_text=_("Publish only after reviewing this listing."))
+    closed_at = models.DateTimeField(null=True, blank=True)
+    version = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     class Meta:
         ordering = ["-created_at"]
     @property
+    def is_expired(self):
+        return self.deadline < timezone.localdate()
+
+    @property
     def is_open(self):
-        return self.published and self.employer.verified and self.deadline >= timezone.localdate()
+        return self.closed_at is None and self.published and self.employer.verified and self.deadline >= timezone.localdate()
     def __str__(self):
         return self.title
 
@@ -282,3 +288,31 @@ class PlacementResponseEvent(models.Model):
 
     class Meta:
         ordering = ["created_at", "pk"]
+
+
+class OpportunityChange(models.Model):
+    opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name="changes")
+    actor = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
+    action = models.CharField(max_length=12, choices=[("edited", _("Edited")), ("closed", _("Closed")), ("reopened", _("Reopened for review"))])
+    fields_changed = models.JSONField(default=list)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at", "-pk"]
+
+
+class SavedOpportunity(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="saved_opportunities")
+    opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name="saves")
+    title = models.CharField(max_length=180)
+    employer_name = models.CharField(max_length=180)
+    location = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at", "-pk"]
+        constraints = [models.UniqueConstraint(fields=["user", "opportunity"], name="one_saved_opportunity_per_user")]
+
+    @property
+    def is_available(self):
+        return self.opportunity.is_open and (settings.DEBUG or not self.opportunity.employer.is_demo)

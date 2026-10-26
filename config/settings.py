@@ -31,6 +31,8 @@ REQUEST_LIMITS = {
     "account_settings": (30, 3600),
     "interview_invite": (10, 3600), "interview_response": (20, 3600),
     "interview_cancel": (20, 3600), "placement_response": (20, 3600),
+    "listing_edit": (20, 3600), "listing_close": (20, 3600), "listing_reopen": (10, 3600),
+    "save_opportunity": (60, 3600), "remove_saved": (60, 3600),
 }
 TIME_ZONE = "Africa/Addis_Ababa"
 USE_I18N = True

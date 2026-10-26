@@ -2181,3 +2181,135 @@ msgstr "አመልካቹ የቅጥር ምላሹን አዘምኗል። ወቅታ�
 
 msgid "Recent placement responses"
 msgstr "የቅርብ ጊዜ የቅጥር ምላሾች"
+
+msgid "Edited"
+msgstr "ተስተካክሏል"
+
+msgid "Closed"
+msgstr "ተዘግቷል"
+
+msgid "Reopened for review"
+msgstr "ለግምገማ እንደገና ተከፍቷል"
+
+msgid "Choose a valid listing action."
+msgstr "ትክክለኛ የማስታወቂያ እርምጃ ይምረጡ።"
+
+msgid ""
+"This listing changed while you were working. Reload it before submitting "
+"again."
+msgstr "እየሠሩበት እያለ ይህ ማስታወቂያ ተቀይሯል። እንደገና ከመላክዎ በፊት ገጹን ይክፈቱ።"
+
+msgid "Verify your email address before editing or reopening a listing."
+msgstr "ማስታወቂያ ከማስተካከልዎ ወይም እንደገና ከመክፈትዎ በፊት ኢሜይልዎን ያረጋግጡ።"
+
+msgid "Update the expired deadline before reopening this listing."
+msgstr "ይህን ማስታወቂያ እንደገና ከመክፈትዎ በፊት ያለፈውን የመጨረሻ ቀን ያዘምኑ።"
+
+msgid ""
+"Listing saved. Changed listings require review; closed listings stay closed."
+msgstr "ማስታወቂያው ተቀምጧል። የተቀየሩ ማስታወቂያዎች ግምገማ ይፈልጋሉ፤ የተዘጉት ተዘግተው ይቆያሉ።"
+
+msgid "Edit opportunity"
+msgstr "ዕድሉን አስተካክል"
+
+msgid ""
+"Changes remove the listing from public search until an administrator reviews"
+" it. Existing applications are retained."
+msgstr "አስተዳዳሪ እስኪገመግመው ድረስ ለውጦች ማስታወቂያውን ከይፋዊ ፍለጋ ያስወግዱታል። ያሉ ማመልከቻዎች ይቀመጣሉ።"
+
+msgid "Save for review"
+msgstr "ለግምገማ አስቀምጥ"
+
+msgid "Reload the listing before submitting this action."
+msgstr "ይህን እርምጃ ከመላክዎ በፊት ማስታወቂያውን እንደገና ይክፈቱ።"
+
+msgid "Listing closed to new applications."
+msgstr "ማስታወቂያው ለአዲስ ማመልከቻዎች ተዘግቷል።"
+
+msgid "Listing reopened for administrator review."
+msgstr "ማስታወቂያው ለአስተዳዳሪ ግምገማ እንደገና ተከፍቷል።"
+
+msgid "Opportunity saved to your private list."
+msgstr "ዕድሉ በግል ዝርዝርዎ ተቀምጧል።"
+
+msgid "Opportunity removed from your saved list."
+msgstr "ዕድሉ ከተቀመጠው ዝርዝርዎ ተወግዷል።"
+
+msgid ""
+"The employer must reopen this closed listing before it can be published."
+msgstr "ይህ የተዘጋ ማስታወቂያ ከመታተሙ በፊት አሠሪው እንደገና መክፈት አለበት።"
+
+msgid "YOUR LISTING"
+msgstr "የእርስዎ ማስታወቂያ"
+
+msgid "Closed to new applications"
+msgstr "ለአዲስ ማመልከቻዎች ተዘግቷል"
+
+msgid "Expired"
+msgstr "ጊዜው አልፏል"
+
+msgid "Awaiting review or employer verification"
+msgstr "ግምገማ ወይም የአሠሪ ማረጋገጫ እየጠበቀ ነው"
+
+msgid ""
+"Existing applications and interviews are retained when a listing is edited "
+"or closed."
+msgstr "ማስታወቂያ ሲስተካከል ወይም ሲዘጋ ያሉ ማመልከቻዎችና ቃለ መጠይቆች ይቀመጣሉ።"
+
+msgid "Request reopening"
+msgstr "እንደገና መክፈት ጠይቅ"
+
+msgid "Close to new applications"
+msgstr "ለአዲስ ማመልከቻዎች ዝጋ"
+
+msgid "View public listing"
+msgstr "ይፋዊ ማስታወቂያውን ይመልከቱ"
+
+msgid "Recent listing changes"
+msgstr "የቅርብ ጊዜ የማስታወቂያ ለውጦች"
+
+msgid "No employer changes recorded yet."
+msgstr "ገና የአሠሪ ለውጥ አልተመዘገበም።"
+
+msgid "LISTING UPDATE"
+msgstr "የማስታወቂያ ለውጥ"
+
+msgid "Manage listing"
+msgstr "ማስታወቂያውን አስተዳድር"
+
+msgid "YOUR PRIVATE SHORTLIST"
+msgstr "የግል የፍላጎት ዝርዝርዎ"
+
+msgid "Saved opportunities"
+msgstr "የተቀመጡ ዕድሎች"
+
+msgid ""
+"Only you can see this list. Saving an opportunity does not submit an "
+"application."
+msgstr "ይህን ዝርዝር ማየት የሚችሉት እርስዎ ብቻ ነዎት። ዕድልን ማስቀመጥ ማመልከቻ አይልክም።"
+
+msgid ""
+"Currently unavailable. Previously saved details are shown; unpublished "
+"changes remain private."
+msgstr "በአሁኑ ጊዜ አይገኝም። ቀደም ሲል የተቀመጡ ዝርዝሮች ይታያሉ፤ ያልታተሙ ለውጦች አይታዩም።"
+
+msgid "View opportunity"
+msgstr "ዕድሉን ይመልከቱ"
+
+msgid "Remove from saved"
+msgstr "ከተቀመጡት አስወግድ"
+
+msgid "Keep the opportunities that interest you."
+msgstr "የሚፈልጓቸውን ዕድሎች ያስቀምጡ።"
+
+msgid "Use Save opportunity on a listing to add it here."
+msgstr "እዚህ ለማከል በማስታወቂያው ላይ ያለውን ዕድሉን አስቀምጥ ይጠቀሙ።"
+
+msgid "Saved to your list"
+msgstr "በዝርዝርዎ ተቀምጧል"
+
+msgid "Save opportunity"
+msgstr "ዕድሉን አስቀምጥ"
+
+msgid "Log in to save this opportunity"
+msgstr "ይህን ዕድል ለማስቀመጥ ይግቡ"
