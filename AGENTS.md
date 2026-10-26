@@ -21,6 +21,8 @@ Use the existing checkout. Each cloud task is isolated; do not create a Git work
 - Development email uses a private local inbox. Do not claim real delivery without verifying a configured provider.
 - Employers cannot self-verify or self-publish. Reports must not automatically hide listings. Moderation actions require permissions and an audit trail.
 - Preserve shared request limits. Do not trust arbitrary forwarding headers; verify the deployment's handling of direct client addresses.
+- Serialize hiring actions on the application. Keep interview replacement/cancellation and response history, reject stale responses, and never automatically claim interview attendance. Only the applicant can confirm their own role acceptance; hiring status changes must not carry confirmation into a new report. Applicant-confirmed acceptance is not independent employment verification.
+- Publish completed, tested application changes to the repository’s main branch so the user can review progress. Preserve remote work and never force-push.
 - Label fictional demonstration data and exclude it from impact reporting. Distinguish employer-reported placements from independently verified outcomes.
 - New signup verification, in-app events, and application email deliveries must stay atomic and idempotent where specified. Run the durable account worker alongside the web server; never send notification mail inside application mutations.
 - Keep self-service deletion restricted to job seekers, require current credentials and CSRF, and preserve durable private-file cleanup requests on storage failure. Never recreate a deleted user through password recovery.

@@ -5,7 +5,8 @@ from django.db import transaction
 from django.utils.crypto import constant_time_compare
 from django.contrib.auth.models import User
 from django.utils import timezone
-from .models import Profile, Employer, Opportunity, Application, OpportunityReport
+from .models import Profile, Employer, Opportunity, Application, OpportunityReport, Interview, PlacementReport
+import uuid
 
 class SignupForm(UserCreationForm):
     full_name = forms.CharField(max_length=150, label=_("Full name"))
@@ -159,3 +160,43 @@ class LockedSetPasswordForm(SetPasswordForm):
             current.save(update_fields=["password"])
             self.user = current
         return current
+
+
+class InterviewForm(LocalizedModelForm):
+    request_key = forms.UUIDField(widget=forms.HiddenInput, initial=uuid.uuid4)
+    scheduled_at = forms.DateTimeField(
+        label=_("Interview date and time"),
+        help_text=_("Gregorian date and 24-hour clock, Addis Ababa time (UTC+3)."),
+        input_formats=["%Y-%m-%dT%H:%M"],
+        widget=forms.DateTimeInput(format="%Y-%m-%dT%H:%M", attrs={"type": "datetime-local"}),
+    )
+
+    class Meta:
+        model = Interview
+        fields = ["scheduled_at", "duration_minutes", "mode", "location", "meeting_url", "details"]
+        labels = {"duration_minutes": _("Duration in minutes"), "mode": _("Interview format"), "location": _("Interview location"), "meeting_url": _("HTTPS video meeting link"), "details": _("Interview instructions")}
+        widgets = {"details": forms.Textarea(attrs={"rows": 4})}
+
+    def _post_clean(self):
+        # The same key can be resubmitted; the service checks its payload and owner.
+        self.instance.request_key = self.cleaned_data.get("request_key", uuid.uuid4())
+        super()._post_clean()
+
+    def validate_unique(self):
+        # Idempotency and cross-application key reuse are checked under an app lock.
+        pass
+
+
+class InterviewResponseForm(forms.Form):
+    status = forms.ChoiceField(label=_("Your interview response"), choices=[("", _("Choose a response")), ("accepted", _("Accept interview")), ("declined", _("Decline interview")), ("reschedule", _("Request another time"))])
+    note = forms.CharField(label=_("Message to the employer"), max_length=500, required=False, widget=forms.Textarea(attrs={"rows": 3}))
+
+    def clean(self):
+        data = super().clean()
+        if data.get("status") == "reschedule" and not data.get("note", "").strip():
+            self.add_error("note", _("Suggest another time in your message."))
+        return data
+
+
+class PlacementResponseForm(forms.Form):
+    response = forms.ChoiceField(label=_("Your placement response"), widget=forms.RadioSelect, choices=[(PlacementReport.Response.CONFIRMED, _("I accepted this role")), (PlacementReport.Response.DISPUTED, _("I did not accept this role"))])

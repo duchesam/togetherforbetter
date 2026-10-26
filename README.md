@@ -12,9 +12,34 @@ Open this repository in GitHub Codespaces using the button above. Setup installs
 
 To inspect account flows, create a job seeker or employer account. Verification messages are captured in the private `.private_mail` folder in the Codespaces file explorer. Open the latest message locally and follow its verification link while signed in to that account. Do not share these messages or their links. Create an administration account with `.venv/bin/python manage.py createsuperuser` to test employer verification and listing publication. There are no shared default credentials, and no external email is sent by this development setup.
 
+
+### Refresh an existing Codespace
+
+New changes are published to `main`. In the repository terminal, run:
+
+```bash
+git pull --ff-only && bash .devcontainer/restart.sh
+```
+
+The restart command installs pinned dependencies, compiles translations, applies migrations, runs system checks, and restarts only the pilot's managed web and worker processes. It preserves the database, private uploads, and workspace session key. Refresh the existing port-8000 browser tab afterward.
+
 ## Pilot screenshots
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
+
+**Interview invitation and response (fictional demonstration)**
+
+![Interview invitation and response](docs/screenshots/interview.png)
+
+**Applicant-confirmed acceptance (fictional demonstration)**
+
+![Applicant-confirmed placement response](docs/screenshots/placement-confirmation.png)
+
+<details><summary>Amharic placement response on mobile</summary>
+
+![Amharic placement response](docs/screenshots/placement-amharic.png)
+
+</details>
 
 **English homepage**
 
@@ -80,7 +105,7 @@ Create a real administration account separately:
 2. Open **Employers**, independently check the organization's identity, and enable **Verified** only after that check.
 3. Open **Opportunities**, review the description, requirements, compensation, and deadline, then enable **Published**.
 4. A listing is public only while published, associated with a verified organization, and not past its deadline. Deadlines use the Africa/Addis_Ababa timezone and Gregorian calendar.
-5. In the employer dashboard, review an application and change its status. “Placement confirmed” means the employer reports the applicant accepted the role; it is not an independently verified outcome.
+5. In the employer dashboard, review an application and change its status. “Hired (employer reported)” records the organization’s report. The applicant confirms acceptance separately; neither is independent verification of employment.
 
 ### Try the pilot
 
@@ -218,3 +243,19 @@ Job seekers can delete their own account through **Account settings**, using the
 Deletion removes the user, profile, applications, in-app notifications, and associated queued delivery records, including application notices belonging to the hiring employer. Private CV removal is scheduled transactionally and attempted after commit. Storage failures do not recreate the deleted account or lose the cleanup request. The worker retries file removal; terminal cleanup failures are visible to staff. After fixing storage, operators can requeue these tasks with `manage.py cleanup_private_files --retry-failed`. The cleanup process refuses to remove files still referenced by a live profile.
 
 Safety report text and moderation records may remain without an account link. This is not a guarantee that free-text reports contain no personal data. Audit records, backups, delivered emails, and employer-downloaded copies follow separately defined retention policies. Password recovery uses a locked update to prevent a concurrent reset from recreating a deleted user.
+
+## Interviews and placement outcomes
+
+Employers can open an application and select **Invite to an interview**. Invitations support in-person, HTTPS video, and phone interviews. Dates use the Gregorian calendar and a 24-hour clock in Addis Ababa time (UTC+3). In-person invitations require a location; video invitations require a valid HTTPS URL without embedded credentials; phone invitations require contact instructions. Past dates and invalid details are rejected before changing an existing invitation.
+
+There is one active invitation per application. A new invitation marks the old active invitation as replaced and preserves its history; repeated submission of the same request does not create duplicate invitations or notifications. Applicants can accept, decline, or request another time with a message. Employers can cancel their invitations. Old, replaced, cancelled, past, and closed-application invitations reject stale responses. A reported hire or rejection closes any active interview invitation. No interview is automatically marked as attended.
+
+The application page shows the five most recent invitations and five recent events per invitation. Moderators with the relevant permissions can inspect the full history in the read-only administration screens. Meeting URLs and response messages remain private to the application parties and authorized reviewers. Notification emails contain a sign-in link and a generic update, not meeting credentials or interview instructions.
+
+**Download calendar file** creates an authorized, non-cacheable `.ics` attachment. Event times are exported in UTC, text is escaped, and UTF-8 lines are folded to calendar-file limits. It is a snapshot, not a live calendar integration: later changes do not automatically update imported events. No Google/Microsoft calendar permissions are requested.
+
+When an employer or authorized administrator reports a hire, a pending placement report is created. Existing hires are migrated to pending reports without fabricating applicant acceptance. Backfilled report times use the application’s existing last-update time, not an independently known hire date. Only the applicant can say **I accepted this role** or **I did not accept this role**. Repeating the same response is idempotent. Applicants may correct a response; previous responses remain in the audit history. Employers and administrators cannot submit an applicant's confirmation through the application or admin UI.
+
+Changing the application away from hired supersedes the current report without erasing its responses. A later hire starts a new pending report; old confirmation never carries over. The impact dashboard separately counts employer-reported hires, applicant-confirmed acceptances, people confirming acceptance, awaiting responses, and unconfirmed/disputed outcomes. Demo activity is excluded. These are current records rather than permanent lifetime totals, and applicant confirmation is self-reported acceptance, not independent proof of employment or a verified first day at work.
+
+Hiring actions are serialized on their application, keep audit and outbox records transactional, and have shared request limits. Applicant account deletion cascades through applications, interviews, responses, notifications, and pending delivery records, following the existing private-document cleanup policy.

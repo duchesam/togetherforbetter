@@ -1,1 +1,46 @@
-{% extends 'opportunities/base.html' %}{% load i18n %}{% block content %}<section class="shell form-section wide-form"><a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a><div class="eyebrow">{% translate "APPLICATION DETAILS" %}</div><h1>{{ application.opportunity.title }}</h1><p class="intro">{{ application.opportunity.employer.name }} · {{ application.get_status_display }}</p><div class="dashboard-banner"><div><h3>{{ application.applicant.profile.full_name }}</h3><p>{{ application.applicant.email }} · {{ application.applicant.profile.location }}</p></div></div><h2>{% translate "Skills" %}</h2><p>{{ application.applicant.profile.skills|default:_("Not provided") }}</p><h2>{% translate "Education" %}</h2>{{ application.applicant.profile.education|default:_("Not provided")|linebreaks }}<h2>{% translate "About the applicant" %}</h2>{{ application.applicant.profile.bio|default:_("Not provided")|linebreaks }}<h2>{% translate "CV" %}</h2>{% if application.applicant.profile.cv %}<a class="button outline" href="{% url 'download_cv' application.applicant.profile.pk %}">{% translate "Download CV (PDF) ↓" %}</a><p class="small-note">{% translate "This is the applicant’s current CV. Later uploads replace the version available here." %}</p>{% else %}<p class="small-note">{% translate "No CV uploaded. The applicant’s profile and message are available above and below." %}</p>{% endif %}<h2>{% translate "Application message" %}</h2>{{ application.cover_letter|linebreaks }}{% if owner %}<form method="post" class="standard-form status-form">{% csrf_token %}{{ form.as_p }}<p class="small-note">{% translate "Choose “Placement confirmed” only after confirming the applicant has accepted the role. This is an employer-reported placement." %}</p><button class="button" type="submit">{% translate "Update status →" %}</button></form>{% endif %}</section>{% endblock %}
+{% extends 'opportunities/base.html' %}{% load i18n %}
+{% block content %}
+<section class="shell form-section wide-form">
+  <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <div class="eyebrow">{% translate "APPLICATION DETAILS" %}</div>
+  <h1>{{ application.opportunity.title }}</h1>
+  <p class="intro">{{ application.opportunity.employer.name }} · {{ application.get_status_display }}</p>
+  <div class="hiring-workspace">
+    <div class="section-heading"><h2>{% translate "Interviews" %}</h2>{% if can_schedule %}<a class="button outline" href="{% url 'interview_invite' application.pk %}">{% translate "Invite to an interview" %} →</a>{% endif %}</div>
+    {% for interview in interviews %}
+      <article class="interview-card">
+        <div class="section-heading"><h3>{{ interview.get_mode_display }}</h3><span class="status-pill">{{ interview.get_status_display }}</span></div>
+        <p class="interview-time">{{ interview.scheduled_at|date:"DATE_FORMAT" }} · {{ interview.scheduled_at|time:"H:i" }}</p>
+        <p class="small-note">{% translate "Gregorian date and 24-hour clock, Addis Ababa time (UTC+3)." %} {% blocktranslate with minutes=interview.duration_minutes %}Duration: {{ minutes }} minutes.{% endblocktranslate %}</p>
+        {% if interview.location %}<p>{{ interview.location }}</p>{% endif %}
+        {{ interview.details|linebreaks }}
+        <div class="interview-links">{% if interview.meeting_url and interview.is_active %}<a href="{{ interview.meeting_url }}" target="_blank" rel="noopener noreferrer">{% translate "Open video meeting" %} <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>{% endif %}<a href="{% url 'interview_calendar' interview.pk %}">{% translate "Download calendar file" %} ↓</a></div>
+        {% if interview.response_note %}<p class="small-note">{% translate "Applicant message" %}</p><p>{{ interview.response_note }}</p>{% endif %}
+        {% if interview.can_respond %}<form method="post" class="standard-form interview-response-form" action="{% url 'interview_response' interview.pk %}">{% csrf_token %}{{ interview.response_form.as_p }}<button class="button" type="submit">{% translate "Save interview response" %} →</button></form>{% endif %}
+        {% if owner and interview.is_active %}<form method="post" action="{% url 'interview_cancel' interview.pk %}">{% csrf_token %}<button class="text-button danger-link" type="submit">{% translate "Cancel interview" %}</button></form>{% endif %}
+        <details class="interview-history"><summary>{% translate "Recent interview history" %}</summary>{% for event in interview.recent_events %}<p>{{ event.get_status_display }} · {{ event.created_at|date:"DATE_FORMAT" }} {{ event.created_at|time:"H:i" }}{% if event.note %}<br>{{ event.note }}{% endif %}</p>{% endfor %}</details>
+      </article>
+    {% empty %}<p class="small-note">{% translate "No interview invitations yet." %}</p>{% endfor %}
+    {% if interviews %}<p class="small-note">{% translate "Calendar downloads are snapshots. Later changes do not automatically update your calendar." %}</p>{% endif %}
+  </div>
+  {% if placement_report %}
+    <section class="placement-card">
+      <div class="eyebrow">{% translate "PLACEMENT OUTCOME" %}</div>
+      <h2>{% translate "Applicant confirmation" %}</h2>
+      <span class="status-pill">{{ placement_report.get_response_display }}</span>
+      <p>{% translate "The organization reported a hire. Applicant confirmation records acceptance of the role; it is not independent verification of employment." %}</p>
+      {% if not owner %}<form class="standard-form" method="post" action="{% url 'placement_response' placement_report.pk %}">{% csrf_token %}{{ placement_response_form.as_p }}<p class="small-note">{% translate "Respond only for yourself. You can update your response if your situation changes; previous responses remain in the history." %}</p><button class="button" type="submit">{% translate "Save placement response" %} →</button></form>{% endif %}
+      {% if placement_report.responded_at %}<p class="small-note">{% translate "Last response" %}: {{ placement_report.responded_at|date:"DATE_FORMAT" }} {{ placement_report.responded_at|time:"H:i" }} EAT</p>{% endif %}
+      {% if placement_history %}<details class="interview-history"><summary>{% translate "Recent placement responses" %}</summary>{% for event in placement_history %}<p>{{ event.get_response_display }} · {{ event.created_at|date:"DATE_FORMAT" }} {{ event.created_at|time:"H:i" }} EAT</p>{% endfor %}</details>{% endif %}
+    </section>
+  {% endif %}
+  <div class="dashboard-banner"><div><h3>{{ application.applicant.profile.full_name }}</h3><p>{{ application.applicant.email }} · {{ application.applicant.profile.location }}</p></div></div>
+  <h2>{% translate "Skills" %}</h2><p>{{ application.applicant.profile.skills|default:_("Not provided") }}</p>
+  <h2>{% translate "Education" %}</h2>{{ application.applicant.profile.education|default:_("Not provided")|linebreaks }}
+  <h2>{% translate "About the applicant" %}</h2>{{ application.applicant.profile.bio|default:_("Not provided")|linebreaks }}
+  <h2>{% translate "CV" %}</h2>
+  {% if application.applicant.profile.cv %}<a class="button outline" href="{% url 'download_cv' application.applicant.profile.pk %}">{% translate "Download CV (PDF) ↓" %}</a><p class="small-note">{% translate "This is the applicant’s current CV. Later uploads replace the version available here." %}</p>{% else %}<p class="small-note">{% translate "No CV uploaded. The applicant’s profile and message are available above and below." %}</p>{% endif %}
+  <h2>{% translate "Application message" %}</h2>{{ application.cover_letter|linebreaks }}
+  {% if owner %}<form method="post" class="standard-form status-form">{% csrf_token %}{{ form.as_p }}<p class="small-note">{% translate "Mark a hire only after the applicant accepts. The applicant confirms their own outcome separately." %}</p><button class="button" type="submit">{% translate "Update status →" %}</button></form>{% endif %}
+</section>
+{% endblock %}

@@ -79,7 +79,7 @@ class PlatformTests(TestCase):
         application.refresh_from_db()
         self.assertEqual(application.status, 'hired')
         self.client.force_login(self.seeker)
-        self.assertContains(self.client.get(reverse('dashboard')), 'Placement confirmed')
+        self.assertContains(self.client.get(reverse('dashboard')), 'Hired (employer reported)')
 
     def test_private_application_permissions(self):
         self.apply()

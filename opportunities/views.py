@@ -8,12 +8,14 @@ from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
 from django.db import transaction
 from django.db.models import Q
+from django.db.models import Prefetch
+from django.views.decorators.cache import never_cache
 from django.http import FileResponse, Http404, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.translation import get_language
-from .forms import SignupForm, ProfileForm, EmployerForm, OpportunityForm, ApplicationForm, StatusForm, ReportForm
-from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, PrivateFileCleanup
+from .forms import SignupForm, ProfileForm, EmployerForm, OpportunityForm, ApplicationForm, StatusForm, ReportForm, InterviewResponseForm, PlacementResponseForm
+from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, PrivateFileCleanup, Interview, InterviewEvent, PlacementReport
 from .notifications import application_received, change_application_status, queue_verification
 
 def public_jobs():
@@ -157,6 +159,7 @@ def apply(request, pk):
     return render(request, "opportunities/form.html", {"form": form, "title": _("Apply for %(title)s") % {"title": job.title}, "subtitle": _("Your current profile, CV (if uploaded), email, and this message will be shared with %(employer)s. Later profile and CV updates will also be visible to this employer. Update your profile before applying.") % {"employer": job.employer.name}, "button": _("Send application")})
 
 @login_required
+@never_cache
 def application_detail(request, pk):
     application = get_object_or_404(Application.objects.select_related("opportunity__employer", "applicant__profile"), pk=pk)
     owner = application.opportunity.employer.user_id == request.user.id
@@ -169,7 +172,18 @@ def application_detail(request, pk):
         change_application_status(application.pk, request.user, form.cleaned_data["status"])
         messages.success(request, _("Application status updated."))
         return redirect("application", pk=pk)
-    return render(request, "opportunities/application.html", {"application": application, "form": form, "owner": owner})
+    interviews = list(application.interviews.order_by("-pk").prefetch_related(Prefetch("events", queryset=InterviewEvent.objects.order_by("-created_at", "-pk")[:5], to_attr="recent_events"))[:5])
+    is_open = application.status not in ["hired", "declined"]
+    for index, interview in enumerate(interviews):
+        interview.can_respond = not owner and index == 0 and interview.status not in ["cancelled", "replaced"] and interview.scheduled_at > timezone.now() and is_open
+        interview.response_form = InterviewResponseForm(initial={"status": interview.status if interview.status in ["accepted", "declined", "reschedule"] else "", "note": interview.response_note})
+    report = application.placement_reports.filter(superseded_at__isnull=True).first()
+    return render(request, "opportunities/application.html", {
+        "application": application, "form": form, "owner": owner,
+        "interviews": interviews, "can_schedule": owner and is_open,
+        "placement_report": report, "placement_response_form": PlacementResponseForm(initial={"response": report.response}) if report else None,
+        "placement_history": list(report.events.order_by("-created_at", "-pk")[:5]) if report else [],
+    })
 
 def about(request):
     return render(request, "opportunities/about.html")
@@ -206,6 +220,9 @@ def report_detail(request, pk):
 @staff_member_required
 def impact(request):
     applications = Application.objects.filter(opportunity__employer__is_demo=False)
+    outcomes = PlacementReport.objects.filter(superseded_at__isnull=True, application__status="hired", application__opportunity__employer__is_demo=False)
+    confirmed = outcomes.filter(response="confirmed").count()
+    disputed = outcomes.filter(response="disputed").count()
     return render(request, "opportunities/impact.html", {
         "seekers": Profile.objects.filter(role="seeker", user__is_active=True).count(),
         "verified_employers": Employer.objects.filter(verified=True, is_demo=False).count(),
@@ -218,6 +235,10 @@ def impact(request):
         "live_jobs": public_jobs().filter(employer__is_demo=False).count(),
         "application_count": applications.count(),
         "placements": applications.filter(status="hired").count(),
+        "applicant_confirmed": confirmed,
+        "disputed_placements": disputed,
+        "awaiting_placements": applications.filter(status="hired").count() - confirmed - disputed,
+        "confirmed_people": outcomes.filter(response="confirmed").values("application__applicant").distinct().count(),
         "people_placed": applications.filter(status="hired").values("applicant").distinct().count(),
-        "recent_placements": applications.filter(status="hired").select_related("applicant__profile", "opportunity__employer").order_by("-updated_at")[:10],
+        "recent_placements": applications.filter(status="hired").select_related("applicant__profile", "opportunity__employer").prefetch_related(Prefetch("placement_reports", queryset=PlacementReport.objects.filter(superseded_at__isnull=True), to_attr="current_placement_reports")).order_by("-updated_at")[:10],
     })

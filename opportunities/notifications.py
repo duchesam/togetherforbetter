@@ -67,8 +67,12 @@ def application_received(application):
     return record_notification(application, application.opportunity.employer.user, Notification.Kind.APPLICATION)
 
 
-def application_status_changed(application):
-    return record_notification(application, application.applicant, Notification.Kind.STATUS, application.status)
+@transaction.atomic
+def application_status_changed(application, actor=None):
+    from .hiring import sync_after_status_change
+    current = Application.objects.select_for_update().select_related("opportunity__employer__user", "applicant").get(pk=application.pk)
+    sync_after_status_change(current, actor)
+    return record_notification(current, current.applicant, Notification.Kind.STATUS, current.status)
 
 
 def change_application_status(pk, actor, status):
@@ -82,7 +86,7 @@ def change_application_status(pk, actor, status):
         if application.status != status:
             application.status = status
             application.save(update_fields=["status", "updated_at"])
-            application_status_changed(application)
+            application_status_changed(application, actor)
         return application
 
 

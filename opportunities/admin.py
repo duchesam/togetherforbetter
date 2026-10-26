@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils import timezone
 from django.core.exceptions import PermissionDenied
-from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery
+from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, Interview, InterviewEvent, PlacementReport, PlacementResponseEvent
 from .notifications import application_received, application_status_changed
 admin.site.site_header = _("Together for Better · Community administration")
 admin.site.site_title = _("Together for Better")
@@ -25,13 +25,18 @@ class ApplicationAdmin(admin.ModelAdmin):
     search_fields = ["applicant__username", "opportunity__title"]
     readonly_fields = ["created_at", "updated_at"]
 
+    def get_readonly_fields(self, request, obj=None):
+        return self.readonly_fields + (["applicant", "opportunity", "cover_letter"] if obj else [])
+
     def save_model(self, request, obj, form, change):
-        previous = Application.objects.filter(pk=obj.pk).values_list("status", flat=True).first() if obj.pk else None
+        previous = Application.objects.select_for_update().filter(pk=obj.pk).values_list("status", flat=True).first() if obj.pk else None
         super().save_model(request, obj, form, change)
         if not change:
             application_received(obj)
+            if obj.status == "hired":
+                application_status_changed(obj, request.user)
         elif previous != obj.status:
-            application_status_changed(obj)
+            application_status_changed(obj, request.user)
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ["full_name", "user", "role"]
@@ -120,3 +125,49 @@ class EmailDeliveryAdmin(admin.ModelAdmin):
                 delivery.save(update_fields=["failed_at", "attempts", "available_at", "claimed_at", "claim_token", "last_error_type"])
                 self.log_change(request, delivery, "Failed account email returned to the delivery queue.")
         self.message_user(request, _("Failed account emails were returned to the delivery queue."))
+
+
+class ReadOnlyHiringAdmin(admin.ModelAdmin):
+    def get_readonly_fields(self, request, obj=None):
+        return [field.name for field in self.model._meta.fields]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+class InterviewEventInline(admin.TabularInline):
+    model = InterviewEvent
+    extra = 0
+    can_delete = False
+    readonly_fields = ["actor", "status", "note", "created_at"]
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+
+class PlacementResponseInline(InterviewEventInline):
+    model = PlacementResponseEvent
+    readonly_fields = ["response", "created_at"]
+
+
+@admin.register(Interview)
+class InterviewAdmin(ReadOnlyHiringAdmin):
+    list_display = ["application", "scheduled_at", "mode", "status"]
+    list_filter = ["status", "mode"]
+    inlines = [InterviewEventInline]
+
+
+@admin.register(PlacementReport)
+class PlacementAdmin(ReadOnlyHiringAdmin):
+    list_display = ["application", "response", "reported_at", "responded_at", "superseded_at"]
+    list_filter = ["response", "superseded_at"]
+    inlines = [PlacementResponseInline]

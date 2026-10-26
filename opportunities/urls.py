@@ -2,6 +2,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views
 from . import account_views
+from . import hiring_views
 from .forms import LockedSetPasswordForm
 urlpatterns = [
     path("", views.home, name="home"),
@@ -41,4 +42,9 @@ urlpatterns = [
     path("organization/", views.employer_edit, name="employer"),
     path("opportunities/new/", views.post_job, name="post_job"),
     path("applications/<int:pk>/", views.application_detail, name="application"),
+    path("applications/<int:pk>/interview/", hiring_views.interview_invite, name="interview_invite"),
+    path("interviews/<int:pk>/respond/", hiring_views.interview_response, name="interview_response"),
+    path("interviews/<int:pk>/cancel/", hiring_views.interview_cancel, name="interview_cancel"),
+    path("interviews/<int:pk>/calendar/", hiring_views.interview_calendar, name="interview_calendar"),
+    path("placements/<int:pk>/respond/", hiring_views.placement_response, name="placement_response"),
 ]

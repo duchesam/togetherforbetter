@@ -1918,3 +1918,266 @@ msgstr ""
 "ሲቪዎን፣ ኢሜይልዎንና ማመልከቻዎን ማየት ይችላሉ። ሥራ ፈላጊዎች መለያቸውን ከመለያ ቅንብሮች መሰረዝ ይችላሉ። የድርጅትና"
 " የሠራተኛ መለያዎች በአስተዳዳሪ ይዘጋሉ። PDF ሲቪዎን መቀየር ወይም ማስወገድ ይችላሉ። የማመልከቻ ዜናዎች "
 "በማሳወቂያዎች ይታያሉ፤ የኢሜይል ዜናዎች የተረጋገጠ አድራሻ ያስፈልጋቸዋል፣ ከመለያ ቅንብሮችም ሊዘጉ ይችላሉ።"
+
+msgid "Hired (employer reported)"
+msgstr "አሠሪው ቅጥር እንዳለ አሳውቋል"
+
+msgid "Interview"
+msgstr "ቃለ መጠይቅ"
+
+msgid "Interviews"
+msgstr "ቃለ መጠይቆች"
+
+msgid "Interview update"
+msgstr "የቃለ መጠይቅ ዜና"
+
+msgid "Placement response updated"
+msgstr "የቅጥር ምላሽ ተዘምኗል"
+
+msgid "In person"
+msgstr "በአካል"
+
+msgid "Video call"
+msgstr "በቪዲዮ"
+
+msgid "Phone call"
+msgstr "በስልክ"
+
+msgid "Awaiting applicant response"
+msgstr "የአመልካቹን ምላሽ እየጠበቀ ነው"
+
+msgid "Accepted"
+msgstr "ተቀብሏል"
+
+msgid "Declined"
+msgstr "አልተቀበለም"
+
+msgid "Another time requested"
+msgstr "ሌላ ጊዜ ተጠይቋል"
+
+msgid "Cancelled"
+msgstr "ተሰርዟል"
+
+msgid "Replaced by a newer invitation"
+msgstr "በአዲስ ግብዣ ተተክቷል"
+
+msgid "Choose a future interview time."
+msgstr "ወደፊት ያለ የቃለ መጠይቅ ጊዜ ይምረጡ።"
+
+msgid "Enter the interview location."
+msgstr "የቃለ መጠይቁን ቦታ ያስገቡ።"
+
+msgid "Explain how the phone interview will take place."
+msgstr "የስልክ ቃለ መጠይቁ እንዴት እንደሚካሄድ ይግለጹ።"
+
+msgid "Enter an HTTPS meeting link without embedded credentials."
+msgstr "የመግቢያ ስምና የይለፍ ቃል ያልተካተቱበት HTTPS የስብሰባ አገናኝ ያስገቡ።"
+
+msgid "Meeting links are only used for video interviews."
+msgstr "የስብሰባ አገናኞች ለቪዲዮ ቃለ መጠይቆች ብቻ ይጠቀማሉ።"
+
+msgid "Awaiting applicant confirmation"
+msgstr "የአመልካቹን ማረጋገጫ እየጠበቀ ነው"
+
+msgid "Applicant confirmed acceptance"
+msgstr "አመልካቹ መቀበሉን አረጋግጧል"
+
+msgid "Applicant did not confirm acceptance"
+msgstr "አመልካቹ መቀበሉን አላረጋገጠም"
+
+msgid ""
+"This invitation was already submitted with different details. Reload the "
+"page."
+msgstr "ይህ ግብዣ በተለየ ዝርዝር ከዚህ በፊት ተልኳል። ገጹን እንደገና ይክፈቱ።"
+
+msgid "This application is closed to interview scheduling."
+msgstr "ለዚህ ማመልከቻ የቃለ መጠይቅ ቀጠሮ መያዝ ተዘግቷል።"
+
+msgid "This invitation is no longer available for a response."
+msgstr "ለዚህ ግብዣ ምላሽ መስጠት አይቻልም።"
+
+msgid "Choose a valid interview response."
+msgstr "ትክክለኛ የቃለ መጠይቅ ምላሽ ይምረጡ።"
+
+msgid "Suggest another time in your message."
+msgstr "በመልዕክትዎ ሌላ ጊዜ ያቅርቡ።"
+
+msgid "This placement report is no longer current."
+msgstr "ይህ የቅጥር ሪፖርት ወቅታዊ አይደለም።"
+
+msgid "Choose a valid placement response."
+msgstr "ትክክለኛ የቅጥር ምላሽ ይምረጡ።"
+
+msgid "Interview date and time"
+msgstr "የቃለ መጠይቅ ቀንና ሰዓት"
+
+msgid "Gregorian date and 24-hour clock, Addis Ababa time (UTC+3)."
+msgstr "ጎርጎርዮሳዊ ቀንና የ24 ሰዓት አቆጣጠር፣ የአዲስ አበባ ሰዓት (UTC+3)።"
+
+msgid "Duration in minutes"
+msgstr "የሚወስደው ጊዜ በደቂቃ"
+
+msgid "Interview format"
+msgstr "የቃለ መጠይቅ ዓይነት"
+
+msgid "Interview location"
+msgstr "የቃለ መጠይቅ ቦታ"
+
+msgid "HTTPS video meeting link"
+msgstr "HTTPS የቪዲዮ ስብሰባ አገናኝ"
+
+msgid "Interview instructions"
+msgstr "የቃለ መጠይቅ መመሪያዎች"
+
+msgid "Your interview response"
+msgstr "የእርስዎ የቃለ መጠይቅ ምላሽ"
+
+msgid "Choose a response"
+msgstr "ምላሽ ይምረጡ"
+
+msgid "Accept interview"
+msgstr "ቃለ መጠይቁን ተቀበል"
+
+msgid "Decline interview"
+msgstr "ቃለ መጠይቁን አልቀበልም"
+
+msgid "Request another time"
+msgstr "ሌላ ጊዜ ጠይቅ"
+
+msgid "Message to the employer"
+msgstr "መልዕክት ለአሠሪው"
+
+msgid "Your placement response"
+msgstr "የእርስዎ የቅጥር ምላሽ"
+
+msgid "I accepted this role"
+msgstr "ይህን ሥራ ተቀብያለሁ"
+
+msgid "I did not accept this role"
+msgstr "ይህን ሥራ አልተቀበልኩም"
+
+msgid "Interview invitation recorded. The applicant has been notified."
+msgstr "የቃለ መጠይቅ ግብዣው ተመዝግቧል። ለአመልካቹ ማሳወቂያ ተዘጋጅቷል።"
+
+msgid "Invite to an interview"
+msgstr "ለቃለ መጠይቅ ጋብዝ"
+
+msgid ""
+"Use Gregorian dates and Addis Ababa time (UTC+3). A new invitation replaces "
+"any active invitation for this application."
+msgstr ""
+"ጎርጎርዮሳዊ ቀንና የአዲስ አበባ ሰዓት (UTC+3) ይጠቀሙ። አዲስ ግብዣ ለዚህ ማመልከቻ ያለውን ንቁ ግብዣ ይተካል።"
+
+msgid "Send interview invitation"
+msgstr "የቃለ መጠይቅ ግብዣ ላክ"
+
+msgid "Your interview response has been saved."
+msgstr "የቃለ መጠይቅ ምላሽዎ ተቀምጧል።"
+
+msgid "Respond to the interview"
+msgstr "ለቃለ መጠይቁ ምላሽ ይስጡ"
+
+msgid "Save response"
+msgstr "ምላሽ አስቀምጥ"
+
+msgid "The active interview has been cancelled."
+msgstr "ንቁው የቃለ መጠይቅ ግብዣ ተሰርዟል።"
+
+msgid "Your placement response has been recorded."
+msgstr "የቅጥር ምላሽዎ ተመዝግቧል።"
+
+msgid "Confirm your placement outcome"
+msgstr "የቅጥር ውጤትዎን ያረጋግጡ"
+
+#, python-format
+msgid "Duration: %(minutes)s minutes."
+msgstr "የሚወስደው ጊዜ፦ %(minutes)s ደቂቃዎች።"
+
+msgid "Open video meeting"
+msgstr "የቪዲዮ ስብሰባውን ክፈት"
+
+msgid "Download calendar file"
+msgstr "የቀን መቁጠሪያ ፋይል አውርድ"
+
+msgid "Applicant message"
+msgstr "የአመልካቹ መልዕክት"
+
+msgid "Save interview response"
+msgstr "የቃለ መጠይቅ ምላሽ አስቀምጥ"
+
+msgid "Cancel interview"
+msgstr "ቃለ መጠይቁን ሰርዝ"
+
+msgid "Recent interview history"
+msgstr "የቅርብ ጊዜ የቃለ መጠይቅ ታሪክ"
+
+msgid "No interview invitations yet."
+msgstr "ገና የቃለ መጠይቅ ግብዣ የለም።"
+
+msgid ""
+"Calendar downloads are snapshots. Later changes do not automatically update "
+"your calendar."
+msgstr ""
+"የሚወርዱ የቀን መቁጠሪያ ፋይሎች የወቅቱን መረጃ ይይዛሉ። በኋላ የሚደረጉ ለውጦች የቀን መቁጠሪያዎን በራስ-ሰር "
+"አያዘምኑም።"
+
+msgid "PLACEMENT OUTCOME"
+msgstr "የቅጥር ውጤት"
+
+msgid "Applicant confirmation"
+msgstr "የአመልካቹ ማረጋገጫ"
+
+msgid ""
+"The organization reported a hire. Applicant confirmation records acceptance "
+"of the role; it is not independent verification of employment."
+msgstr ""
+"ድርጅቱ ቅጥር እንዳለ አሳውቋል። የአመልካቹ ማረጋገጫ ሥራውን መቀበሉን ይመዘግባል፤ ገለልተኛ የቅጥር ማረጋገጫ አይደለም።"
+
+msgid ""
+"Respond only for yourself. You can update your response if your situation "
+"changes; previous responses remain in the history."
+msgstr "ለራስዎ ብቻ ምላሽ ይስጡ። ሁኔታዎ ከተቀየረ ምላሽዎን ማዘመን ይችላሉ፤ የቀድሞ ምላሾች በታሪኩ ይቀመጣሉ።"
+
+msgid "Save placement response"
+msgstr "የቅጥር ምላሽ አስቀምጥ"
+
+msgid "Last response"
+msgstr "የመጨረሻ ምላሽ"
+
+msgid ""
+"Mark a hire only after the applicant accepts. The applicant confirms their "
+"own outcome separately."
+msgstr "አመልካቹ ከተቀበለ በኋላ ብቻ ቅጥር መኖሩን ያመልክቱ። አመልካቹ የራሱን ውጤት በተለየ ያረጋግጣል።"
+
+msgid "APPLICATION UPDATE"
+msgstr "የማመልከቻ ለውጥ"
+
+msgid "This request needs a fresh view."
+msgstr "ይህ ጥያቄ ገጹን እንደገና መክፈት ይፈልጋል።"
+
+msgid "People reported hired"
+msgstr "ቅጥር አግኝተዋል የተባሉ ሰዎች"
+
+msgid "Applicant-confirmed acceptances"
+msgstr "አመልካቾች ያረጋገጧቸው የሥራ ቅበላዎች"
+
+msgid "People confirming acceptance"
+msgstr "ሥራውን መቀበላቸውን ያረጋገጡ ሰዎች"
+
+msgid ""
+"Applicant confirmation is self-reported acceptance, not independent "
+"verification of employment."
+msgstr "የአመልካቹ ማረጋገጫ ራሱ የሰጠው የቅበላ ምላሽ ነው፣ ገለልተኛ የቅጥር ማረጋገጫ አይደለም።"
+
+msgid ""
+"There is an interview update. Sign in to see the current invitation and "
+"response."
+msgstr "የቃለ መጠይቅ ለውጥ አለ። ወቅታዊውን ግብዣና ምላሽ ለማየት ይግቡ።"
+
+msgid ""
+"The applicant updated their placement response. Sign in to view the current "
+"outcome."
+msgstr "አመልካቹ የቅጥር ምላሹን አዘምኗል። ወቅታዊውን ውጤት ለማየት ይግቡ።"
+
+msgid "Recent placement responses"
+msgstr "የቅርብ ጊዜ የቅጥር ምላሾች"

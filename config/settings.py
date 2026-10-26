@@ -29,6 +29,8 @@ REQUEST_LIMITS = {
     "profile": (30, 3600),
     "verification_request": (3, 900), "account_delete": (5, 3600),
     "account_settings": (30, 3600),
+    "interview_invite": (10, 3600), "interview_response": (20, 3600),
+    "interview_cancel": (20, 3600), "placement_response": (20, 3600),
 }
 TIME_ZONE = "Africa/Addis_Ababa"
 USE_I18N = True

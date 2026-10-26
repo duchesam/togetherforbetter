@@ -76,7 +76,7 @@ class Application(models.Model):
         SUBMITTED = "submitted", _("Submitted")
         REVIEWING = "reviewing", _("Under review")
         SHORTLISTED = "shortlisted", _("Shortlisted")
-        HIRED = "hired", _("Placement confirmed")
+        HIRED = "hired", _("Hired (employer reported)")
         DECLINED = "declined", _("Not selected")
     opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name="applications")
     applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="applications")
@@ -132,6 +132,8 @@ class Notification(models.Model):
     class Kind(models.TextChoices):
         APPLICATION = "application", _("New application received")
         STATUS = "status", _("Application status changed")
+        INTERVIEW = "interview", _("Interview update")
+        PLACEMENT = "placement", _("Placement response updated")
 
     recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="notifications")
     application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="notifications")
@@ -139,6 +141,8 @@ class Notification(models.Model):
     status_code = models.CharField(max_length=16, choices=Application.Status.choices, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     read_at = models.DateTimeField(null=True, blank=True)
+    interview = models.ForeignKey("Interview", null=True, blank=True, on_delete=models.CASCADE, related_name="notifications")
+    placement_report = models.ForeignKey("PlacementReport", null=True, blank=True, on_delete=models.CASCADE, related_name="notifications")
 
     class Meta:
         ordering = ["-created_at", "-pk"]
@@ -178,3 +182,103 @@ class PrivateFileCleanup(models.Model):
     available_at = models.DateTimeField(default=timezone.now, db_index=True)
     failed_at = models.DateTimeField(null=True, blank=True)
     last_error_type = models.CharField(max_length=100, blank=True)
+
+
+class Interview(models.Model):
+    class Mode(models.TextChoices):
+        IN_PERSON = "in_person", _("In person")
+        VIDEO = "video", _("Video call")
+        PHONE = "phone", _("Phone call")
+
+    class Status(models.TextChoices):
+        PENDING = "pending", _("Awaiting applicant response")
+        ACCEPTED = "accepted", _("Accepted")
+        DECLINED = "declined", _("Declined")
+        RESCHEDULE = "reschedule", _("Another time requested")
+        CANCELLED = "cancelled", _("Cancelled")
+        REPLACED = "replaced", _("Replaced by a newer invitation")
+
+    application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="interviews")
+    request_key = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    scheduled_at = models.DateTimeField()
+    duration_minutes = models.PositiveSmallIntegerField(choices=[(15, "15"), (30, "30"), (45, "45"), (60, "60"), (90, "90"), (120, "120")], default=30)
+    mode = models.CharField(max_length=12, choices=Mode.choices)
+    location = models.CharField(max_length=240, blank=True)
+    meeting_url = models.URLField(blank=True)
+    details = models.TextField(max_length=1500, blank=True)
+    status = models.CharField(max_length=12, choices=Status.choices, default=Status.PENDING)
+    response_note = models.CharField(max_length=500, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at", "-pk"]
+        constraints = [models.UniqueConstraint(fields=["application"], condition=models.Q(status__in=["pending", "accepted", "reschedule"]), name="one_active_interview_per_application")]
+
+    @property
+    def is_active(self):
+        return self.status in [self.Status.PENDING, self.Status.ACCEPTED, self.Status.RESCHEDULE]
+
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        from urllib.parse import urlsplit
+        errors = {}
+        if self.scheduled_at and (timezone.is_naive(self.scheduled_at) or self.scheduled_at <= timezone.now()):
+            errors["scheduled_at"] = _("Choose a future interview time.")
+        if self.mode == self.Mode.IN_PERSON and not self.location.strip():
+            errors["location"] = _("Enter the interview location.")
+        if self.mode == self.Mode.PHONE and not self.details.strip():
+            errors["details"] = _("Explain how the phone interview will take place.")
+        if self.mode == self.Mode.VIDEO:
+            try:
+                url = urlsplit(self.meeting_url)
+                valid = url.scheme == "https" and url.hostname and not url.username and not url.password
+            except ValueError:
+                valid = False
+            if not valid:
+                errors["meeting_url"] = _("Enter an HTTPS meeting link without embedded credentials.")
+        elif self.meeting_url:
+            errors["meeting_url"] = _("Meeting links are only used for video interviews.")
+        if errors:
+            raise ValidationError(errors)
+
+
+class InterviewEvent(models.Model):
+    interview = models.ForeignKey(Interview, on_delete=models.CASCADE, related_name="events")
+    actor = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
+    status = models.CharField(max_length=12, choices=Interview.Status.choices)
+    note = models.CharField(max_length=500, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_at", "pk"]
+
+
+class PlacementReport(models.Model):
+    class Response(models.TextChoices):
+        PENDING = "pending", _("Awaiting applicant confirmation")
+        CONFIRMED = "confirmed", _("Applicant confirmed acceptance")
+        DISPUTED = "disputed", _("Applicant did not confirm acceptance")
+
+    application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="placement_reports")
+    reported_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL)
+    reported_at = models.DateTimeField(default=timezone.now)
+    response = models.CharField(max_length=12, choices=Response.choices, default=Response.PENDING)
+    responded_at = models.DateTimeField(null=True, blank=True)
+    superseded_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-reported_at", "-pk"]
+        constraints = [
+            models.UniqueConstraint(fields=["application"], condition=models.Q(superseded_at__isnull=True), name="one_current_placement_report"),
+            models.CheckConstraint(condition=(models.Q(response="pending", responded_at__isnull=True) | models.Q(response__in=["confirmed", "disputed"], responded_at__isnull=False)), name="placement_response_has_timestamp"),
+        ]
+
+
+class PlacementResponseEvent(models.Model):
+    report = models.ForeignKey(PlacementReport, on_delete=models.CASCADE, related_name="events")
+    response = models.CharField(max_length=12, choices=PlacementReport.Response.choices)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_at", "pk"]
