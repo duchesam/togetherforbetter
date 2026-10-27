@@ -6,6 +6,7 @@ from . import hiring_views
 from . import listing_views, moderation_views, review_views
 from .forms import LockedSetPasswordForm
 urlpatterns = [
+    path("organization/applicants/", tracker_views.employer_applicants, name="employer_applicants"),
     path("applications/", tracker_views.application_tracker, name="application_tracker"),
     path("applications/<int:pk>/withdraw/", hiring_views.application_withdraw, name="application_withdraw"),
     path("organization/reviews/", review_views.employer_reviews, name="employer_reviews"),

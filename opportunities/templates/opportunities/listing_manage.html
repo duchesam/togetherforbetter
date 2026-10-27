@@ -1,6 +1,7 @@
 {% extends 'opportunities/base.html' %}{% load i18n %}
 {% block content %}<section class="shell detail-section">
   <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <a href="{% url 'employer_applicants' %}?listing={{ job.pk }}">{% translate "Manage applicants" %}</a>
   <a href="{% url 'employer_reviews' %}?listing={{ job.pk }}">{% translate "Review decisions" %}</a>
   <div class="eyebrow">{% translate "YOUR LISTING" %}</div>
   <div class="section-heading"><div><h1>{{ job.title }}</h1><p>{{ job.employer.name }} · {{ job.location }}</p></div><a class="button outline" href="{% url 'listing_edit' job.pk %}">{% translate "Edit opportunity" %} →</a></div>

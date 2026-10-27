@@ -2517,3 +2517,20 @@ msgstr "ቀጣይ ቃለ መጠይቅ"
 
 msgid "No applications match these filters."
 msgstr "ከእነዚህ ማጣሪያዎች ጋር የሚዛመዱ ማመልከቻዎች የሉም።"
+
+msgid "Search applicants or listing titles"
+msgstr "አመልካቾችን ወይም የማስታወቂያ ርዕሶችን ይፈልጉ"
+
+msgid "All your listings"
+msgstr "ሁሉም ማስታወቂያዎችዎ"
+
+msgid "Listing"
+msgstr "ማስታወቂያ"
+
+msgid "Manage applicants"
+msgstr "አመልካቾችን ያስተዳድሩ"
+
+msgid ""
+"Search applications to your listings and manage each recruitment process "
+"privately."
+msgstr "ለማስታወቂያዎችዎ የቀረቡ ማመልከቻዎችን ይፈልጉ፣ እያንዳንዱንም የቅጥር ሂደት በግል ያስተዳድሩ።"

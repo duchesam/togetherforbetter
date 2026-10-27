@@ -27,6 +27,16 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Employer applicant workspace (fictional demonstration)**
+
+![Employer applicant workspace](docs/screenshots/employer-applicants.png)
+
+<details><summary>Amharic applicant workspace on mobile</summary>
+
+![Amharic employer applicant workspace](docs/screenshots/employer-applicants-amharic.png)
+
+</details>
+
 **Private application tracker (fictional demonstration)**
 
 ![Private application tracker](docs/screenshots/application-tracker.png)
@@ -357,3 +367,12 @@ Job seekers open **My application tracker** from their dashboard. The page searc
 **Only applications with upcoming interviews** shows future pending, accepted, or rescheduling-requested invitations on active applications, ordered by scheduled time. Past, cancelled, replaced and declined invitations and closed applications are excluded. Pending and rescheduling states retain their explicit labels; an invitation does not establish attendance. Dates use the Gregorian calendar and Addis Ababa time (UTC+3).
 
 The tracker is read-only, requires authentication, and returns non-cacheable responses. Filters stay in pagination links. Application actions remain on the existing permission-checked detail page. No email, external services, or browser scripts are needed for this feature.
+
+
+## Employer applicant workspace
+
+Employers open **Manage applicants** from their dashboard or a listing's management page. The private workspace searches applicant profile names, usernames and listing titles, and filters by their own listing, application status, and future interview invitations. Listing links preselect that listing. Results show twelve applications per page and open the existing application detail workflow for profile/CV access, status changes and interview actions.
+
+Both results and status totals are scoped to the signed-in employer's organization. Summary totals cover all applications to that organization; matching counts reflect the active filters. The listing selector includes the employer's closed and unpublished listings so recruitment history remains accessible. Foreign or invalid listing filters fail validation without displaying another employer's listing details. Employers cannot search the general job-seeker population through this workspace.
+
+Upcoming interviews share the job-seeker tracker's date and state rules and sort by scheduled time. The list preserves pending, accepted and rescheduling labels without claiming attendance. Read-only GET requests never change applications; withdrawn applications remain protected by the existing detail and service checks. Neither this list nor its filters bypass private CV download authorization. English and Amharic are available, with no additional client scripts or external services.
