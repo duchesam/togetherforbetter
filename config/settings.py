@@ -24,6 +24,8 @@ LANGUAGE_COOKIE_SAMESITE = "Lax"
 # Shared database limits work across application workers, without a Redis dependency.
 # Counts are per direct client address for anonymous endpoints, per user otherwise.
 REQUEST_LIMITS = {
+    "resume_builder": (60, 3600),
+    "resume_generate": (5, 3600),
     "application_withdraw": (10, 3600),
     "review_read": (60, 3600),
     "moderation_review": (60, 3600),
@@ -84,3 +86,7 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
+
+# Server-side only. A missing key leaves the manual resume editor available.
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+RESUME_AI_MODEL = os.getenv("RESUME_AI_MODEL", "gpt-4.1-mini")

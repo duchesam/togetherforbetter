@@ -1,11 +1,14 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
-from . import views, tracker_views
+from . import views, tracker_views, resume_views
 from . import account_views
 from . import hiring_views
 from . import listing_views, moderation_views, review_views
 from .forms import LockedSetPasswordForm
 urlpatterns = [
+    path("resume/", resume_views.resume_builder, name="resume_builder"),
+    path("resume/generate/", resume_views.resume_builder, {"generate": True}, name="resume_generate"),
+    path("resume/download/", resume_views.resume_download, name="resume_download"),
     path("organization/applicants/", tracker_views.employer_applicants, name="employer_applicants"),
     path("applications/", tracker_views.application_tracker, name="application_tracker"),
     path("applications/<int:pk>/withdraw/", hiring_views.application_withdraw, name="application_withdraw"),

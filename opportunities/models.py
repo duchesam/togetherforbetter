@@ -338,3 +338,19 @@ class ApplicationWithdrawal(models.Model):
     application = models.OneToOneField(Application, on_delete=models.CASCADE, related_name="withdrawal")
     previous_status = models.CharField(max_length=16, choices=Application.Status.choices)
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class ResumeDraft(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="resume_draft")
+    full_name = models.CharField(max_length=150)
+    email = models.EmailField(blank=True)
+    phone = models.CharField(max_length=50, blank=True)
+    location = models.CharField(max_length=100, blank=True)
+    target_role = models.CharField(max_length=150, blank=True)
+    language = models.CharField(max_length=5, choices=settings.LANGUAGES, default="en")
+    summary = models.TextField(max_length=2000, blank=True)
+    education = models.TextField(max_length=4000, blank=True)
+    experience = models.TextField(max_length=6000, blank=True)
+    skills = models.TextField(max_length=2000, blank=True)
+    version = models.PositiveIntegerField(default=1)
+    updated_at = models.DateTimeField(auto_now=True)

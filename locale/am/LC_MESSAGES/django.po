@@ -2537,3 +2537,103 @@ msgstr "ለማስታወቂያዎችዎ የቀረቡ ማመልከቻዎችን ይ
 
 msgid "Apply language"
 msgstr "ቋንቋውን ተግብር"
+
+msgid "AI resume builder"
+msgstr "በሰው ሠራሽ አእምሮ የታገዘ የሥራ ልምድ ማስረጃ አዘጋጅ"
+
+msgid "Phone (optional)"
+msgstr "ስልክ (አማራጭ)"
+
+msgid "Target role"
+msgstr "የሚፈልጉት የሥራ መደብ"
+
+msgid "Resume language"
+msgstr "የሥራ ልምድ ማስረጃ ቋንቋ"
+
+msgid "Professional summary"
+msgstr "የሙያ ማጠቃለያ"
+
+msgid "Experience and projects"
+msgstr "ልምድ እና ፕሮጀክቶች"
+
+msgid ""
+"AI drafting is not configured. You can still edit and download your resume."
+msgstr ""
+"በሰው ሠራሽ አእምሮ የማርቀቅ አገልግሎት ገና አልተዋቀረም። የሥራ ልምድ ማስረጃዎን ማስተካከል እና ማውረድ ይችላሉ።"
+
+msgid "Add your education, skills, or experience before generating a draft."
+msgstr "ረቂቅ ከማመንጨትዎ በፊት ትምህርትዎን፣ ክህሎቶችዎን ወይም ልምድዎን ያክሉ።"
+
+msgid ""
+"AI drafting is unavailable right now. Your text has been kept in the editor."
+" Try again or save it manually."
+msgstr ""
+"በሰው ሠራሽ አእምሮ የማርቀቅ አገልግሎት በአሁኑ ጊዜ አይገኝም። ጽሑፍዎ በማስተካከያው ውስጥ ተጠብቋል። እንደገና ይሞክሩ"
+" ወይም በእጅ ያስቀምጡት።"
+
+msgid ""
+"I agree to send the resume text below to OpenAI for AI drafting. Contact "
+"fields and uploaded CV files are excluded."
+msgstr ""
+"ከታች ያለው የሥራ ልምድ ማስረጃ ጽሑፍ ለማርቀቅ ወደ OpenAI እንዲላክ እስማማለሁ። የመገናኛ መረጃ መስኮች እና "
+"የተጫኑ ፋይሎች አይላኩም።"
+
+msgid "Consent is required before sending text for AI drafting."
+msgstr "ጽሑፍን ለማርቀቅ ከመላክ በፊት ፈቃድዎ ያስፈልጋል።"
+
+msgid ""
+"Your saved resume changed in another tab. Copy your edits, reload, and try "
+"again."
+msgstr "የተቀመጠው የሥራ ልምድ ማስረጃዎ በሌላ ትር ተቀይሯል። ለውጦችዎን ይቅዱ፣ ገጹን እንደገና ይጫኑና ይሞክሩ።"
+
+msgid "AI draft saved. Review every statement before using it."
+msgstr "በሰው ሠራሽ አእምሮ የተዘጋጀው ረቂቅ ተቀምጧል። ከመጠቀምዎ በፊት እያንዳንዱን መግለጫ ያረጋግጡ።"
+
+msgid "Resume draft saved privately."
+msgstr "የሥራ ልምድ ማስረጃ ረቂቁ በግል ተቀምጧል።"
+
+msgid ""
+"Build a clear resume from your real education, skills, projects and "
+"experience. Review all AI wording; never include qualifications you do not "
+"have."
+msgstr ""
+"ከእውነተኛ ትምህርትዎ፣ ክህሎቶችዎ፣ ፕሮጀክቶችዎና ልምድዎ ግልጽ የሥራ ልምድ ማስረጃ ያዘጋጁ። በሰው ሠራሽ አእምሮ "
+"የተጻፈውን ሁሉ ይገምግሙ፤ የሌለዎትን ብቃት አያካትቱ።"
+
+msgid "Your private draft"
+msgstr "የግል ረቂቅዎ"
+
+msgid ""
+"Employers cannot see this draft. Download the PDF, review it, then upload it"
+" through your profile when ready. Your existing CV is not replaced "
+"automatically."
+msgstr ""
+"አሠሪዎች ይህንን ረቂቅ ማየት አይችሉም። PDF ፋይሉን ያውርዱ፣ ይገምግሙትና ሲዘጋጅ በመገለጫዎ በኩል ይጫኑት። ያለው "
+"የሥራ ልምድ ማስረጃዎ በራስ ሰር አይተካም።"
+
+msgid ""
+"Before using AI, remove sensitive details from the text sections. AI sends "
+"the target role, resume language, summary, education, experience and skills "
+"to OpenAI. Provider processing policies apply; this request disables "
+"response storage."
+msgstr ""
+"ሰው ሠራሽ አእምሮን ከመጠቀምዎ በፊት ስሱ መረጃዎችን ከጽሑፍ ክፍሎች ያስወግዱ። የሚፈልጉት የሥራ መደብ፣ ቋንቋ፣ "
+"ማጠቃለያ፣ ትምህርት፣ ልምድና ክህሎቶች ወደ OpenAI ይላካሉ። የአቅራቢው የመረጃ አያያዝ ፖሊሲዎች ይተገበራሉ፤ ይህ "
+"ጥያቄ የምላሽ ማከማቻን ያሰናክላል።"
+
+msgid "Save resume"
+msgstr "የሥራ ልምድ ማስረጃን አስቀምጥ"
+
+msgid "Draft with AI"
+msgstr "በሰው ሠራሽ አእምሮ አርቅቅ"
+
+msgid "Download saved resume (PDF)"
+msgstr "የተቀመጠውን የሥራ ልምድ ማስረጃ አውርድ (PDF)"
+
+msgid ""
+"PDF downloads use your saved draft. Save changes before downloading. PDF "
+"headings follow the selected resume language; editing the language alone "
+"does not translate your text."
+msgstr ""
+"የPDF ማውረጃዎች የተቀመጠውን ረቂቅ ይጠቀማሉ። ከማውረድዎ በፊት ለውጦችን ያስቀምጡ። የPDF ርዕሶች የተመረጠውን ቋንቋ"
+" ይከተላሉ፤ ቋንቋውን ብቻ መቀየር ጽሑፍዎን አይተረጉምም።"

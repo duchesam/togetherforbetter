@@ -33,6 +33,16 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Private resume builder (fictional demonstration)**
+
+![Private resume editor](docs/screenshots/resume-builder.png)
+
+<details><summary>Amharic resume editor on mobile</summary>
+
+![Amharic resume editor](docs/screenshots/resume-builder-amharic.png)
+
+</details>
+
 **Employer applicant workspace (fictional demonstration)**
 
 ![Employer applicant workspace](docs/screenshots/employer-applicants.png)
@@ -382,3 +392,16 @@ Employers open **Manage applicants** from their dashboard or a listing's managem
 Both results and status totals are scoped to the signed-in employer's organization. Summary totals cover all applications to that organization; matching counts reflect the active filters. The listing selector includes the employer's closed and unpublished listings so recruitment history remains accessible. Foreign or invalid listing filters fail validation without displaying another employer's listing details. Employers cannot search the general job-seeker population through this workspace.
 
 Upcoming interviews share the job-seeker tracker's date and state rules and sort by scheduled time. The list preserves pending, accepted and rescheduling labels without claiming attendance. Read-only GET requests never change applications; withdrawn applications remain protected by the existing detail and service checks. Neither this list nor its filters bypass private CV download authorization. English and Amharic are available, with no additional client scripts or external services.
+
+
+## Private resume builder and optional AI drafting
+
+Job seekers open **AI resume builder** from their dashboard. The first form prefills editable profile details; visiting the page creates no draft. **Save resume** stores a private draft, and **Download saved resume (PDF)** exports it with embedded Latin and Ethiopic fonts. English and Amharic section headings follow the resume language. Changing that language alone does not translate existing text. Save edits before downloading. Drafts are not exposed to employers, do not replace the attached CV, and are removed when the user account is deleted. To use an exported document in applications, review it and upload it through the existing profile CV form.
+
+AI drafting uses OpenAI's Responses API with a strict structured-output schema, a 25-second timeout, bounded input/output, and five generation submissions per user per hour. The user must explicitly consent on each generation request. Only target role, output language, summary, education, experience/projects and skills are sent. Name, email, phone and location fields and uploaded CV files are excluded; text the user types into the included sections can still contain personal details. The prompt instructs the model to preserve facts and not invent credentials, dates, metrics or achievements. Output is editable and must be reviewed by the applicant; those instructions cannot guarantee factual accuracy.
+
+Set `OPENAI_API_KEY` as a server environment secret. For Codespaces, create a Codespaces secret in GitHub settings, grant it access to this repository, and restart the Codespace so its processes receive the secret. Run `.devcontainer/restart.sh` afterward. Never paste API keys into chat, tracked files or frontend code. `RESUME_AI_MODEL` defaults to `gpt-4.1-mini` and can be changed to a model supporting the Responses API and strict JSON schema. Provider usage is billed to the configured account. The key is read only on the server; provider errors are reduced to safe messages, and response storage is disabled with `store: false`. Provider processing/retention policies still apply.
+
+Without a key, the editor and PDF downloads work and the AI button is disabled with an availability message. No placeholder text is presented as live AI output. Provider failures preserve submitted text in the editor, while existing saved drafts remain unchanged. Version checks prevent stale tabs or delayed AI replies from overwriting newer saved drafts. The integration has been exercised with mocked provider responses; live generation is not verified in this environment because no API key is configured.
+
+PDF export uses ReportLab and bundled DejaVu Sans and Noto Sans Ethiopic fonts; distribution license notices are included under `opportunities/fonts/`. No external font request or browser print service is needed. Application and PDF content remain private, with authenticated owner checks, CSRF-protected mutations, and non-cacheable downloads.
