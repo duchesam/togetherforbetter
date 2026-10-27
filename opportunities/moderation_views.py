@@ -15,12 +15,20 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext as _, gettext_lazy
 from django.views.decorators.cache import never_cache
 
-from .models import Employer, Opportunity
+from .models import Employer, Opportunity, ReviewDecision
 
 
 class ReviewForm(forms.Form):
     snapshot = forms.CharField(widget=forms.HiddenInput)
     decision = forms.ChoiceField(choices=())
+    employer_message = forms.CharField(required=False, max_length=1500, widget=forms.Textarea, label=gettext_lazy("Message to employer"), help_text=gettext_lazy("Only this message is shared with the employer. Keep internal notes in the review reason."))
+
+    def clean(self):
+        data = super().clean()
+        if data.get("decision") == "withdraw" and not data.get("employer_message"):
+            self.add_error("employer_message", gettext_lazy("Explain what the employer needs to change."))
+        return data
+
     reason = forms.CharField(max_length=1500, widget=forms.Textarea, label=gettext_lazy("Review reason"))
 
 
@@ -32,6 +40,7 @@ def fingerprint(obj):
     values = {field.attname: getattr(obj, field.attname) for field in obj._meta.fields}
     if isinstance(obj, Opportunity):
         values["organization"] = fingerprint(obj.employer)
+    values["latest_review"] = obj.review_decisions.order_by("-pk").values_list("pk", flat=True).first()
     return hashlib.sha256(json.dumps(values, sort_keys=True, default=str).encode()).hexdigest()
 
 
@@ -94,7 +103,14 @@ def moderation_review(request, kind, pk):
                     fields.append("version")
                 obj.save(update_fields=fields)
                 LogEntry.objects.log_actions(user_id=request.user.pk, queryset=model.objects.filter(pk=pk), action_flag=CHANGE, change_message=f"{form.cleaned_data['decision']}: {form.cleaned_data['reason']}")
+                ReviewDecision.objects.create(
+                    employer=obj if kind == "employer" else obj.employer,
+                    opportunity=None if kind == "employer" else obj,
+                    reviewer=request.user, decision=form.cleaned_data["decision"],
+                    employer_message=form.cleaned_data["employer_message"],
+                    reviewed_title=str(obj),
+                )
                 messages.success(request, _("Review decision saved."))
                 return redirect("moderation_queue")
         history = LogEntry.objects.filter(content_type=ContentType.objects.get_for_model(model), object_id=str(pk)).select_related("user").order_by("-action_time")[:20]
-        return render(request, "opportunities/moderation_review.html", {"item": obj, "kind": kind, "form": form, "history": history}, status=status)
+        return render(request, "opportunities/moderation_review.html", {"item": obj, "kind": kind, "form": form, "history": history, "decisions": obj.review_decisions.all()[:20]}, status=status)

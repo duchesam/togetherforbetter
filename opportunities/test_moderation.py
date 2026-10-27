@@ -6,7 +6,7 @@ from .models import Opportunity
 from .test_listings import ListingFixture
 
 
-class ModerationTests(ListingFixture, TestCase):
+class ModerationFixture(ListingFixture):
     def setUp(self):
         self.staff = User.objects.create_user('reviewer', is_staff=True)
         self.staff.user_permissions.add(*Permission.objects.filter(codename__in=['change_employer', 'change_opportunity']))
@@ -17,8 +17,10 @@ class ModerationTests(ListingFixture, TestCase):
 
     def payload(self, kind='opportunity', decision='approve'):
         response = self.client.get(self.url(kind))
-        return {'snapshot': response.context['form']['snapshot'].value(), 'decision': decision, 'reason': 'Independent review completed.'}
+        return {'snapshot': response.context['form']['snapshot'].value(), 'decision': decision, 'reason': 'Independent review completed.', 'employer_message': 'Please clarify the stipend and application deadline.'}
 
+
+class ModerationTests(ModerationFixture, TestCase):
     def test_approval_and_withdrawal_are_audited_and_versioned(self):
         data = self.payload(decision='withdraw')
         self.assertEqual(self.client.post(self.url(), data).status_code, 302)

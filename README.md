@@ -27,6 +27,16 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Employer review decisions (fictional demonstration)**
+
+![Employer review decisions](docs/screenshots/employer-review-decisions.png)
+
+<details><summary>Amharic employer review decisions on mobile</summary>
+
+![Amharic employer review decisions](docs/screenshots/employer-review-amharic.png)
+
+</details>
+
 **Staff review workspace (fictional demonstration)**
 
 ![Staff employer review](docs/screenshots/staff-review.png)
@@ -298,3 +308,12 @@ Signed-in staff with `opportunities.change_employer` or `opportunities.change_op
 Each decision requires a private reason and writes an admin audit entry. Review forms expire after one hour and reject changed organization or listing details. Listing decisions also advance the listing version to invalidate stale employer/admin forms. Withholding approval leaves the item in the pending queue; it does not permanently reject or delete it. Review reasons are internal and are not sent to employers.
 
 Listing approval requires a verified employer, a current Gregorian deadline, and an employer-open listing. Withdrawing organization verification hides its public listings while retaining their publication flags and all applications. Re-verification can therefore restore otherwise eligible previously approved listings; listings awaiting their own approval remain hidden. This workspace records human decisions; it does not independently verify an organization's identity.
+
+
+### Employer review decisions and corrections
+
+The staff review form now separates its internal **Review reason** from a **Message to employer**. Withholding or withdrawing approval requires a message explaining the required changes. Approval can include an optional employer message. Both the decision receipt and the private audit entry commit with the approval change; failed writes roll back the entire decision. New decisions invalidate older review forms even when approval flags remain unchanged.
+
+Employers open **Review decisions** from their dashboard, or from a listing's management page to filter its history. Receipts show the reviewed title, outcome, employer message and Ethiopia-time timestamp. Internal reasons and reviewer identities are not included. Unread counts decrease only after an owner-authorized, CSRF-protected **Mark as read** POST. Receipts are historical decisions, not claims that later edited content is approved. Editing the linked organization or listing submits the updated content through the existing review flow; employers cannot restore approval themselves.
+
+Messages appear in the application; this feature sends no email. Existing admin audit reasons are not copied into employer receipts. Receipts are generated for new decisions made through the staff workspace; direct legacy Django admin changes remain in the admin audit log.

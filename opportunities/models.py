@@ -316,3 +316,17 @@ class SavedOpportunity(models.Model):
     @property
     def is_available(self):
         return self.opportunity.is_open and (settings.DEBUG or not self.opportunity.employer.is_demo)
+
+
+class ReviewDecision(models.Model):
+    employer = models.ForeignKey(Employer, on_delete=models.CASCADE, related_name="review_decisions")
+    opportunity = models.ForeignKey(Opportunity, null=True, blank=True, on_delete=models.CASCADE, related_name="review_decisions")
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.SET_NULL)
+    decision = models.CharField(max_length=8, choices=[("approve", _("Approved")), ("withdraw", _("Changes requested or approval withdrawn"))])
+    employer_message = models.TextField(max_length=1500, blank=True)
+    reviewed_title = models.CharField(max_length=180)
+    created_at = models.DateTimeField(auto_now_add=True)
+    read_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-created_at", "-pk"]

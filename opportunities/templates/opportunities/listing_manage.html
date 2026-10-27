@@ -1,6 +1,7 @@
 {% extends 'opportunities/base.html' %}{% load i18n %}
 {% block content %}<section class="shell detail-section">
   <a class="back-link" href="{% url 'dashboard' %}">{% translate "← Dashboard" %}</a>
+  <a href="{% url 'employer_reviews' %}?listing={{ job.pk }}">{% translate "Review decisions" %}</a>
   <div class="eyebrow">{% translate "YOUR LISTING" %}</div>
   <div class="section-heading"><div><h1>{{ job.title }}</h1><p>{{ job.employer.name }} · {{ job.location }}</p></div><a class="button outline" href="{% url 'listing_edit' job.pk %}">{% translate "Edit opportunity" %} →</a></div>
   <div class="dashboard-banner"><div><h3>{% if job.closed_at %}{% translate "Closed to new applications" %}{% elif job.is_expired %}{% translate "Expired" %}{% elif job.is_open %}{% translate "Live" %}{% else %}{% translate "Awaiting review or employer verification" %}{% endif %}</h3><p>{% translate "Existing applications and interviews are retained when a listing is edited or closed." %}</p></div>

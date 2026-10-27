@@ -69,7 +69,7 @@ def dashboard(request):
     context = {"profile": profile, "reports": request.user.opportunity_reports.select_related("opportunity"), "unread_notifications": request.user.notifications.filter(read_at__isnull=True).count()}
     if profile.role == "employer":
         employer = get_object_or_404(Employer, user=request.user)
-        context.update(employer=employer, jobs=employer.opportunities.all(), applications=Application.objects.filter(opportunity__employer=employer).select_related("opportunity", "applicant__profile"))
+        context.update(unread_reviews=employer.review_decisions.filter(read_at__isnull=True).count(), employer=employer, jobs=employer.opportunities.all(), applications=Application.objects.filter(opportunity__employer=employer).select_related("opportunity", "applicant__profile"))
     else:
         context["applications"] = request.user.applications.select_related("opportunity__employer")
     return render(request, "opportunities/dashboard.html", context)

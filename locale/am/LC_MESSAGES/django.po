@@ -2386,3 +2386,42 @@ msgstr "ጸድቋል"
 
 msgid "Not approved"
 msgstr "አልጸደቀም"
+
+msgid "Message to employer"
+msgstr "ለአሠሪው የሚላክ መልዕክት"
+
+msgid ""
+"Only this message is shared with the employer. Keep internal notes in the "
+"review reason."
+msgstr "ይህ መልዕክት ብቻ ለአሠሪው ይታያል። የውስጥ ማስታወሻዎችን በግምገማ ምክንያት ውስጥ ያስቀምጡ።"
+
+msgid "Explain what the employer needs to change."
+msgstr "አሠሪው ምን መቀየር እንዳለበት ያብራሩ።"
+
+msgid "Changes requested or approval withdrawn"
+msgstr "ለውጦች ተጠይቀዋል ወይም ማጽደቁ ተነስቷል"
+
+msgid ""
+"The review reason stays private to staff. The message to employer is shared "
+"with the organization."
+msgstr "የግምገማ ምክንያቱን ሠራተኞች ብቻ ማየት ይችላሉ። ለአሠሪው የተጻፈው መልዕክት ለድርጅቱ ይታያል።"
+
+msgid "Review decisions"
+msgstr "የግምገማ ውሳኔዎች"
+
+msgid ""
+"These decisions describe the content reviewed at that time. Later edits "
+"require a new review. Editing your organization or listing submits the "
+"changes for review."
+msgstr ""
+"እነዚህ ውሳኔዎች በዚያ ጊዜ የተገመገመውን ይዘት ይመለከታሉ። ቀጣይ ለውጦች አዲስ ግምገማ ይፈልጋሉ። የድርጅትዎን ወይም "
+"የማስታወቂያዎን መረጃ ሲያስተካክሉ ለውጦቹ ለግምገማ ይቀርባሉ።"
+
+msgid "Mark as read"
+msgstr "እንደተነበበ ምልክት አድርግ"
+
+msgid "No review decisions yet."
+msgstr "እስካሁን የግምገማ ውሳኔዎች የሉም።"
+
+msgid "Messages shared with employer"
+msgstr "ለአሠሪው የተጋሩ መልዕክቶች"
