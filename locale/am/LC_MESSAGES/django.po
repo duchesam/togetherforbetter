@@ -2534,3 +2534,6 @@ msgid ""
 "Search applications to your listings and manage each recruitment process "
 "privately."
 msgstr "ለማስታወቂያዎችዎ የቀረቡ ማመልከቻዎችን ይፈልጉ፣ እያንዳንዱንም የቅጥር ሂደት በግል ያስተዳድሩ።"
+
+msgid "Apply language"
+msgstr "ቋንቋውን ተግብር"

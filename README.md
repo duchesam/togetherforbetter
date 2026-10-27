@@ -13,6 +13,10 @@ Open this repository in GitHub Codespaces using the button above. Setup installs
 To inspect account flows, create a job seeker or employer account. Verification messages are captured in the private `.private_mail` folder in the Codespaces file explorer. Open the latest message locally and follow its verification link while signed in to that account. Do not share these messages or their links. Create an administration account with `.venv/bin/python manage.py createsuperuser` to test employer verification and listing publication. There are no shared default credentials, and no external email is sent by this development setup.
 
 
+### Change the interface language
+
+Choose **አማርኛ** or **English** in the header to apply the language immediately. The **Apply language** button also works when JavaScript is unavailable. Switching preserves the current page and search filters, sets the language cookie, and saves the preference for signed-in profiles. Employer-written vacancy content stays in its original language.
+
 ### Refresh an existing Codespace
 
 New changes are published to `main`. In the repository terminal, run:
