@@ -109,7 +109,16 @@ class ApplicationForm(LocalizedModelForm):
         labels = {"cover_letter": _("Tell the employer why you’re a good fit")}
         widgets = {"cover_letter": forms.Textarea(attrs={"rows": 6, "placeholder": _("Share your interests, relevant skills, and what you hope to contribute.")})}
 
+class WithdrawalForm(forms.Form):
+    expected_status = forms.ChoiceField(choices=Application.Status.choices, widget=forms.HiddenInput)
+    confirm = forms.BooleanField(label=_("I understand that withdrawal is final for this opportunity."))
+
+
 class StatusForm(LocalizedModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["status"].choices = [(value, label) for value, label in Application.Status.choices if value != Application.Status.WITHDRAWN]
+
     class Meta:
         model = Application
         fields = ["status"]

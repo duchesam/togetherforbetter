@@ -5,6 +5,8 @@
   <div class="eyebrow">{% translate "APPLICATION DETAILS" %}</div>
   <h1>{{ application.opportunity.title }}</h1>
   <p class="intro">{{ application.opportunity.employer.name }} · {{ application.get_status_display }}</p>
+  {% if can_withdraw %}<a class="quiet-link" href="{% url 'application_withdraw' application.pk %}">{% translate "Withdraw application" %}</a>{% endif %}
+  {% if application.status == 'withdrawn' %}<div class="dashboard-banner"><div><h3>{% translate "Withdrawn by applicant" %}</h3><p>{% translate "This application is closed. Active interviews have been cancelled. The application history remains available." %}</p><p>{% blocktranslate with status=application.withdrawal.get_previous_status_display %}Status before withdrawal: {{ status }}.{% endblocktranslate %}</p><p>{{ application.withdrawal.created_at|date:"DATE_FORMAT" }} {{ application.withdrawal.created_at|time:"H:i" }} EAT</p></div></div>{% endif %}
   <div class="hiring-workspace">
     <div class="section-heading"><h2>{% translate "Interviews" %}</h2>{% if can_schedule %}<a class="button outline" href="{% url 'interview_invite' application.pk %}">{% translate "Invite to an interview" %} →</a>{% endif %}</div>
     {% for interview in interviews %}
@@ -41,6 +43,6 @@
   <h2>{% translate "CV" %}</h2>
   {% if application.applicant.profile.cv %}<a class="button outline" href="{% url 'download_cv' application.applicant.profile.pk %}">{% translate "Download CV (PDF) ↓" %}</a><p class="small-note">{% translate "This is the applicant’s current CV. Later uploads replace the version available here." %}</p>{% else %}<p class="small-note">{% translate "No CV uploaded. The applicant’s profile and message are available above and below." %}</p>{% endif %}
   <h2>{% translate "Application message" %}</h2>{{ application.cover_letter|linebreaks }}
-  {% if owner %}<form method="post" class="standard-form status-form">{% csrf_token %}{{ form.as_p }}<p class="small-note">{% translate "Mark a hire only after the applicant accepts. The applicant confirms their own outcome separately." %}</p><button class="button" type="submit">{% translate "Update status →" %}</button></form>{% endif %}
+  {% if owner and application.status != 'withdrawn' %}<form method="post" class="standard-form status-form">{% csrf_token %}{{ form.as_p }}<p class="small-note">{% translate "Mark a hire only after the applicant accepts. The applicant confirms their own outcome separately." %}</p><button class="button" type="submit">{% translate "Update status →" %}</button></form>{% endif %}
 </section>
 {% endblock %}

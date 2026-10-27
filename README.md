@@ -27,6 +27,16 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Application withdrawal (fictional demonstration)**
+
+![Application withdrawal confirmation](docs/screenshots/withdrawal-confirmation.png)
+
+<details><summary>Amharic withdrawn application on mobile</summary>
+
+![Amharic withdrawn application](docs/screenshots/withdrawal-amharic.png)
+
+</details>
+
 **Employer review decisions (fictional demonstration)**
 
 ![Employer review decisions](docs/screenshots/employer-review-decisions.png)
@@ -317,3 +327,14 @@ The staff review form now separates its internal **Review reason** from a **Mess
 Employers open **Review decisions** from their dashboard, or from a listing's management page to filter its history. Receipts show the reviewed title, outcome, employer message and Ethiopia-time timestamp. Internal reasons and reviewer identities are not included. Unread counts decrease only after an owner-authorized, CSRF-protected **Mark as read** POST. Receipts are historical decisions, not claims that later edited content is approved. Editing the linked organization or listing submits the updated content through the existing review flow; employers cannot restore approval themselves.
 
 Messages appear in the application; this feature sends no email. Existing admin audit reasons are not copied into employer receipts. Receipts are generated for new decisions made through the staff workspace; direct legacy Django admin changes remain in the admin audit log.
+
+
+## Applicant-controlled withdrawal
+
+An applicant can open **Withdraw application** on an active application, review the consequences, and confirm withdrawal. Only that applicant can perform the action. Hired and declined applications are excluded; a hired applicant uses the existing placement-response workflow to correct their acceptance outcome.
+
+Withdrawal records the prior status and timestamp, closes the application permanently, cancels active interview invitations with their event history retained, and prevents new invitations, interview responses, or employer/admin status changes. Repeated submissions do not create duplicate withdrawal records or notifications. A stale confirmation is rejected if the current status differs from the reviewed status. The existing one-application-per-opportunity rule remains: applicants cannot reapply to that same opportunity after withdrawing.
+
+Both parties receive in-app notices, with preference-controlled email queued through the existing durable worker. Older pending recruitment emails are cancelled before the withdrawal update is queued; a message already handed to a provider cannot be recalled. Calendar downloads after cancellation show `STATUS:CANCELLED`, while existing downloaded calendar entries require manual removal. No external email delivery is configured in the default pilot.
+
+Withdrawal retains the application, interview events, and employer access to the applicant's current profile and CV; it is not account deletion or revocation of previously shared information. The confirmation page explains this before submission. The entire mutation, history, interview cancellations and notification outbox writes commit atomically. These records are removed with the applicant's account through the existing self-service deletion flow.

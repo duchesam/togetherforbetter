@@ -2425,3 +2425,51 @@ msgstr "እስካሁን የግምገማ ውሳኔዎች የሉም።"
 
 msgid "Messages shared with employer"
 msgstr "ለአሠሪው የተጋሩ መልዕክቶች"
+
+msgid "Withdrawn by applicant"
+msgstr "በአመልካቹ የተቋረጠ"
+
+msgid "Application withdrawn"
+msgstr "ማመልከቻው ተቋርጧል"
+
+msgid ""
+"This application changed or is already closed. Reload before continuing."
+msgstr "ይህ ማመልከቻ ተቀይሯል ወይም ተዘግቷል። ከመቀጠልዎ በፊት ገጹን እንደገና ይጫኑ።"
+
+msgid "Withdrawn applications cannot be reopened or changed by an employer."
+msgstr "የተቋረጡ ማመልከቻዎች በአሠሪ እንደገና ሊከፈቱ ወይም ሊቀየሩ አይችሉም።"
+
+msgid "I understand that withdrawal is final for this opportunity."
+msgstr "ከዚህ ዕድል ማመልከቻዬን ማቋረጥ የመጨረሻ ውሳኔ መሆኑን ተረድቻለሁ።"
+
+msgid "Withdraw application"
+msgstr "ማመልከቻን አቋርጥ"
+
+msgid ""
+"This application is closed. Active interviews have been cancelled. The "
+"application history remains available."
+msgstr "ይህ ማመልከቻ ተዘግቷል። ንቁ ቃለ መጠይቆች ተሰርዘዋል። የማመልከቻው ታሪክ ይቀመጣል።"
+
+msgid "Your application has been withdrawn. The employer has been notified."
+msgstr "ማመልከቻዎ ተቋርጧል። አሠሪው ተነግሮታል።"
+
+msgid ""
+"Withdrawal cancels active interviews and closes this application "
+"permanently. You cannot apply again to this opportunity. The employer "
+"retains your application and access to your current profile and CV. Already "
+"downloaded calendar entries must be removed manually."
+msgstr ""
+"ማመልከቻን ማቋረጥ ንቁ ቃለ መጠይቆችን ይሰርዛል፣ ይህንንም ማመልከቻ በቋሚነት ይዘጋል። ለዚህ ዕድል እንደገና ማመልከት "
+"አይችሉም። አሠሪው ማመልከቻዎን እና ወቅታዊ መገለጫዎንና የሥራ ልምድ ማስረጃዎን የማየት መብት ይዞ ይቆያል። አስቀድመው "
+"ያወረዷቸውን የቀን መቁጠሪያ መዝገቦች በእጅዎ ማስወገድ አለብዎት።"
+
+msgid "Confirm withdrawal"
+msgstr "ማቋረጥን አረጋግጥ"
+
+msgid ""
+"The applicant withdrew this application. Active interviews have been "
+"cancelled. Sign in to view the retained history."
+msgstr "አመልካቹ ይህንን ማመልከቻ አቋርጧል። ንቁ ቃለ መጠይቆች ተሰርዘዋል። የተቀመጠውን ታሪክ ለማየት ይግቡ።"
+
+msgid "Status before withdrawal: %(status)s."
+msgstr "ከማቋረጥ በፊት የነበረው ሁኔታ፦ %(status)s።"

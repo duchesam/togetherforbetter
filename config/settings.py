@@ -24,6 +24,7 @@ LANGUAGE_COOKIE_SAMESITE = "Lax"
 # Shared database limits work across application workers, without a Redis dependency.
 # Counts are per direct client address for anonymous endpoints, per user otherwise.
 REQUEST_LIMITS = {
+    "application_withdraw": (10, 3600),
     "review_read": (60, 3600),
     "moderation_review": (60, 3600),
     "login": (10, 600), "signup": (10, 3600), "password_reset": (5, 900),

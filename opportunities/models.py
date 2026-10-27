@@ -84,6 +84,7 @@ class Application(models.Model):
         SHORTLISTED = "shortlisted", _("Shortlisted")
         HIRED = "hired", _("Hired (employer reported)")
         DECLINED = "declined", _("Not selected")
+        WITHDRAWN = "withdrawn", _("Withdrawn by applicant")
     opportunity = models.ForeignKey(Opportunity, on_delete=models.CASCADE, related_name="applications")
     applicant = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="applications")
     cover_letter = models.TextField()
@@ -140,6 +141,7 @@ class Notification(models.Model):
         STATUS = "status", _("Application status changed")
         INTERVIEW = "interview", _("Interview update")
         PLACEMENT = "placement", _("Placement response updated")
+        WITHDRAWAL = "withdrawal", _("Application withdrawn")
 
     recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="notifications")
     application = models.ForeignKey(Application, on_delete=models.CASCADE, related_name="notifications")
@@ -330,3 +332,9 @@ class ReviewDecision(models.Model):
 
     class Meta:
         ordering = ["-created_at", "-pk"]
+
+
+class ApplicationWithdrawal(models.Model):
+    application = models.OneToOneField(Application, on_delete=models.CASCADE, related_name="withdrawal")
+    previous_status = models.CharField(max_length=16, choices=Application.Status.choices)
+    created_at = models.DateTimeField(auto_now_add=True)

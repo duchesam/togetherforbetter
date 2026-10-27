@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.core.exceptions import PermissionDenied
 from django import forms
 from .models import Profile, Employer, Opportunity, Application, OpportunityReport, EmailDelivery, Interview, InterviewEvent, PlacementReport, PlacementResponseEvent, OpportunityChange
-from .notifications import application_received, application_status_changed
+from .notifications import application_received, application_status_changed, change_application_status
 admin.site.site_header = _("Together for Better · Community administration")
 admin.site.site_title = _("Together for Better")
 @admin.register(Employer)
@@ -53,25 +53,46 @@ class OpportunityAdmin(admin.ModelAdmin):
                 obj.save(update_fields=fields + ["version"])
         else:
             super().save_model(request, obj, form, change)
+class ApplicationAdminForm(forms.ModelForm):
+    class Meta:
+        model = Application
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if "status" in self.fields:
+            self.fields["status"].choices = [(v, label) for v, label in Application.Status.choices if v != "withdrawn"]
+
+    def clean(self):
+        data = super().clean()
+        if self.instance.pk:
+            current = Application.objects.select_for_update().get(pk=self.instance.pk)
+            if current.status == "withdrawn" and data.get("status", current.status) != "withdrawn":
+                raise forms.ValidationError(_("Withdrawn applications cannot be reopened or changed by an employer."))
+        return data
+
+
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
+    form = ApplicationAdminForm
     list_display = ["applicant", "opportunity", "status", "created_at"]
     list_filter = ["status", "opportunity__kind"]
     search_fields = ["applicant__username", "opportunity__title"]
     readonly_fields = ["created_at", "updated_at"]
 
     def get_readonly_fields(self, request, obj=None):
-        return self.readonly_fields + (["applicant", "opportunity", "cover_letter"] if obj else [])
+        return self.readonly_fields + (["applicant", "opportunity", "cover_letter"] if obj else []) + (["status"] if obj and obj.status == "withdrawn" else [])
 
     def save_model(self, request, obj, form, change):
-        previous = Application.objects.select_for_update().filter(pk=obj.pk).values_list("status", flat=True).first() if obj.pk else None
-        super().save_model(request, obj, form, change)
-        if not change:
+        if change:
+            current = Application.objects.select_for_update().get(pk=obj.pk)
+            if current.status != "withdrawn":
+                change_application_status(obj.pk, request.user, obj.status)
+        else:
+            super().save_model(request, obj, form, change)
             application_received(obj)
             if obj.status == "hired":
                 application_status_changed(obj, request.user)
-        elif previous != obj.status:
-            application_status_changed(obj, request.user)
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ["full_name", "user", "role"]

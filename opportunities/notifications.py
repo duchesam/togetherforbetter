@@ -81,6 +81,10 @@ def change_application_status(pk, actor, status):
         if application.opportunity.employer.user_id != actor.pk and not actor.has_perm("opportunities.change_application"):
             raise PermissionDenied
         # Callers validate the form; keep the service safe for other entry points.
+        from .hiring import HiringConflict
+        from django.utils.translation import gettext as _
+        if application.status == Application.Status.WITHDRAWN or status == Application.Status.WITHDRAWN:
+            raise HiringConflict(_("Withdrawn applications cannot be reopened or changed by an employer."))
         if status not in Application.Status.values:
             raise ValueError("Invalid application status")
         if application.status != status:

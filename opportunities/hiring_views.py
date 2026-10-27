@@ -10,8 +10,8 @@ from django.utils.translation import gettext as _
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_POST
 
-from .forms import InterviewForm, InterviewResponseForm, PlacementResponseForm
-from .hiring import HiringConflict, invite_to_interview, respond_to_interview, cancel_interview, respond_to_placement
+from .forms import InterviewForm, InterviewResponseForm, PlacementResponseForm, WithdrawalForm
+from .hiring import HiringConflict, invite_to_interview, respond_to_interview, cancel_interview, respond_to_placement, withdraw_application
 from .models import Application, Interview, PlacementReport
 
 
@@ -117,3 +117,22 @@ def interview_calendar(request, pk):
     response["Content-Disposition"] = 'attachment; filename="interview.ics"'
     response["X-Content-Type-Options"] = "nosniff"
     return response
+
+
+@login_required
+@never_cache
+def application_withdraw(request, pk):
+    application = get_object_or_404(Application, pk=pk, applicant=request.user)
+    if application.status == "withdrawn":
+        return redirect("application", pk=pk)
+    if application.status in ["hired", "declined"]:
+        return conflict(request, pk, _("This application changed or is already closed. Reload before continuing."))
+    form = WithdrawalForm(request.POST if request.method == "POST" else None, initial={"expected_status": application.status})
+    if request.method == "POST" and form.is_valid():
+        try:
+            withdraw_application(pk, request.user, form.cleaned_data["expected_status"])
+        except HiringConflict as error:
+            return conflict(request, pk, error)
+        messages.success(request, _("Your application has been withdrawn. The employer has been notified."))
+        return redirect("application", pk=pk)
+    return render(request, "opportunities/form.html", {"form": form, "title": _("Withdraw application"), "subtitle": _("Withdrawal cancels active interviews and closes this application permanently. You cannot apply again to this opportunity. The employer retains your application and access to your current profile and CV. Already downloaded calendar entries must be removed manually."), "button": _("Confirm withdrawal")})

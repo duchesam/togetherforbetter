@@ -4,7 +4,7 @@ from django.db import transaction
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from .models import Application, EmailDelivery, Interview, InterviewEvent, Notification, PlacementReport, PlacementResponseEvent
+from .models import Application, EmailDelivery, Interview, InterviewEvent, Notification, PlacementReport, PlacementResponseEvent, ApplicationWithdrawal
 from .notifications import record_notification
 
 
@@ -44,7 +44,7 @@ def invite_to_interview(application_id, actor, data):
         if existing.application_id != application.pk or any(getattr(existing, field) != data.get(field, "") for field in fields):
             raise HiringConflict(_("This invitation was already submitted with different details. Reload the page."))
         return existing
-    if application.status in [Application.Status.HIRED, Application.Status.DECLINED]:
+    if application.status in [Application.Status.HIRED, Application.Status.DECLINED, Application.Status.WITHDRAWN]:
         raise HiringConflict(_("This application is closed to interview scheduling."))
     # Validation happens before any existing invitation is changed.
     interview = Interview(application=application, **{field: data.get(field, "") for field in fields}, request_key=data["request_key"])
@@ -66,7 +66,7 @@ def respond_to_interview(pk, actor, status, note=""):
     interview = Interview.objects.select_for_update().get(pk=pk)
     latest_pk = application.interviews.order_by("-pk").values_list("pk", flat=True).first()
     if (interview.pk != latest_pk or interview.status in ["cancelled", "replaced"]
-            or interview.scheduled_at <= timezone.now() or application.status in ["hired", "declined"]):
+            or interview.scheduled_at <= timezone.now() or application.status in ["hired", "declined", "withdrawn"]):
         raise HiringConflict(_("This invitation is no longer available for a response."))
     if status not in ["accepted", "declined", "reschedule"] or len(note) > 500:
         raise ValidationError(_("Choose a valid interview response."))
@@ -97,7 +97,7 @@ def sync_after_status_change(application, actor=None):
         PlacementReport.objects.get_or_create(application=application, superseded_at__isnull=True, defaults={"reported_by": actor or application.opportunity.employer.user})
     else:
         PlacementReport.objects.filter(application=application, superseded_at__isnull=True).update(superseded_at=timezone.now())
-    if application.status in [Application.Status.HIRED, Application.Status.DECLINED]:
+    if application.status in [Application.Status.HIRED, Application.Status.DECLINED, Application.Status.WITHDRAWN]:
         for interview in application.interviews.filter(status__in=["pending", "accepted", "reschedule"]):
             end_interview(interview, actor or application.opportunity.employer.user, Interview.Status.CANCELLED)
 
@@ -122,3 +122,23 @@ def respond_to_placement(pk, actor, response):
         notice.placement_report = report
         notice.save(update_fields=["placement_report"])
     return report
+
+
+@transaction.atomic
+def withdraw_application(pk, actor, expected_status):
+    application = locked_application(pk)
+    if application.applicant_id != actor.pk:
+        raise PermissionDenied
+    if application.status == Application.Status.WITHDRAWN:
+        return application
+    if application.status != expected_status or application.status in [Application.Status.HIRED, Application.Status.DECLINED]:
+        raise HiringConflict(_("This application changed or is already closed. Reload before continuing."))
+    ApplicationWithdrawal.objects.create(application=application, previous_status=application.status)
+    application.status = Application.Status.WITHDRAWN
+    application.save(update_fields=["status", "updated_at"])
+    # Stop undelivered recruitment updates before queuing the withdrawal notice.
+    EmailDelivery.objects.filter(notification__application=application, sent_at__isnull=True, cancelled_at__isnull=True).update(cancelled_at=timezone.now())
+    sync_after_status_change(application, actor)
+    record_notification(application, application.opportunity.employer.user, Notification.Kind.WITHDRAWAL)
+    record_notification(application, application.applicant, Notification.Kind.WITHDRAWAL)
+    return application

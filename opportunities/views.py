@@ -172,17 +172,22 @@ def application_detail(request, pk):
         return HttpResponseForbidden()
     form = StatusForm(request.POST or None, instance=application)
     if request.method == "POST" and form.is_valid():
-        change_application_status(application.pk, request.user, form.cleaned_data["status"])
+        from .hiring import HiringConflict
+        try:
+            change_application_status(application.pk, request.user, form.cleaned_data["status"])
+        except HiringConflict as error:
+            return render(request, "opportunities/hiring_conflict.html", {"application_id": pk, "reason": str(error)}, status=409)
         messages.success(request, _("Application status updated."))
         return redirect("application", pk=pk)
     interviews = list(application.interviews.order_by("-pk").prefetch_related(Prefetch("events", queryset=InterviewEvent.objects.order_by("-created_at", "-pk")[:5], to_attr="recent_events"))[:5])
-    is_open = application.status not in ["hired", "declined"]
+    is_open = application.status not in ["hired", "declined", "withdrawn"]
     for index, interview in enumerate(interviews):
         interview.can_respond = not owner and index == 0 and interview.status not in ["cancelled", "replaced"] and interview.scheduled_at > timezone.now() and is_open
         interview.response_form = InterviewResponseForm(initial={"status": interview.status if interview.status in ["accepted", "declined", "reschedule"] else "", "note": interview.response_note})
     report = application.placement_reports.filter(superseded_at__isnull=True).first()
     return render(request, "opportunities/application.html", {
         "application": application, "form": form, "owner": owner,
+        "can_withdraw": not owner and is_open,
         "interviews": interviews, "can_schedule": owner and is_open,
         "placement_report": report, "placement_response_form": PlacementResponseForm(initial={"response": report.response}) if report else None,
         "placement_history": list(report.events.order_by("-created_at", "-pk")[:5]) if report else [],
