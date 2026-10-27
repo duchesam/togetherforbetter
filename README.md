@@ -25,6 +25,8 @@ New changes are published to `main`. In the repository terminal, run:
 git pull --ff-only && bash .devcontainer/restart.sh
 ```
 
+If Codespaces shows **Origin checking failed — http://localhost:8000**, update and restart with the command above, then reopen the pilot homepage from port 8000 rather than resubmitting the error page. The development launcher trusts the exact Codespaces preview origin and the exact localhost/127.0.0.1 upstream port used by forwarding. CSRF tokens are still required; other origins and ports remain rejected. This allowance is scoped to the Codespaces development launcher.
+
 The restart command installs pinned dependencies, compiles translations, applies migrations, runs system checks, and restarts only the pilot's managed web and worker processes. It preserves the database, private uploads, and workspace session key. Refresh the existing port-8000 browser tab afterward.
 
 ## Pilot screenshots

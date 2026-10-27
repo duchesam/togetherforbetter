@@ -23,7 +23,10 @@ export PILOT_PORT="${PILOT_PORT:-8000}"
 if [[ -n "${CODESPACE_NAME:-}" ]]; then
   pilot_hostname="${CODESPACE_NAME}-${PILOT_PORT}.${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:-app.github.dev}"
   export DJANGO_ALLOWED_HOSTS="localhost,127.0.0.1,$pilot_hostname"
-  export DJANGO_CSRF_TRUSTED_ORIGINS="https://$pilot_hostname"
+  # Codespaces port forwarding can rewrite Origin to the local upstream.
+  # Trust only this preview and its exact local development upstreams.
+  # CSRF token verification remains required for every POST.
+  export DJANGO_CSRF_TRUSTED_ORIGINS="https://$pilot_hostname,http://localhost:$PILOT_PORT,http://127.0.0.1:$PILOT_PORT"
   export PUBLIC_SITE_URL="https://$pilot_hostname"
   export DJANGO_TRUST_PROXY_SSL_HEADER=1
 else
