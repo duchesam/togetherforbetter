@@ -27,6 +27,16 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Staff review workspace (fictional demonstration)**
+
+![Staff employer review](docs/screenshots/staff-review.png)
+
+<details><summary>Amharic staff review on mobile</summary>
+
+![Amharic staff review](docs/screenshots/staff-review-amharic.png)
+
+</details>
+
 **Private saved opportunities (fictional demonstration)**
 
 ![Private saved opportunities](docs/screenshots/saved-opportunities.png)
@@ -279,3 +289,12 @@ Hidden revision checks protect against stale owner edits, close/reopen requests,
 Job seekers can select **Save opportunity** on a public listing. **Saved opportunities** is available from their dashboard. Saving is private, idempotent, and does not submit an application or notify employers. Other users and employers cannot browse or remove another job seeker's saves. Saved lists are paginated and require owner-authorized POSTs for changes.
 
 When a saved listing becomes closed, expired, unverified, or unpublished, it remains in the list as unavailable. Only the previously public title, organization name, and location captured at save time are displayed. Unpublished title/location changes are not leaked to prior savers. Once a reviewed listing is available again, its current public details are displayed. Permanently deleted listings and deleted user accounts remove their related saved records.
+
+
+## Staff review workspace
+
+Signed-in staff with `opportunities.change_employer` or `opportunities.change_opportunity` permission can open **Reviews** in the navigation. The workspace separates pending employer verification from listing review, with an **All records** view for reviewing existing approvals. Staff cannot review their own organization or listings.
+
+Each decision requires a private reason and writes an admin audit entry. Review forms expire after one hour and reject changed organization or listing details. Listing decisions also advance the listing version to invalidate stale employer/admin forms. Withholding approval leaves the item in the pending queue; it does not permanently reject or delete it. Review reasons are internal and are not sent to employers.
+
+Listing approval requires a verified employer, a current Gregorian deadline, and an employer-open listing. Withdrawing organization verification hides its public listings while retaining their publication flags and all applications. Re-verification can therefore restore otherwise eligible previously approved listings; listings awaiting their own approval remain hidden. This workspace records human decisions; it does not independently verify an organization's identity.

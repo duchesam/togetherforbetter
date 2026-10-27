@@ -156,7 +156,7 @@ msgstr "ክፍያ ተጠይቋል"
 
 #: opportunities/templates/opportunities/dashboard.html:1
 msgid "Awaiting review"
-msgstr "ግምገማ እየጠበቀ ነው"
+msgstr "ግምገማ በመጠባበቅ ላይ"
 
 #: opportunities/templates/opportunities/password_reset_done.html:9
 msgid "Back to log in →"
@@ -2313,3 +2313,76 @@ msgstr "ዕድሉን አስቀምጥ"
 
 msgid "Log in to save this opportunity"
 msgstr "ይህን ዕድል ለማስቀመጥ ይግቡ"
+
+msgid "Review reason"
+msgstr "የግምገማ ምክንያት"
+
+msgid "Decision"
+msgstr "ውሳኔ"
+
+msgid "Approve"
+msgstr "አጽድቅ"
+
+msgid "Withhold or withdraw approval"
+msgstr "ማጽደቅን አቁም ወይም አንሳ"
+
+msgid "This review changed or expired. Reload before making a decision."
+msgstr "ይህ ግምገማ ተቀይሯል ወይም ጊዜው አልፎበታል። ውሳኔ ከመስጠትዎ በፊት ገጹን እንደገና ይጫኑ።"
+
+msgid ""
+"Approval requires a verified employer, an open listing, and a current "
+"deadline."
+msgstr "ለማጽደቅ የተረጋገጠ አሠሪ፣ ክፍት ማስታወቂያ እና ጊዜው ያላለፈ የማመልከቻ ቀነ ገደብ ያስፈልጋሉ።"
+
+msgid "Review decision saved."
+msgstr "የግምገማ ውሳኔ ተቀምጧል።"
+
+msgid "Staff review workspace"
+msgstr "የሠራተኞች ግምገማ ቦታ"
+
+msgid ""
+"Verify organizations independently. Review each listing before publication. "
+"Review reasons are private to authorized staff."
+msgstr ""
+"ድርጅቶችን በገለልተኛ መንገድ ያረጋግጡ። እያንዳንዱን ማስታወቂያ ከመታተሙ በፊት ይገምግሙ። የግምገማ ምክንያቶችን ፈቃድ "
+"ያላቸው ሠራተኞች ብቻ ማየት ይችላሉ።"
+
+msgid "Employer verification"
+msgstr "የአሠሪ ማረጋገጫ"
+
+msgid "Listing approval"
+msgstr "የማስታወቂያ ማጽደቅ"
+
+msgid "Fictional demonstration data"
+msgstr "ለማሳያ የተፈጠረ መረጃ"
+
+msgid "No items awaiting review."
+msgstr "ግምገማ የሚጠብቁ ነገሮች የሉም።"
+
+msgid ""
+"Review reasons are private to authorized staff. Withdrawing employer "
+"verification hides its listings without deleting applications."
+msgstr ""
+"የግምገማ ምክንያቶችን ፈቃድ ያላቸው ሠራተኞች ብቻ ማየት ይችላሉ። የአሠሪ ማረጋገጫን ማንሳት ማመልከቻዎችን ሳይሰርዝ "
+"ማስታወቂያዎቹን ይደብቃል።"
+
+msgid "Save review decision"
+msgstr "የግምገማ ውሳኔን አስቀምጥ"
+
+msgid "Review history"
+msgstr "የግምገማ ታሪክ"
+
+msgid "No review history recorded."
+msgstr "የግምገማ ታሪክ አልተመዘገበም።"
+
+msgid "Reviews"
+msgstr "ግምገማዎች"
+
+msgid "All records"
+msgstr "ሁሉም መዝገቦች"
+
+msgid "Approved"
+msgstr "ጸድቋል"
+
+msgid "Not approved"
+msgstr "አልጸደቀም"

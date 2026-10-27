@@ -3,9 +3,11 @@ from django.urls import path
 from . import views
 from . import account_views
 from . import hiring_views
-from . import listing_views
+from . import listing_views, moderation_views
 from .forms import LockedSetPasswordForm
 urlpatterns = [
+    path("staff/reviews/", moderation_views.moderation_queue, name="moderation_queue"),
+    path("staff/reviews/<str:kind>/<int:pk>/", moderation_views.moderation_review, name="moderation_review"),
     path("", views.home, name="home"),
     path("impact/", views.impact, name="impact"),
     path("about/", views.about, name="about"),
