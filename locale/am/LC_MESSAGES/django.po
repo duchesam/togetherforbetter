@@ -262,7 +262,7 @@ msgstr "ሁሉንም ማጣሪያዎች አጥፋ"
 
 #: opportunities/templates/opportunities/home.html:8
 msgid "Clear filters"
-msgstr "ማጣሪያዎችን አጥፋ"
+msgstr "ማጣሪያዎችን አጽዳ"
 
 #: opportunities/templates/opportunities/dashboard.html:1
 msgid "Closed or awaiting verification"
@@ -2473,3 +2473,47 @@ msgstr "አመልካቹ ይህንን ማመልከቻ አቋርጧል። ንቁ �
 
 msgid "Status before withdrawal: %(status)s."
 msgstr "ከማቋረጥ በፊት የነበረው ሁኔታ፦ %(status)s።"
+
+msgid "Search your applications"
+msgstr "ማመልከቻዎችዎን ይፈልጉ"
+
+msgid "All statuses"
+msgstr "ሁሉም ሁኔታዎች"
+
+msgid "Application status"
+msgstr "የማመልከቻ ሁኔታ"
+
+msgid "Only applications with upcoming interviews"
+msgstr "ቀጣይ ቃለ መጠይቅ ያላቸው ማመልከቻዎች ብቻ"
+
+msgid "My application tracker"
+msgstr "የማመልከቻዎቼ መከታተያ"
+
+msgid ""
+"Track applications and upcoming interview invitations in one private place."
+msgstr "ማመልከቻዎችንና ቀጣይ የቃለ መጠይቅ ግብዣዎችን በአንድ የግል ቦታ ይከታተሉ።"
+
+msgid "Total applications"
+msgstr "ጠቅላላ ማመልከቻዎች"
+
+msgid "Filter applications"
+msgstr "ማመልከቻዎችን አጣራ"
+
+msgid "Matching applications: %(count)s."
+msgstr "ከማጣሪያው ጋር የሚዛመዱ ማመልከቻዎች፦ %(count)s።"
+
+msgid ""
+"Interview times use Gregorian dates and Addis Ababa time (UTC+3). An "
+"invitation does not confirm attendance."
+msgstr ""
+"የቃለ መጠይቅ ቀጠሮዎች የጎርጎርዮሳውያን ቀን መቁጠሪያንና የአዲስ አበባ ሰዓትን (UTC+3) ይጠቀማሉ። ግብዣ መኖሩ "
+"መገኘትን አያረጋግጥም።"
+
+msgid "Applied"
+msgstr "ያመለከቱበት ቀን"
+
+msgid "Upcoming interview"
+msgstr "ቀጣይ ቃለ መጠይቅ"
+
+msgid "No applications match these filters."
+msgstr "ከእነዚህ ማጣሪያዎች ጋር የሚዛመዱ ማመልከቻዎች የሉም።"

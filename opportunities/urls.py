@@ -1,11 +1,12 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
-from . import views
+from . import views, tracker_views
 from . import account_views
 from . import hiring_views
 from . import listing_views, moderation_views, review_views
 from .forms import LockedSetPasswordForm
 urlpatterns = [
+    path("applications/", tracker_views.application_tracker, name="application_tracker"),
     path("applications/<int:pk>/withdraw/", hiring_views.application_withdraw, name="application_withdraw"),
     path("organization/reviews/", review_views.employer_reviews, name="employer_reviews"),
     path("organization/reviews/<int:pk>/read/", review_views.review_read, name="review_read"),

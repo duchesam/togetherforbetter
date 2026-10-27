@@ -27,6 +27,16 @@ The restart command installs pinned dependencies, compiles translations, applies
 
 These are actual captures of the application. All organizations, salaries, and vacancies shown are fictional examples.
 
+**Private application tracker (fictional demonstration)**
+
+![Private application tracker](docs/screenshots/application-tracker.png)
+
+<details><summary>Amharic application tracker on mobile</summary>
+
+![Amharic application tracker](docs/screenshots/application-tracker-amharic.png)
+
+</details>
+
 **Application withdrawal (fictional demonstration)**
 
 ![Application withdrawal confirmation](docs/screenshots/withdrawal-confirmation.png)
@@ -338,3 +348,12 @@ Withdrawal records the prior status and timestamp, closes the application perman
 Both parties receive in-app notices, with preference-controlled email queued through the existing durable worker. Older pending recruitment emails are cancelled before the withdrawal update is queued; a message already handed to a provider cannot be recalled. Calendar downloads after cancellation show `STATUS:CANCELLED`, while existing downloaded calendar entries require manual removal. No external email delivery is configured in the default pilot.
 
 Withdrawal retains the application, interview events, and employer access to the applicant's current profile and CV; it is not account deletion or revocation of previously shared information. The confirmation page explains this before submission. The entire mutation, history, interview cancellations and notification outbox writes commit atomically. These records are removed with the applicant's account through the existing self-service deletion flow.
+
+
+## Private application tracker
+
+Job seekers open **My application tracker** from their dashboard. The page searches their own application titles and organization names, filters by every application status including withdrawal, and paginates twelve applications at a time. Summary counts always describe that job seeker's full application history; the matching count describes the current filters. Neither counts nor results include other applicants. Employers and accounts without a job-seeker profile cannot access this workspace.
+
+**Only applications with upcoming interviews** shows future pending, accepted, or rescheduling-requested invitations on active applications, ordered by scheduled time. Past, cancelled, replaced and declined invitations and closed applications are excluded. Pending and rescheduling states retain their explicit labels; an invitation does not establish attendance. Dates use the Gregorian calendar and Addis Ababa time (UTC+3).
+
+The tracker is read-only, requires authentication, and returns non-cacheable responses. Filters stay in pagination links. Application actions remain on the existing permission-checked detail page. No email, external services, or browser scripts are needed for this feature.
