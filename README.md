@@ -405,3 +405,8 @@ Set `OPENAI_API_KEY` as a server environment secret. For Codespaces, create a Co
 Without a key, the editor and PDF downloads work and the AI button is disabled with an availability message. No placeholder text is presented as live AI output. Provider failures preserve submitted text in the editor, while existing saved drafts remain unchanged. Version checks prevent stale tabs or delayed AI replies from overwriting newer saved drafts. The integration has been exercised with mocked provider responses; live generation is not verified in this environment because no API key is configured.
 
 PDF export uses ReportLab and bundled DejaVu Sans and Noto Sans Ethiopic fonts; distribution license notices are included under `opportunities/fonts/`. No external font request or browser print service is needed. Application and PDF content remain private, with authenticated owner checks, CSRF-protected mutations, and non-cacheable downloads.
+
+
+## Production preparation and recovery
+
+See [the deployment and recovery runbook](deploy/README.md) for private persistent storage, HTTPS/host configuration, WSGI/static serving, supervised workers, and tested SQLite/CV backup-and-restore commands. Public hosting has not been provisioned. Freelance contracting remains outside this pilot release.

@@ -9,3 +9,6 @@ media/
 .private_mail/
 
 .pilot-runtime/
+.private_backups/
+.pilot-data/
+.env.production

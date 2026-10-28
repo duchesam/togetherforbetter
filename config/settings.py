@@ -10,10 +10,13 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1],tes
 CSRF_TRUSTED_ORIGINS = [x for x in os.getenv("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",") if x]
 INSTALLED_APPS = ["django.contrib.admin", "django.contrib.auth", "django.contrib.contenttypes", "django.contrib.sessions", "django.contrib.messages", "django.contrib.staticfiles", "opportunities"]
 MIDDLEWARE = ["django.middleware.security.SecurityMiddleware", "django.contrib.sessions.middleware.SessionMiddleware", "django.middleware.locale.LocaleMiddleware", "django.middleware.common.CommonMiddleware", "django.middleware.csrf.CsrfViewMiddleware", "django.contrib.auth.middleware.AuthenticationMiddleware", "django.contrib.messages.middleware.MessageMiddleware", "django.middleware.clickjacking.XFrameOptionsMiddleware", "opportunities.middleware.RequestLimitMiddleware"]
+if not DEBUG:
+    MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
 ROOT_URLCONF = "config.urls"
 TEMPLATES = [{"BACKEND": "django.template.backends.django.DjangoTemplates", "DIRS": [], "APP_DIRS": True, "OPTIONS": {"context_processors": ["django.template.context_processors.request", "django.contrib.auth.context_processors.auth", "django.contrib.messages.context_processors.messages", "opportunities.context_processors.pilot_notice"]}}]
 WSGI_APPLICATION = "config.wsgi.application"
-DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}}
+DATA_DIR = Path(os.getenv("DJANGO_DATA_DIR", str(BASE_DIR)))
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": DATA_DIR / "db.sqlite3", "OPTIONS": {"timeout": 20}}}
 AUTH_PASSWORD_VALIDATORS = [{"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"}, {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"}, {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"}, {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"}]
 LANGUAGE_CODE = "en"
 LANGUAGES = [("en", "English"), ("am", "አማርኛ")]
@@ -43,12 +46,12 @@ TIME_ZONE = "Africa/Addis_Ababa"
 USE_I18N = True
 USE_TZ = True
 STATIC_URL = "static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = Path(os.getenv("DJANGO_STATIC_ROOT", str(BASE_DIR / "staticfiles")))
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "dashboard"
 LOGOUT_REDIRECT_URL = "home"
-MEDIA_ROOT = BASE_DIR / ".private_uploads"
+MEDIA_ROOT = DATA_DIR / ".private_uploads"
 # Private uploads are deliberately absent from URL configuration.
 MEDIA_URL = "/private-media/"
 FILE_UPLOAD_PERMISSIONS = 0o600
@@ -59,7 +62,7 @@ EMAIL_BACKEND = os.getenv(
     "opportunities.mail.PrivateFileEmailBackend" if DEBUG
     else "django.core.mail.backends.smtp.EmailBackend",
 )
-EMAIL_FILE_PATH = BASE_DIR / ".private_mail"
+EMAIL_FILE_PATH = DATA_DIR / ".private_mail"
 EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
 EMAIL_PORT = int(os.getenv("EMAIL_PORT", "587"))
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
@@ -82,6 +85,19 @@ if not PUBLIC_SITE_URL or (not _public_origin.hostname or _public_origin.scheme 
 if not DEBUG and not PUBLIC_SITE_URL.startswith("https://"):
     raise RuntimeError("Set PUBLIC_SITE_URL to the production HTTPS origin")
 if not DEBUG:
+    from .production import production_config
+    DATA_DIR, STATIC_ROOT, ALLOWED_HOSTS = production_config(os.environ, BASE_DIR, PUBLIC_SITE_URL, SECRET_KEY)
+    DATABASES["default"]["NAME"] = DATA_DIR / "db.sqlite3"
+    MEDIA_ROOT = DATA_DIR / ".private_uploads"
+    EMAIL_FILE_PATH = DATA_DIR / ".private_mail"
+    CSRF_TRUSTED_ORIGINS = sorted(set(CSRF_TRUSTED_ORIGINS + [PUBLIC_SITE_URL]))
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_REFERRER_POLICY = "same-origin"
+    STORAGES = {
+        "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+        "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+    }
     LANGUAGE_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
