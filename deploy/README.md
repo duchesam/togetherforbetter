@@ -2,6 +2,8 @@
 
 This release covers free job seeking, verified employers, internships and entry-level recruitment. Freelance contracting, payments and public talent searches are excluded. These instructions prepare a host; they do not provision an account or claim that production is deployed.
 
+The selected initial host is PythonAnywhere. Follow [the provider-specific setup](PYTHONANYWHERE.md), then use this document for production safeguards and recovery. No hosting purchase or account provisioning has been performed.
+
 ## Host requirements
 
 Use Python 3.12 and a host that can run Django WSGI, retain a private directory across releases/restarts, serve HTTPS, and run the durable mail/file-cleanup worker continuously or on a reliable schedule. SQLite is supported here for a small pilot on one host with a local persistent filesystem. Do not put this SQLite configuration on an ephemeral free web-service filesystem or a network filesystem. Moving to a stateless/multiple-host platform requires a separately implemented database/object-storage setup.

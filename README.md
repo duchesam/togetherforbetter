@@ -410,3 +410,8 @@ PDF export uses ReportLab and bundled DejaVu Sans and Noto Sans Ethiopic fonts; 
 ## Production preparation and recovery
 
 See [the deployment and recovery runbook](deploy/README.md) for private persistent storage, HTTPS/host configuration, WSGI/static serving, supervised workers, and tested SQLite/CV backup-and-restore commands. Public hosting has not been provisioned. Freelance contracting remains outside this pilot release.
+
+
+### Selected initial hosting path
+
+PythonAnywhere is the selected small-pilot deployment path. [Account setup, WSGI configuration, worker setup and update instructions](deploy/PYTHONANYWHERE.md) are ready. Hosting access, suitable plan features and live email remain to be confirmed; the current Baruchermi.org site and DNS have not been changed.
