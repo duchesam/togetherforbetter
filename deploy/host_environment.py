@@ -1,6 +1,7 @@
 """Load a private production configuration for host-managed WSGI and worker tasks."""
 import json
 import os
+import secrets
 from pathlib import Path
 import stat
 
@@ -36,3 +37,21 @@ def activate(config_file):
         os.environ.pop(key, None)
     os.environ.update(values)
     os.environ['DJANGO_SETTINGS_MODULE'] = 'config.settings'
+
+
+def initial_configuration(directory, hostname):
+    return {
+        'DJANGO_DEBUG': '0', 'DJANGO_SECRET_KEY': secrets.token_urlsafe(64),
+        'PUBLIC_SITE_URL': 'https://' + hostname,
+        'DJANGO_ALLOWED_HOSTS': hostname,
+        'DJANGO_CSRF_TRUSTED_ORIGINS': 'https://' + hostname,
+        'DJANGO_DATA_DIR': str(directory),
+        'DJANGO_STATIC_ROOT': str(directory.parent / 'together-static'),
+        # Host verification is required before changing this to 1.
+        'DJANGO_TRUST_PROXY_SSL_HEADER': '0',
+        'EMAIL_BACKEND': 'django.core.mail.backends.smtp.EmailBackend',
+        'EMAIL_HOST': '', 'EMAIL_PORT': '587', 'EMAIL_USE_TLS': '1',
+        'EMAIL_HOST_USER': '', 'EMAIL_HOST_PASSWORD': '',
+        'DEFAULT_FROM_EMAIL': 'Together for Better <noreply@example.invalid>',
+        'OPENAI_API_KEY': '', 'RESUME_AI_MODEL': 'gpt-4.1-mini',
+    }

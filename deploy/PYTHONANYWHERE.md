@@ -58,3 +58,15 @@ Before changes affecting data, schedule a maintenance window and follow [the tes
 Update with `git pull --ff-only`, install pinned requirements, compile translations, migrate, collect static, run checks, reload the Web app and restart the supervised worker. Never overwrite `production.json` or rotate its key during routine deploys.
 
 Connecting `jobs.baruchermi.org` is a later, separate change. It requires the appropriate host plan and DNS access; it does not require moving the main website. Update the canonical HTTPS URL, allowed hosts and trusted origins together and verify language/form POSTs after that change. No DNS record has been changed by these preparation steps.
+
+## Recover an accidentally replaced configuration
+
+Edit individual JSON values in the existing file; do not replace the full file with an SMTP example. If a fragment replaced the original settings, the following command can restore missing defaults while preserving surviving credentials and the existing database path. It accepts a valid object or an object with missing outer braces, rejects duplicate/unknown keys, saves an owner-only copy of the original file, and replaces the configuration atomically. It does not run migrations or modify database/uploaded data.
+
+```bash
+python manage.py recover_host_config --directory /absolute/existing/private-directory --hostname YOUR_ACTUAL_WEB_HOSTNAME
+```
+
+If the original secret key is missing, the command stops. After accepting that users must sign in again and previously signed links need to be requested again, add `--replace-missing-secret` to generate a new independent key. Administrator usernames and passwords remain in the unchanged database. A surviving valid key is preserved, even when that flag is present. Do not publish the broken file or its backup: both may contain SMTP credentials.
+
+After recovery, validate through `scripts/host_manage.py --config ... check`, reload the Web app and sign in. Then test email separately; successful configuration recovery does not establish SMTP connectivity or authentication.
