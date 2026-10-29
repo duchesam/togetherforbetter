@@ -21,7 +21,7 @@ python3.12 -m venv .venv
 
 Replace `YOUR_ACTUAL_WEB_HOSTNAME` with the exact hostname shown in the host's Web tab, without `https://`, a slash or port. Do not assume the region's domain suffix. The initializer creates a mode-0700 private directory and mode-0600 `production.json` outside the checkout. It generates a new secret without printing it. Running it again refuses to replace the existing configuration/key. It does not migrate development accounts or sample data.
 
-Edit `~/together-private/production.json` using the host's private file editor. Add the verified SMTP sender/credentials before inviting users. Configure OpenAI only when its account/billing is approved; otherwise manual resume editing/PDF export remain available. Review TLS/proxy behavior: the configuration starts with proxy-header trust disabled. Enable it only if the host's forwarding-header contract is verified. Native WSGI may already supply the correct HTTPS scheme without enabling header trust.
+For Gmail, use the tested interactive setup below rather than replacing or manually rebuilding the JSON file. For another SMTP provider, edit only the necessary existing email values in `~/together-private/production.json` using the private editor. Add the verified SMTP sender/credentials before inviting users. Configure OpenAI only when its account/billing is approved; otherwise manual resume editing/PDF export remain available. Review TLS/proxy behavior: the configuration starts with proxy-header trust disabled. Enable it only if the host's forwarding-header contract is verified. Native WSGI may already supply the correct HTTPS scheme without enabling header trust.
 
 Run release commands with the private configuration explicitly loaded:
 
@@ -70,3 +70,18 @@ python manage.py recover_host_config --directory /absolute/existing/private-dire
 If the original secret key is missing, the command stops. After accepting that users must sign in again and previously signed links need to be requested again, add `--replace-missing-secret` to generate a new independent key. Administrator usernames and passwords remain in the unchanged database. A surviving valid key is preserved, even when that flag is present. Do not publish the broken file or its backup: both may contain SMTP credentials.
 
 After recovery, validate through `scripts/host_manage.py --config ... check`, reload the Web app and sign in. Then test email separately; successful configuration recovery does not establish SMTP connectivity or authentication.
+
+
+## Gmail setup and authentication failures
+
+Create a Google app password from the exact Google account used as the SMTP username. A 16-character string passing a format check does not establish that it is a valid password for that account. Google response `535` means the account/app-password pair was rejected; it does not establish a hosting firewall problem.
+
+Run this with the existing private configuration:
+
+```bash
+.venv/bin/python scripts/host_manage.py --config /home/YOUR_USERNAME/together-private/production.json setup_gmail
+```
+
+Confirm the Google email address at the prompt and paste the Google-generated app password into the hidden prompt. The command removes display whitespace, validates its format, and attempts verified TLS on port 587 with explicit `AUTH LOGIN` challenge/response. It sends no email and never prints the password or raw provider response. Authentication must succeed before any settings are saved. Rejection leaves the existing configuration untouched. Successful setup atomically saves only email fields and selects `opportunities.gmail.GmailEmailBackend`; the production secret, data directory and other application settings remain unchanged.
+
+The Gmail-specific backend uses Django's normal SMTP delivery/connection machinery with certificate verification and LOGIN instead of selecting PLAIN automatically. It rejects an unencrypted connection or another SMTP hostname. It does not bypass Gmail account verification, app-password requirements or provider policy. Reload the Web app and restart the worker after successful setup. Then test actual inbox delivery and account verification separately; successful authentication alone does not prove receipt.
